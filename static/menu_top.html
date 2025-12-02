@@ -1,0 +1,131 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<style>
+body {
+    font-family: Helvetica;
+}
+select {
+    position: absolute;
+    top: 40px;
+    background: transparent;
+    border: 1px solid #ddd;
+    font-size: 0.9em;
+}
+#logo {
+    /*position: absolute;*/
+    top: 0;
+    margin: 0;
+    padding: 0;
+}
+</style>
+<script>
+var mementoweb_links = {
+        "title": "Memento Project",
+        "logo": "/static/css/images/memento_logo.svg",
+        "menu_items": {
+            "http://mementoweb.org/about/": "About",
+            "http://mementoweb.org/demo/": "Demos",
+            "http://mementoweb.org/depot/": "Depot",
+            "http://mementoweb.org/guide/": "Guide",
+            "http://mementoweb.org/tools/": "Tools"
+        }
+}
+var timetravel_links = {
+        "title": "Time Travel",
+        "logo": "/static/css/images/timetravel_logo.png",
+        "menu_items": {
+            "http://timetravel.mementoweb.org/about/": "About",
+            "http://timetravel.mementoweb.org/api/": "API",
+            "http://timetravel.mementoweb.org/privacy-policy/": "Privacy",
+            "http://timetravel.mementoweb.org/terms-of-service/": "Terms"
+        }
+}
+var apps = {
+    "http://mementoweb.org/": mementoweb_links,
+    "http://robustlinks.mementoweb.org/": {
+        "title": "Robust Links",
+        "logo": "/static/css/images/robustlinks.png",
+        "menu_items": {
+            "http://robustlinks.mementoweb.org/about/": "About",
+            "http://robustlinks.mementoweb.org/demo/": "Demos",
+            "http://robustlinks.mementoweb.org/spec/": "Spec",
+            "http://robustlinks.mementoweb.org/tools/": "Tools"
+        }
+    },
+    "http://timetravel.mementoweb.org/": timetravel_links,
+    "http://whatdiditlooklike.mementoweb.org/": {
+        "title": "What Did It Look Like",
+        "logo": "/static/css/images/whatdiditlooklike.png",
+        "menu_items": {
+            "http://whatdiditlooklike.mementoweb.org/about": "About",
+            "http://whatdiditlooklike.mementoweb.org/archives": "Archive",
+            "https://www.tumblr.com/register/follow/whatdiditlooklike": "Follow"
+        }
+    }
+}
+window.addEventListener("message", function(event) {
+//window.onload = function() {
+    var req = event.data;
+    //var req = window.top.location.href;
+    //var req = window.location.href;
+    var applogo = document.getElementById("app_logo");
+    var applogoimg = document.getElementById("app_logo_img");
+
+    var appselect = document.createElement("select");
+    appselect.id = "app_select";
+    appselect.onchange = function() {
+        window.top.location = this.options[this.selectedIndex].value;
+    }
+    applogo.appendChild(appselect);
+
+    var menu_selected = false;
+    for (appUrl in apps) {
+        var option = document.createElement("option");
+        option.value = appUrl;
+        option.text = apps[appUrl]['title'];
+        if (req.search(appUrl) == 0 && !menu_selected) {
+            menu_selected = true;
+            option.selected = "selected";
+            applogoimg.src = apps[appUrl]['logo'];
+            if (apps[appUrl]['menu_items'] != null) {
+                var items = apps[appUrl]['menu_items'];
+                var appmenu = document.getElementById("app_menu");
+                for (itemUrl in items) {
+                    var item = document.createElement("a");
+                    item.href = itemUrl;
+                    item.target = "_parent";
+                    item.textContent = items[itemUrl];
+                    appmenu.appendChild(item);
+                    appmenu.appendChild(document.createTextNode(" "));
+                }
+            }
+        }
+        appselect.appendChild(option);
+    }
+//}
+});
+</script>
+
+</head>
+<body style="">
+<div style="">
+    <div style="border-bottom: 1px solid #ddd; height: 1px; position: absolute; width: 50%; padding-top: 38px; z-index: -10;margin-left: 280px;"></div>
+    <span id="app_logo">
+                <a href="http://timetravel.mementoweb.org/" target="_parent">
+                    <img id="app_logo_img" src="http://mementoweb.org/static/css/images/timetravel_logo.png" style="width: 80px; height: 80px;"/>
+                </a>
+                <!--
+                <select id="app_select" onchange="window.top.location = this.options[this.selectedIndex].value;">
+                    <option value="http://mementoweb.org/about/">Memento Project</option>
+                    <option value="http://robustlinks.mementoweb.org/">Robust Links</option>
+                    <option value="http://timetravel.mementoweb.org/">Time Travel</option>
+                    <option value="http://whatdiditlooklike.mementoweb.org/">What Did It Look Like</option>
+                </select>
+                -->
+    </span>
+    <span id="app_menu" style="float: right; padding-top: 30px; padding-left: 10px; background: #fff;">
+    </span>
+</div>
+</body>
+</html>
