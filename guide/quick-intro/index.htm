@@ -1,0 +1,411 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+  
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Introduction to the Memento Protocol</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-16" />
+
+  
+  <style type="text/css">
+.container {
+  background: #ffffff; 
+  width: 1000px;
+  margin: 0 auto;
+  }
+.table {
+	BORDER-RIGHT: #999999 1px solid;
+	BORDER-TOP: #999999 1px solid;
+	BORDER-LEFT: #999999 1px solid;
+	BORDER-BOTTOM: #999999 1px solid;
+	border-spacing: 2px;
+	}
+.bordertable {
+	BORDER-RIGHT: #000000 1px solid;
+	BORDER-TOP: #000000 1px solid;
+	BORDER-LEFT: #000000 1px solid;
+	BORDER-BOTTOM: #000000 1px solid;
+	border-spacing: 2px;
+}
+.trans_header_l_b {
+width: 10%; 
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+    text-align: center;
+      background-color: #ffffff;
+}
+.trans_header_r_b {
+width: 90%; 
+  border-bottom: 1px solid black;
+  text-align: left;
+        background-color: #ffffff;
+}
+.trans_row_l {
+width: 10%; 
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+    text-align: center;
+      background-color: #ffffff;
+}
+.trans_row_r {
+width: 90%; 
+  text-align: left;
+    border-bottom: 1px solid black;
+        background-color: #ffffff;
+}
+.trans_bot_l {
+width: 10%; 
+  border-right: 1px solid black;
+    text-align: center;
+      background-color: #ffffff;
+}
+.trans_bot_r {
+width: 90%; 
+  text-align: left;
+        background-color: #ffffff;
+}
+.th10 {
+  width: 10%;
+  background-color: #ffffff;
+  text-align: left;
+  }
+.th50 {
+  width: 50%;
+  background-color: #ffffff;
+  color: #666666;
+  text-align: center;
+  }
+  .th40 {
+  width: 40%;
+  background-color: #ffffff;
+  text-align: right;
+  }
+.t50_1 {
+  width: 50%;
+  background-color: #ffffff;
+  text-align: center;
+  }
+.t50_2 {
+  width: 50%;
+  background-color: #eeeeee;
+  text-align: center;
+  }
+.t100_1 {
+  width: 100%;
+  background-color: #eeeeee;
+  text-align: left;
+  }
+.t100_2 {
+  width: 100%;
+  background-color: #ffffff;
+  text-align: left;
+  }
+  .t100_3 {
+  width: 100%;
+  background-color: #ffffff;
+  text-align: center;
+  }
+.style3 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000000;
+}
+.style4 {
+  font-family: Arial, Helvetica, sans-serif; 
+  color: #000099;
+  }
+ img.center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+</style>
+
+</head>
+
+<body>
+<div class="container">
+
+
+<div id="menu_top">
+<iframe src="https://mementoweb.github.io/static/menu_top_mw.html" frameBorder="0" width="1000" height="102"></iframe>
+</div>
+
+<table width="1000">
+    <tbody>
+      <tr>
+        <td class="t100_1"><span class="style3"><h1>Introduction to the Memento Protocol</h1>
+        </span></td>
+      </tr>
+    </tbody>
+</table>
+ 
+ 
+ <table width="1000">
+    <tbody>
+      <tr><td class="t100_2"><span class="style3"><h2 id="DTconneg">The Memento Solution, Component 1: Follow your nose to prior/archived versions 
+      of a resource</h2></span></td></tr>
+      <tr><td class="t100_2"><span class="style3">
+      This first component of the Memento framework defines three types of resources: Original Resource, TimeGate, and Memento. 
+      These are their intuitive definitions:</span></td></tr>
+       <tr><td class="t100_2"><span class="style3">&nbsp;</span></td></tr>
+</tbody>
+</table>
+ 
+ 
+   <table class="bordertable" width="800">
+    <tbody>
+     <tr>
+        <td class="trans_header_l_b"><span class="style3"><img src="https://mementoweb.github.io/guide/quick-intro/originalresource.png" alt="logo for Original Resource" width="80" height="80" style="border-style: none" /></span></td>
+        <td class="trans_header_r_b"><span class="style3"><b>Original Resource</b>: A Web resource that exists or used to exist on the live Web for which we want to find a prior version. 
+        By prior version is meant a Web resource that encapsulates what the Original Resource was like at some time in the past.</span></td>
+     </tr>
+      <tr>
+        <td class="trans_row_l"><span class="style3"><img src="https://mementoweb.github.io/guide/quick-intro/mementoresource.png" alt="logo for Memento" width="80" height="80" style="border-style: none" /></span></td>
+        <td class="trans_row_r"><span class="style3"><b>Memento</b>: A Web resource that is a prior version of the Original Resource, i.e. that encapsulates what the Original Resource was like at some time in the past.<span class="style3">
+        </span></td>
+      </tr> 
+      <tr>
+        <td class="trans_bot_l"><span class="style3"><img src="https://mementoweb.github.io/guide/quick-intro/timegateresource.png" alt="logo for TimeGate" width="80" height="80" style="border-style: none" /></span></td>
+        <td class="trans_bot_r"><span class="style3"><b>TimeGate</b>: A Web resource that "decides" on the basis of a given datetime, which Memento best matches what the Original Resource was like around that given datetime.
+      </span></td>
+      </tr> 
+    </tbody>
+  </table>
+ 
+ <br/>
+ <br/>
+ 
+<table width="1000">
+    <tbody>
+      <tr>
+      <td class="t100_2"><span class="style3">This picture provides an architectural overview of how the Memento framework allows accessing 
+      a prior version of a resource:
+      <img src="https://mementoweb.github.io/guide/quick-intro/memento.png" alt="memento follow your nose architecture" width="780" style="border-style: none" />
+      </span></td></tr>
+      <tr>
+      <td class="t100_2"><span class="style3"><br/>Further details are as follows:
+      <ul>
+         <li>In order to allow an HTTP client to get to prior/archived versions of Original Resource (URI-R), 
+         this resource provides an HTTP Link header with a relationship type of &quot;timegate&quot; pointing at its TimeGate (URI-G).
+         </li>
+         <li>A TimeGate supports content negotiation in the datetime dimension. 
+         When negotiating with the TimeGate, the HTTP client uses an Accept-Datetime header to express the desired datetime of a prior/archived 
+         version of URI-R. 
+         The TimeGate responds with the location of a matching version, named a Memento (URI-M<sub>1</sub> or URI-M<sub>2</sub>), 
+         allowing the HTTP client to access it. 
+         Using the Memento-Datetime header, Mementos express their version/archival datetime.</li>
+         <li>Note that the Original Resource, its TimeGate, and its Mementos can all reside on the same server 
+         (as is the case with Content Management Systems), 
+         or they can be on different servers (as is the case with Web Archives).</li>
+         <li>HTTP Link headers with a relationship type of &quot;original&quot; point back from the TimeGate and the Mementos to the 
+         Original Resource, allowing an HTTP client to retrace its steps.</li>
+         <li>A Memento can point at other Mementos using a HTTP Link header with a relationship type of &quot;memento&quot;. 
+         It can point at its temporally adjacent Mementos that combines the &quot;prev&quot; and &quot;memento&quot; relationships, 
+         and the &quot;next&quot; and &quot;memento&quot; relationships, respectively.</li>
+         <li>Both a TimeGate and a Memento can point at the very first and very last Memento for URI-R that is known to them using a 
+         HTTP Link header by combining the &quot;first&quot; and &quot;memento&quot; relationships, 
+         and the &quot;last&quot; and &quot;memento&quot; relationships, respectively.</li>
+         <li>Whenever the &quot;memento&quot; relation type is used in a link expressed in the HTTP Link header, it must be 
+         accompanied by a &quot;datetime&quot; attribute that conveys the archival datetime of the linked Memento.</li>
+         <li>Below is a sample HTTP response header from a TimeGate. It shows the TimeGate redirecting to a Memento, the URI-M  
+         of which is provided in the Location header. It also illustrates the use of the various Memento relation types 
+         in the Link header. Note the Vary header that indicates that the TimeGate used content negotiation in the datetime 
+         dimension.<br/><br/>
+         <textarea cols=100 rows=8>
+HTTP/1.1 302 Found
+Date: Thu, 21 Jan 2010 00:06:50 GMT
+Server: Apache
+Vary: accept-datetime
+Location: 
+ http://arxiv.example.net/web/20010911203610/http://a.example.org
+Link: <http://a.example.org>; rel="original",
+ <http://arxiv.example.net/web/timemap/http://a.example.org>
+   ; rel="timemap"; type="application/link-format"
+   ; from="Tue, 15 Sep 2000 11:28:26 GMT"
+   ; until="Tue, 08 Jul 2008 09:34:33 GMT",
+ <http://arxiv.example.net/web/20000915112826/http://a.example.org>
+   ; rel="first memento"; datetime="Tue, 15 Sep 2000 11:28:26 GMT",
+ <http://arxiv.example.net/web/20080708093433/http://a.example.org>
+   ; rel="last memento"; datetime="Tue, 08 Jul 2008 09:34:33 GMT",
+ <http://arxiv.example.net/web/20010911203610/http://a.example.org>
+   ; rel="memento"; datetime="Tue, 11 Sep 2001 20:36:10 GMT",
+ <http://arxiv.example.net/web/20010911203610/http://a.example.org>
+   ; rel="prev memento"; datetime="Tue, 11 Sep 2001 20:30:51 GMT",
+ <http://arxiv.example.net/web/20010911203610/http://a.example.org> 
+   ; rel="next memento"; datetime="Tue, 11 Sep 2001 20:47:33 GMT"
+Content-Length: 0
+Content-Type: text/plain; charset=UTF-8
+Connection: close
+         </textarea></li>
+       </ul></span></td></tr>
+    </tbody>
+  </table>
+  
+   <table width="1000">
+    <tbody>
+      <tr><td class="t100_2"><span class="style3"><h2 id="Discovery">The Memento Solution, 
+      Component 2: Batch discovery of prior/archived versions of a resource</h2></span></td></tr>
+      <tr><td class="t100_2"><span class="style3">
+      The second component of the Memento framework defines TimeMaps. 
+      This is an intuitive definition:</span></td></tr>
+       <tr><td class="t100_2"><span class="style3">&nbsp;</span></td></tr>
+</tbody>
+</table>
+ 
+ 
+   <table class="bordertable" width="800">
+    <tbody>
+     <tr>
+        <td class="trans_bot_l"><span class="style3"><img src="https://mementoweb.github.io/guide/quick-intro/timemapresource.png" alt="logo for TimeMap" width="80" height="80" style="border-style: none" /></span></td>
+        <td class="trans_bot_r"><span class="style3"><b>TimeMap</b>: A TimeMap for an Original Resource is a resource from which a list of 
+        URIs of Mementos of the Original Resource is available.</span></td>
+     </tr>
+    </tbody>
+  </table> 
+  
+   <br/>
+ <br/>
+  
+  <table width="1000">
+    <tbody>
+    <tr>
+      <td class="t100_2"><span class="style3">This picture provides an architectural overview of how the Memento framework supports batch 
+      discovery of Mementos:
+       <img src="https://mementoweb.github.io/guide/quick-intro/timemap.png" alt="memento batch discovery architecture" width="780" height="230" style="border-style: none" />
+      </span></td>
+      </tr>
+      <tr>
+      <td class="t100_2"><span class="style3"><br/>Further details are as follows:
+      <ul>
+         <li>A TimeMap (URI-T) for an Original Resource (URI-R) is a machine-readable document that lists the Original Resource itself, 
+         its TimeGate, and its Mementos as well as associated metadata such as archival datetime for Mementos.  TimeMaps are exposed 
+         by systems that host prior versions of Original Resources, and allow for batch discovery of Mementos.</li>
+         <li>TimeMaps are serialized according to the syntax specified for the 
+         value of the HTTP Link header. 
+         That format is introduced in <a href="http://tools.ietf.org/html/rfc5988">RFC5988, Web Linking RFC</a>, and has media type 
+         <a href="https://datatracker.ietf.org/doc/draft-ietf-core-link-format/">application/link-format</a>. 
+         A detailed description of the use of this format for TimeMaps can be found in the 
+         <a href="https://mementoweb.github.io/guide/rfc/#Pattern6">RFC 7089</a>.
+         </li>
+         <li>TimeGates and Mementos can make TimeMaps discoverable by providing an HTTP Link with a relationship 
+         type of &quot;timemap&quot;, thereby also specifying the TimeMap's media type using the &quot;type&quot; attribute, 
+         and the TimeMap's temporal coverage using the "from" and "until" attributes.
+         </li>
+         <li>Below is a sample TimeMap for the Original Resource http://a.example.org expressed according to the 
+         <a href="https://datatracker.ietf.org/doc/draft-ietf-core-link-format/">application/link-format</a> format. 
+         It provides links to the Original Resource as 
+         well as for a TimeGate for it. It also links to the first and last Memento, and to two other ones. The TimeMap also 
+         includes a link to the TimeMap URI-T itself.<br/><br/>
+         <textarea cols=100 rows=8>
+<http://a.example.org>;rel="original",
+<http://arxiv.example.net/timemap/http://a.example.org>; rel="self"; type="application/link-format"
+ ; from="Tue, 20 Jun 2000 18:02:59 GMT"
+ ; until="Wed, 21 Jun 2000 04:41:56 GMT",
+<http://arxiv.example.net/timegate/http://a.example.org>; rel="timegate",
+<http://arxiv.example.net/web/20000620180259/http://a.example.org>; rel="first memento";datetime="Tue, 20 Jun 2000 18:02:59 GMT", 
+<http://arxiv.example.net/web/20091027204954/http://a.example.org>; rel="last memento";datetime="Tue, 27 Oct 2009 20:49:54 GMT",
+<http://arxiv.example.net/web/20000621011731/http://a.example.org>; rel="memento";datetime="Wed, 21 Jun 2000 01:17:31 GMT",
+<http://arxiv.example.net/web/20000621044156/http://a.example.org>; rel="memento";datetime="Wed, 21 Jun 2000 04:41:56 GMT"
+         </textarea></li>
+         </ul></span></td></tr>
+         <!--
+         <tr>
+      <td class="t100_2"><span class="style3">
+      <ul>
+         <li>TimeBundles (URI-B) are used in Semantic Web and Linked Data applications, and also support batch discovery of Mementos.</li>
+        <li>TimeGates and Mementos can make TimeBundles discoverable by providing an HTTP Link with a relationship type of &quot;timebundle&quot;.        
+        </li>       
+         <li>Following the <a href="http://www.w3.org/TR/cooluris">Linked Data conventions</a> for non-information resources, 
+         a TimeBundle has no representation but rather is described by a TimeMap URI-T to which the TimeBundle redirects using an 
+         HTTP 303 status code.</li>
+        <li>A TimeMap that is used in Semantic Web and Linked Data applications is a desciption of an associated TimeBundle. 
+        Such a description may be expressed according to various RDF serializations (e.g. RDF/XML, n3, turtle) and allows for more 
+        expresiveness when compared to the required 
+        <a href="https://datatracker.ietf.org/doc/draft-ietf-core-link-format/">application/link-format</a> serialization.</li>
+         <li>TimeBundles can also be made discoverable using mechanisms such as <a href="http://www.sitemaps.org/protocol.php">SiteMaps</a>, 
+         <a href="http://tools.ietf.org/html/rfc4287">Atom Feeds</a>, 
+         or <a href="http://www.openarchives.org/OAI/openarchivesprotocol.html">OAI-PMH</a>.</li>
+         <li>Below is a sample TimeMap for the Original Resource http://public.lanl.gov/herbertv/ expressed in text/rdf+n3 format.<br/><br/>
+         <textarea cols=100 rows=8>
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs1: <http://www.w3.org/2001/01/rdf-schema#>.
+@prefix mem: <https://mementoweb.github.io/terms/tb/>.
+@prefix ore: <http://www.openarchives.org/ore/terms/>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix _27: <http://foresite-toolkit.googlecode.com/#>.
+
+ <http://mementoproxy.lanl.gov/aggr/timemap/n3/http://public.lanl.gov/herbertv/> a mem:TimeMap,
+         ore:ResourceMap;
+     dc:format "text/rdf+n3";
+     dcterms:created "2011-03-02T11:25:14Z";
+     dcterms:creator _27:pythonAgent;
+     dcterms:modified "2011-03-02T11:25:14Z";
+     ore:describes <http://mementoproxy.lanl.gov/aggr/timebundle/http://public.lanl.gov/herbertv/>. 
+
+<http://mementoproxy.lanl.gov/aggr/timebundle/http://public.lanl.gov/herbertv/> a mem:TimeBundle,
+         ore:Aggregation;
+     dc:title "Memento TimeBundle for http://public.lanl.gov/herbertv/";
+     ore:aggregates 
+         <http://public.lanl.gov/herbertv/>,
+         <http://mementoproxy.lanl.gov/aggr/timegate/http://public.lanl.gov/herbertv/>,
+         <http://memento.waybackmachine.org/memento/20041031191823/http://public.lanl.gov/herbertv/>,
+         <http://memento.waybackmachine.org/memento/20041106010422/http://public.lanl.gov/herbertv/>,
+         <http://www.webarchive.org.uk/waybacktg/memento/20090506102338/http://public.lanl.gov/herbertv/>. 
+
+ <http://public.lanl.gov/herbertv/> a mem:OriginalResource. 
+
+ <http://mementoproxy.lanl.gov/aggr/timegate/http://public.lanl.gov/herbertv/> a mem:TimeGate;
+     mem:covers [ a mem:TimeSpan;
+             mem:end "2009-05-06T10:23:38+00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime>;
+             mem:start "2004-10-31T19:18:23+00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime>];
+     mem:timeGateFor <http://public.lanl.gov/herbertv/>. 
+
+ <http://memento.waybackmachine.org/memento/20041031191823/http://public.lanl.gov/herbertv/> a mem:Memento;
+     mem:mementoFor <http://public.lanl.gov/herbertv/>;
+     mem:observedOver [ a mem:TimeSpan;
+             mem:end "2004-10-31T19:18:23+00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime>;
+             mem:observations "1"^^<http://www.w3.org/2001/XMLSchema#integer>;
+             mem:start "2004-10-31T19:18:23+00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime>]. 
+
+ <http://memento.waybackmachine.org/memento/20041106010422/http://public.lanl.gov/herbertv/> a mem:Memento;
+     mem:mementoFor <http://public.lanl.gov/herbertv/>;
+     mem:observedOver [ a mem:TimeSpan;
+             mem:end "2004-11-06T01:04:22+00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime>;
+             mem:observations "1"^^<http://www.w3.org/2001/XMLSchema#integer>;
+             mem:start "2004-11-06T01:04:22+00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime>]. 
+
+ <http://www.webarchive.org.uk/waybacktg/memento/20090506102338/http://public.lanl.gov/herbertv/> a mem:Memento;
+     mem:mementoFor <http://public.lanl.gov/herbertv/>;
+     mem:observedOver [ a mem:TimeSpan;
+             mem:end "2009-05-06T10:23:38+00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime>;
+             mem:observations "1"^^<http://www.w3.org/2001/XMLSchema#integer>;
+             mem:start "2009-05-06T10:23:38+00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime>]. 
+
+ ore:Aggregation rdfs1:isDefinedBy <http://www.openarchives.org/ore/terms/>;
+     rdfs1:label "Aggregation". 
+
+ ore:ResourceMap rdfs1:isDefinedBy <http://www.openarchives.org/ore/terms/>;
+     rdfs1:label "ResourceMap". 
+
+ _27:pythonAgent foaf:mbox "foresite@googlegroups.com";
+     foaf:name "Foresite Toolkit (Python)". 
+         </textarea></li>
+       </ul></span></td></tr>
+      <tr>
+      <td class="t100_2"><span class="style3">&nbsp;</span></td>
+      </tr>
+      -->
+    </tbody>
+  </table>
+  
+  </div>
+  
+
+
+</body>
+
+</html>
