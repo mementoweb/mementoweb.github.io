@@ -1,0 +1,654 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+  
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Memento Guide: Determining Resource Type</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-16" />
+
+<!-- Google Web Master Tools verification code -->  
+
+ <meta name="verify-v1" content="KwyQrdBgC6B1BxoehJe4mm1X7AxDurmC9KL6QsyIaNQ=" />
+  
+  <style type="text/css">
+.container {
+  background: #ffffff; 
+  width: 800px;
+  margin: 0 auto;
+  }
+.table {
+	BORDER-RIGHT: #999999 1px solid;
+	BORDER-TOP: #999999 1px solid;
+	BORDER-LEFT: #999999 1px solid;
+	BORDER-BOTTOM: #999999 1px solid;
+	border-spacing: 2px;
+}
+
+
+.bordertable {
+	BORDER-RIGHT: #000000 1px solid;
+	BORDER-TOP: #000000 1px solid;
+	BORDER-LEFT: #000000 1px solid;
+	BORDER-BOTTOM: #000000 1px solid;
+	border-spacing: 2px;
+}
+
+
+.trans_header_l {
+width: 10%; 
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+    text-align: center;
+      background-color: #eeeeee;
+}
+
+.trans_header_r {
+width: 90%; 
+  border-bottom: 1px solid black;
+  text-align: left;
+        background-color: #eeeeee;
+}
+
+
+
+.trans_row_l {
+width: 10%; 
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+    text-align: center;
+      background-color: #ffffff;
+}
+
+.trans_row_r {
+width: 90%; 
+  text-align: left;
+    border-bottom: 1px solid black;
+        background-color: #ffffff;
+}
+
+.trans_bot_l {
+width: 10%; 
+  border-right: 1px solid black;
+    text-align: center;
+      background-color: #ffffff;
+}
+
+.trans_bot_r {
+width: 90%; 
+  text-align: left;
+        background-color: #ffffff;
+}
+
+.th10 {
+  width: 10%;
+  background-color: #ffffff;
+  text-align: left;
+  }
+.th50 {
+  width: 50%;
+  background-color: #ffffff;
+  color: #666666;
+  text-align: center;
+  }
+  .th40 {
+  width: 40%;
+  background-color: #ffffff;
+  text-align: right;
+  }
+.t50_1 {
+  width: 50%;
+  background-color: #ffffff;
+  text-align: center;
+  }
+.t50_2 {
+  width: 50%;
+  background-color: #eeeeee;
+  text-align: center;
+  }
+.t100_1 {
+  width: 100%;
+  background-color: #eeeeee;
+  text-align: left;
+  }
+.t100_2 {
+  width: 100%;
+  background-color: #ffffff;
+  text-align: left;
+  }
+  .t100_3 {
+  width: 100%;
+  background-color: #ffffff;
+  text-align: center;
+  }
+.style3 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000000;
+}
+.style4 {
+  font-family: Arial, Helvetica, sans-serif; 
+  color: #000099;
+  }
+ img.center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+</style>
+
+</head>
+
+<body>
+<div class="container">
+
+
+  <table width="800">
+    <tbody>
+      <tr>
+        <td class="th10" align="center"><a href="http://www.mementoweb.org"><img src="http://www.mementoweb.org/mementologo.png" alt="memento logo" width="100" height="100" style="border-style: none" /></a></td>
+        <td class="th50"><h1>Memento Guide:<br/>Determining Resource Type</h1></td>
+        <td class="th40"><h4><a href="http://www.mementoweb.org/about/">About</a> <a href="http://www.mementoweb.org/guide/">Guide</a> <a href="http://www.mementoweb.org/demo/">Demos</a> <a href="http://www.mementoweb.org/tools/">Tools</a></h4></td>
+      </tr>
+</tbody>
+</table>
+
+<br/>
+<br/>
+
+<table width="800">
+    <tbody>
+    <tr>
+      <td class="t100_1"><span class="style3">This document describes how an arbitrary resource can be characterized as being a Memento, a TimeGate or an Original Resource. 
+      It does so by listing responses to a HTTP HEAD issued against a resource and by indicating how those responses can be interpreted 
+      to determine the resource's type. 
+      <br/>
+		<br/>
+		Use this document alongside the <a href="http://www.mementoweb.org/guide/quick-intro/">Introduction</a> to Memento.
+            <br/>
+		<br/>
+      Feedback is welcome on the Memento Development Group list at <a href="mailto:memento-dev@googlegroups.com">memento-dev@googlegroups.com</a>.
+      </span></td>
+      </tr>
+</tbody>
+</table>
+
+<table width="800">
+    <tbody>
+    <tr>
+      <td class="t100_2"><span class="style3"><h2>Is this resource a Memento, a TimeGate, or an Original Resource?</h2></span></td>
+      </tr>
+          <tr>
+      <td class="t100_2"><span class="style3">The datetime negotiation component of the Memento framework <a href="http://www.mementoweb.org/guide/quick-intro/#DTconneg">introduces</a> 
+      three resource types: Original Resource (URI-R), 
+      Memento (URI-M), and TimeGate (URI-G). However, when stumbling upon a resource (URI-Q) out there on the Web, how 
+      does one determine which type it is? Answering that question is important, for example, when developing Memento client applications such as browser plug-ins.
+      <br /><br /></span></td>
+</tr>
+<tr>
+      <td class="t100_2"><span class="style3">This document details how the resource type can be determined by means of HTTP headers 
+      returned in response to a HTTP HEAD issued against URI-Q. It shows how determing the type is straightforward when resources comply with 
+      the Memento specification, but may involve some heuristics when they don't.<br /><br /></span></td>
+</tr>
+<tr>
+      <td class="t100_2"><span class="style3">The following conventions are used in the remainder of this document:
+      <ul>
+      <li>A header is shown in <b>bold</b> when its presence is necessary to determine a resource type;</li>
+      <li>A header is shown in <b><strike>bold strike-through</strike></b> when its abscence is necessary to determine a resource type;</li>
+      <li>A header is shown in regular font to convey additional context.</li>
+      </ul></span></td>
+</tr>
+</tbody>
+</table>
+
+<br /><br />
+
+<table class="bordertable" width="800">
+    <tbody>   
+      <tr>
+        <td class="trans_header_l"><span class="style3"><h3>[1]</h3></span></td>
+        <td class="trans_header_r"><span class="style3"><h3>The resource URI-Q is a Memento for the Original Resource URI-R.</h3> 
+        </span></td>
+      </tr> 
+      <tr>
+        <td class="trans_row_l"><span class="style3"></span></td>
+        <td class="trans_row_r"><span class="style3">
+        <img src="http://www.mementoweb.org/guide/resourcetype/memento1.png" alt="resource is a memento" width="780" style="border-style: none" /> 
+        </span></td>
+      </tr>
+      <tr>
+        <td class="trans_row_l"><span class="style3"></span></td>
+        <td class="trans_row_r"><span class="style3">
+        The resource (URI-Q) can be unambiguously characterized as a Memento because both a <a href="http://www.mementoweb.org/guide/rfc/ID/#Accept-Memento-Datetime">Memento-Datetime</a> 
+        header and a HTTP Link header with a Relation Type of &quot;<a href="http://www.mementoweb.org/guide/rfc/ID/#rfc.section.2.2.1.1">original</a>&quot; are included 
+        in its HTTP response headers. 
+        <br />
+        <br />
+        The value of the Memento-Datetime header indicates the archival datetime of the resource, i.e. the datetime since when the resource has been stable and will remain to be stable. 
+        The &quot;<a href="http://www.mementoweb.org/guide/rfc/ID/#rfc.section.2.2.1.1">original</a>&quot; Link points at the Original Resource (URI-R) for which the current resource (URI-Q) is a Memento. 
+        <br />
+        <br />
+        Further HTTP Link relationships may be included in the 
+        response header from URI-Q, specifically &quot;<a href="http://www.mementoweb.org/guide/rfc/ID/#rfc.section.2.2.1.2">timegate</a>&quot;, 
+        &quot;<a href="http://www.mementoweb.org/guide/rfc/ID/#rfc.section.2.2.1.3">timemap</a>&quot; and 
+        &quot;<a href="http://www.mementoweb.org/guide/rfc/ID/#rfc.section.2.2.1.4">memento</a>&quot; Links.
+        </span></td>
+      </tr>
+      <tr>
+        <td class="trans_bot_l"><span class="style3"></span></td>
+        <td class="trans_bot_r"><span class="style3">
+        For example, the resource <code>http://mementoarchive.lanl.gov/ta/20100320000003/http://lanlsource.lanl.gov/hello</code> is a Memento for the Original Resource 
+        <code>http://lanlsource.lanl.gov/hello</code>. This is the HTTP response header that allows recongizing the resource as a Memento:<br/><br/>
+         <textarea cols=100 rows=8>
+HTTP/1.1 200 OK
+Date: Wed, 02 Mar 2011 20:03:01 GMT
+Memento-Datetime: Sat, 20 Mar 2010 00:00:03 GMT
+Link: <http://lanlsource.lanl.gov/hello>;rel="original",
+ <http://mementoarchive.lanl.gov/list/timemap/link/http://lanlsource.lanl.gov/hello>;rel="timemap"; type="application/link-format", 
+ <http://mementoarchive.lanl.gov/ta/timegate/http://lanlsource.lanl.gov/hello>;rel="timegate",
+ <http://mementoarchive.lanl.gov/list/timebundle/http://lanlsource.lanl.gov/hello>;rel="timebundle", 
+ <http://mementoarchive.lanl.gov/ta/20100320000003/http://lanlsource.lanl.gov/hello>;rel="memento";datetime="Sat, 20 Mar 2010 00:00:03 GMT", 
+ <http://mementoarchive.lanl.gov/ta/20110302130003/http://lanlsource.lanl.gov/hello>;rel="last memento "; datetime="Wed, 02 Mar 2011 13:00:03 GMT", 
+ <http://mementoarchive.lanl.gov/ta/20090929220810/http://lanlsource.lanl.gov/hello>;rel="first memento"; datetime="Tue, 29 Sep 2009 22:08:10 GMT", 
+ <http://mementoarchive.lanl.gov/ta/20100319120003/http://lanlsource.lanl.gov/hello>;rel="prev memento "; datetime="Fri, 19 Mar 2010 12:00:03 GMT", 
+ <http://mementoarchive.lanl.gov/ta/20100320120003/http://lanlsource.lanl.gov/hello>;rel="next memento"; datetime="Sat, 20 Mar 2010 12:00:03 GMT"
+Content-Type: text/html;charset=UTF-8
+Content-Length: 4862
+Keep-Alive: timeout=15, max=99
+Connection: Keep-Alive
+         </textarea>
+	</span></td>
+      </tr>      
+      </tbody>
+</table>
+
+<br />
+<br />
+
+<table class="bordertable" width="800">
+    <tbody>
+      <tr>
+        <td class="trans_header_l"><span class="style3"><h3>[2]</h3></span></td>
+        <td class="trans_header_r"><span class="style3"><h3>The resource URI-Q is both a Memento and an Original Resource.</h3> 
+        </span></td>
+      </tr> 
+      <tr>
+        <td class="trans_row_l"><span class="style3"></span></td>
+        <td class="trans_row_r"><span class="style3">
+        <img src="http://www.mementoweb.org/guide/resourcetype/memento2.png" alt="resource is both a memento and an original resource" width="780" style="border-style: none" /> 
+        </span></td>
+      </tr>  
+      <tr>
+        <td class="trans_row_l"><span class="style3"></span></td>
+        <td class="trans_row_r"><span class="style3">
+        As per [1] above, the resource (URI-Q) can unambiguously be characterized as a Memento because it has the necessary HTTP response headers.
+        <br />
+        <br />
+        In this particular case, however, both an &quot;<a href="http://www.mementoweb.org/guide/rfc/ID/#rfc.section.2.2.1.1">original</a>&quot; and a 
+        &quot;<a href="http://www.mementoweb.org/guide/rfc/ID/#rfc.section.2.2.1.4">memento</a>&quot; link point at URI-Q itself, indicating that
+        URI-Q is both a Memento and an Original Resource. This happens in cases where a resource is archived/stabilized at its original Web location and may not necessarily also be 
+        available at another Web location for archival purposes.
+        <br />
+        <br />
+        The presence of the Memento-Datetime header entails a promise by the custodian of the resource that the resource will not undergo any changes 
+        beyond the datetime expressed as the header's value.
+        </span></td>
+      </tr> 
+      <tr>
+        <td class="trans_bot_l"><span class="style3"></span></td>
+        <td class="trans_bot_r"><span class="style3">
+       For example, the entry page for the 2008 JCDL conference at <code>http://jcdl2008.org/</code> has not changed since June 24th 2008, and will not change anymore beyond that date.
+       Hence, the resource is both an Original Resource and a Memento, and could return the below HTTP response header. Note that the response indicates that 
+       this resource is also aware of another archived version 
+       of itself that exists at <code>http://jcdl.org/archived-conf-sites/jcdl2008/</code>, and provides a &quot;memento&quot; link to it.<br/><br/>
+       <textarea cols=100 rows=8>
+HTTP/1.1 200 OK
+Date: Wed, 02 Mar 2011 20:30:01 GMT
+Memento-Datetime: Tue, 1 Jul 2008 00:00:00 GMT
+Link: <http://jcdl2008.org/>;rel="original memento", 
+ <http://jcdl.org/archived-conf-sites/jcdl2008/>;rel="memento"
+Last-Modified: Tue, 24 Jun 2008 19:46:21 GMT
+Etag: "7e3480-176a-4506ed07c767e"
+Content-Type: text/html
+Content-Length: 5994
+Connection: Keep-Alive
+         </textarea>
+	</span></td>
+      </tr>
+    </tbody>
+</table>
+      
+<br />
+<br />
+
+<table class="bordertable" width="800">
+    <tbody>
+      <tr>
+        <td class="trans_header_l"><span class="style3"><h3>[3]</h3></span></td>
+        <td class="trans_header_r"><span class="style3"><h3>The resource URI-Q is a TimeGate for Original Resource URI-R.</h3> 
+        </span></td>
+      </tr> 
+      <tr>
+        <td class="trans_row_l"><span class="style3"></span></td>
+        <td class="trans_row_r"><span class="style3">
+        <img src="http://www.mementoweb.org/guide/resourcetype/timegate1.png" alt="resource is a timegate" width="780" style="border-style: none" /> 
+        </span></td>
+      </tr>  
+      <tr>
+        <td class="trans_row_l"><span class="style3"></span></td>
+        <td class="trans_row_r"><span class="style3">
+         The resource (URI-Q) can be unambiguously characterized as a TimeGate because of the presence of a Vary header with as values both 
+        &quot;negotiate&quot; and 
+        &quot;accept-datetime&quot;, which indicate that the resource 
+        supports HTTP content negotiation in the datetime dimension.
+        <br />
+		<br />
+		The response header will typcially also include HTTP Link headers, specifically &quot;<a href="http://www.mementoweb.org/guide/rfc/ID/#rfc.section.2.2.1.1">original</a>&quot;,
+        &quot;<a href="http://www.mementoweb.org/guide/rfc/ID/#rfc.section.2.2.1.3">timemap</a>&quot;, and 
+        &quot;<a href="http://www.mementoweb.org/guide/rfc/ID/#rfc.section.2.2.1.4">memento</a>&quot; Links. 
+        Also, additional values may be provided in the Vary header, for example, &quot;accept&quot; to 
+        indicate that HTTP content negotiation is available in the media type dimension too.
+        </span></td>
+      </tr> 
+      <tr>
+        <td class="trans_bot_l"><span class="style3"></span></td>
+        <td class="trans_bot_r"><span class="style3">
+        For example, the resource <code>http://mementoarchive.lanl.gov/ta/timegate/http://lanlsource.lanl.gov/hello</code> is a TimeGate for the Original Resource 
+        <code>http://lanlsource.lanl.gov/hello</code>. Below is the HTTP response header that allows recongizing the resource as a TimeGate. Note that the Location header 
+        points at a Memento for the Original Resource, and that the Link header contains links to the Original Resource, to several Mementos, and to a TimeBundle.<br/><br/>
+       <textarea cols=100 rows=8>
+HTTP/1.1 302 Moved Temporarily
+Date: Wed, 02 Mar 2011 21:12:04 GMT
+Location: http://mementoarchive.lanl.gov/ta/20110302130003/http://lanlsource.lanl.gov/hello
+Vary: negotiate,accept-datetime
+Link: <http://lanlsource.lanl.gov/hello>;rel="original", 
+ <http://mementoarchive.lanl.gov/list/timemap/link/http://lanlsource.lanl.gov/hello>;rel="timemap"; type="application/link-format",
+ <http://mementoarchive.lanl.gov/ta/20110302130003/http://lanlsource.lanl.gov/hello>;rel="last memento"; datetime="Wed, 02 Mar 2011 13:00:03",
+ <http://mementoarchive.lanl.gov/ta/20090929220810/http://lanlsource.lanl.gov/hello>;rel="first memento"; datetime="Tue, 29 Sep 2009 22:08:10 GMT",
+ <http://mementoarchive.lanl.gov/ta/20110302010001/http://lanlsource.lanl.gov/hello>;rel="prev memento "; datetime="Wed, 02 Mar 2011 01:00:01 GMT",
+ <http://mementoarchive.lanl.gov/ta/20110302130003/http://lanlsource.lanl.gov/hello>;rel="memento"; datetime="Wed, 02 Mar 2011 13:00:03 GMT",
+  <http://mementoarchive.lanl.gov/list/timebundle/http://lanlsource.lanl.gov/hello>;rel="timebundle"
+Content-Length: 0
+Connection: Keep-Alive
+Content-Type: text/plain; charset=UTF-8
+         </textarea>
+	</span></td>
+      </tr>
+    </tbody>
+</table>
+
+  
+<br />
+<br />  
+
+<table class="bordertable" width="800">
+    <tbody>
+      <tr>
+        <td class="trans_header_l"><span class="style3"><h3>[4]</h3></span></td>
+        <td class="trans_header_r"><span class="style3"><h3>The resource URI-Q is an intermediate resource 
+        that sits on the path from a TimeGate to a Memento for Original Resource URI-R.</h3> 
+        </span></td>
+      </tr> 
+      <tr>
+        <td class="trans_row_l"><span class="style3"></span></td>
+        <td class="trans_row_r"><span class="style3">
+        <img src="http://www.mementoweb.org/guide/resourcetype/intermediate1.png" alt="resource is on good path from a timegate to a memento" width="780" style="border-style: none" /> 
+        </span></td>
+      </tr>  
+      <tr>
+        <td class="trans_bot_l"><span class="style3"></span></td>
+        <td class="trans_bot_r"><span class="style3">
+        Sometimes, intermediate redirects are involved on the path from a TimeGate to a Memento for an Original Resource. This happens, for example, in Wayback archives 
+        that have a set of URIs of Mementos (URI-M<sub>i</sub>, i=1..n) for a given Original Resource, all of which have the same representation. 
+        In that case, accessing a URI-M<sub>i</sub> (i &gt; 1) from that set will result 
+        in a redirect to the URI-M<sub>1</sub> of the temporally first Memento with this shared representation, as it is the only one the archive stores. 
+        <br/>
+        <br/>
+        In cases like this, the redirecting response from 
+        URI-M<sub>i</sub> (i &gt; 1) to URI-M<sub>1</sub> includes a HTTP Link header that contains a link with 
+        an &quot;<a href="http://www.mementoweb.org/guide/rfc/ID/#rfc.section.2.2.1.1">original</a>&quot; relation type that points at the Original Resource (URI-R), 
+        and it does not contain a <a href="http://www.mementoweb.org/guide/rfc/ID/#Accept-Memento-Datetime">Memento-Datetime</a> header (as no Memento is served yet), 
+        and no Vary header (as URI-M<sub>i</sub> is not a TimeGate). 
+        <br/>
+        <br/>
+        In this scenario, a client can determine it is still on a successful path towards a Memento, 
+        and can follow the redirect to the URI that is provided as the value of the Location header.
+	</span></td>
+      </tr>
+    </tbody>
+</table>
+
+
+
+
+<br />
+<br /> 
+
+<table class="bordertable" width="800">
+    <tbody>
+      <tr>
+        <td class="trans_header_l"><span class="style3"><h3>[5]</h3></span></td>
+        <td class="trans_header_r"><span class="style3"><h3>URI-Q is a resource 
+        that sits on the path from a TimeGate to a Memento for Original Resource URI-R, but accessing URI-Q is unsuccessful.</h3> 
+        </span></td>
+      </tr> 
+      <tr>
+        <td class="trans_row_l"><span class="style3"></span></td>
+        <td class="trans_row_r"><span class="style3">
+        <img src="http://www.mementoweb.org/guide/resourcetype/intermediate2.png" alt="resource is on bad path from a timegate to a memento" width="780" style="border-style: none" /> 
+        </span></td>
+      </tr>  
+      <tr>
+        <td class="trans_bot_l"><span class="style3"></span></td>
+        <td class="trans_bot_r"><span class="style3">
+        Sometimes, error conditions occur on the path from a TimeGate to a Memento for an Original Resource. This happens, for example, when Web Archives 
+        experience singificant load and can not respond in a timely manner to an incoming request for a Memento (URI-M).
+        <br/>
+        <br/>
+        In cases like this, the response (typically with a HTTP 504 status code) includes a HTTP Link header that contains a link with 
+        an &quot;<a href="http://www.mementoweb.org/guide/rfc/ID/#rfc.section.2.2.1.1">original</a>&quot; relation type that points at the Original Resource (URI-R), 
+        and it does not contain a <a href="http://www.mementoweb.org/guide/rfc/ID/#Accept-Memento-Datetime">Memento-Datetime</a> header (as no Memento is served yet), 
+        and no Vary header (as URI-Q is not a TimeGate). 
+        <br/>
+        <br/>
+        In this scenario, a client can decide to make no further attempts to access URI-Q, but rather 
+        start a new Memento cycle using the URI-R of the Original Resource that is provided in the 
+        &quot;<a href="http://www.mementoweb.org/guide/rfc/ID/#rfc.section.2.2.1.1">original</a>&quot; link.
+	</span></td>
+      </tr>
+    </tbody>
+</table>
+
+<br />
+<br /> 
+
+<table class="bordertable" width="800">
+    <tbody>
+      <tr>
+        <td class="trans_header_l"><span class="style3"><h3>[6]</h3></span></td>
+        <td class="trans_header_r"><span class="style3"><h3>The resource URI-Q is an Original Resource or a Memento.</h3> 
+        </span></td>
+      </tr> 
+      <tr>
+        <td class="trans_row_l"><span class="style3"></span></td>
+        <td class="trans_row_r"><span class="style3">
+        <img src="http://www.mementoweb.org/guide/resourcetype/original1.png" alt="resource is an original resource or a memento" width="780" style="border-style: none" /> 
+        </span></td>
+      </tr>  
+            <tr>
+        <td class="trans_row_l"><span class="style3"></span></td>
+        <td class="trans_row_r"><span class="style3">
+        In a perfectly Memento-ized Web, the abscence of both a <a href="http://www.mementoweb.org/guide/rfc/ID/#Accept-Memento-Datetime">Memento-Datetime</a> header 
+        and an &quot;<a href="http://www.mementoweb.org/guide/rfc/ID/#rfc.section.2.2.1.1">original</a>&quot; HTTP Link header 
+        would be sufficient to decide that URI-Q is an Original Resource. 
+        <br />
+		<br />     
+        Unfortunately, until further notice, the Web is not perfect that way. 
+        Many Web Archives and Content Management Systems do not yet include these crucial headers for their archived/stable resources. 
+        As a result, trying to determine whether a resource, which at first glance looks like an Original Resource, might actually  
+        be a Memento necessarily entails imperfect heuristics.
+        <br />
+        <br /> 
+        One way to approach the problem is by introducing a reference list for URI syntaxes used for Mementos by major Web Archives and Content Management Systems. 
+        This is rather imperfect and definitely not very scalable. But all of this sorrow goes away if Web Archives and Content Management Systems 
+        implement the <a href="http://www.mementoweb.org/guide/rfc/ID/#Accept-Memento-Datetime">Memento-Datetime</a> and 
+        the &quot;<a href="http://www.mementoweb.org/guide/rfc/ID/#rfc.section.2.2.1.1">original</a>&quot; HTTP Link header. 
+        What are you waiting for? Ping that archive or CMS near to you and get them going!
+        </span></td>
+      </tr> 
+      <tr>
+        <td class="trans_bot_l"><span class="style3"></span></td>
+        <td class="trans_bot_r"><span class="style3">
+       For example, Web Archives that use the Wayback software use fine granular datetime indicators in the URIs of their Mementos 
+        (e.g. <code>/20010911203610/</code>), and MediaWiki installations consistently use the same query parameters in URIs of old resource versions 
+        (e.g. <code>oldid</code> and <code>title</code>). 
+        Such information, in combination with the base URI of these systems, can be included in a reference list. Then, it becomes possible to test 
+        whether URI-Q matches one of the URI syntaxes in the reference list. If it does, URI-Q can be categorized as a Memento, and the value of its
+        <a href=http://tools.ietf.org/html/rfc2616#section-14.29">Last-Modified</a> header (if available) can be interpreted as the Memento's datetime, 
+        which, in a perfect world, would be expressed in the
+        <a href="http://www.mementoweb.org/guide/rfc/ID/#Accept-Memento-Datetime">Memento-Datetime</a> header.
+        <br />
+        <br />  
+	</span></td>
+      </tr>
+    </tbody>
+</table>
+
+
+
+  
+  <!--
+  
+<br />
+<br />
+
+
+<table class="bordertable" width="800">
+    <tbody>
+      <tr>
+        <td class="trans_header_l"><span class="style3"><h3>[6]</h3></span></td>
+        <td class="trans_header_r"><span class="style3"><h3>The resource URI-Q may be a Link-formatted TimeMap.</h3> 
+        </span></td>
+      </tr> 
+      <tr>
+        <td class="trans_row_l"><span class="style3"></span></td>
+        <td class="trans_row_r"><span class="style3">
+        <img src="http://www.mementoweb.org/guide/resourcetype/timemap1.png" alt="resource may be a Link format timemap" width="780" style="border-style: none" /> 
+        </span></td>
+      </tr>  
+      <tr>
+        <td class="trans_bot_l"><span class="style3"></span></td>
+        <td class="trans_bot_r"><span class="style3">
+        The presence of the <a href="https://datatracker.ietf.org/doc/draft-ietf-core-link-format/">application/link-format</a> as the value of 
+        the Content-Type header may indicate that the resource is a TimeMap. 
+        <br />
+<br />
+        However, since TimeMaps are not the only resources that have this media type, further inspection is required. 
+        This entails issuing a HTTP GET on URI-Q and determining whether the body of the response contains an entry &lt;URI-R&gt;;rel=&quot;original&quot;
+        (with URI-R a http URI, and allowing for spaces around the semicolon when searching for such entry). If the body does not contain such entry, 
+        the resource is not a TimeMap. Because of its media type, it also can not be a TimeGate. But, it can still be either an 
+        Original Resource or a Memento, and other tests listed in this document are required to make that determination.
+	</span></td>
+      </tr>
+    </tbody>
+</table>
+  
+<br />
+<br /> 
+  
+  <table class="bordertable" width="800">
+    <tbody>
+      <tr>
+        <td class="trans_header_l"><span class="style3"><h3>[7]</h3></span></td>
+        <td class="trans_header_r"><span class="style3"><h3>The resource URI-Q may be an RDF TimeMap.</h3> 
+        </span></td>
+      </tr> 
+      <tr>
+        <td class="trans_row_l"><span class="style3"></span></td>
+        <td class="trans_row_r"><span class="style3">
+        <img src="http://www.mementoweb.org/guide/resourcetype/timemap2.png" alt="resource may be a RDF timemap" width="780" style="border-style: none" /> 
+        </span></td>
+      </tr>  
+      <tr>
+        <td class="trans_bot_l"><span class="style3"></span></td>
+        <td class="trans_bot_r"><span class="style3">
+        The presence of application/rdf+xml (or the media type of another RDF serialization) as the value of 
+        the Content-Type header may indicate that the resource is a TimeMap that describes a TimeBundle. 
+        <br />
+<br />
+        However, since RDF serializations are commonly used in a variety of Semantic Web and Linked Data applications, further inspection is required. 
+        This inspection can take on several forms.
+	<br />
+	<br />
+        The inspection can entail issuing a HTTP GET on URI-Q and determining whether the body of the response contains necessary elements, for example, 
+        whether it lists URI-Q as a resource that is typed as a TimeMap (URI-Q rdf:type http://www.mementoweb.org/terms/tb/TimeMap).   
+    <br />
+	<br />
+        The inspection can entail determining whether the client arrived at URI-Q after having followed a HTTP 303 redirect from a resource that is a TimeBundle.
+        See [9] regarding determining whether a resource is a TimeBundle.
+            <br />
+	<br />
+        If the above inspections determine that the resource is not a TimeMap, it can still be either an 
+        Original Resource or a Memento, and other tests listed in this document are required to make that determination. 
+        Note that, because of its media type, URI-Q can not be a TimeGate. 
+	</span></td>
+      </tr>
+    </tbody>
+</table>
+  
+<br />
+<br /> 
+  
+  <table class="bordertable" width="800">
+    <tbody>
+      <tr>
+        <td class="trans_header_l"><span class="style3"><h3>[9]</h3></span></td>
+        <td class="trans_header_r"><span class="style3"><h3>The resource is a TimeBundle for the Original Resource URI-R.</h3> 
+        </span></td>
+      </tr> 
+      <tr>
+        <td class="trans_row_l"><span class="style3"></span></td>
+        <td class="trans_row_r"><span class="style3">
+        <img src="http://www.mementoweb.org/guide/resourcetype/timebundle1.png" alt="resource is a timebundle" width="780" style="border-style: none" /> 
+        </span></td>
+      </tr>  
+      <tr>
+        <td class="trans_bot_l"><span class="style3"></span></td>
+        <td class="trans_bot_r"><span class="style3">
+        The resource (URI-Q) can be unambiguously characterized as a TimeBundle because of the presence of both the HTTP 303 status code and a 
+        Link header that contains a link with an &quot;<a href="http://www.mementoweb.org/guide/rfc/ID/#rfc.section.2.2.1.1">original</a>&quot; relation type pointing 
+        at Original Resource URI-R. 
+        <br />
+		<br />
+		The response header will typcially also include HTTP Link headers, specifically 
+        &quot;<a href="http://www.mementoweb.org/guide/rfc/ID/#rfc.section.2.2.1.3">timemap</a>&quot;, and 
+        &quot;<a href="http://www.mementoweb.org/guide/rfc/ID/#rfc.section.2.2.1.4">memento</a>&quot; Links. 
+        Also, additional values may be provided in the Vary header, for example, &quot;accept&quot; to 
+        indicate that HTTP content negotiation is available in the media type dimension too.
+	</span></td>
+      </tr>
+    </tbody>
+</table>
+  
+  -->
+  
+  <br/>
+  <br/>
+  
+  </div>
+  
+<!-- Google Analytics code  -->  
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-10627462-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+</body>
+
+</html>

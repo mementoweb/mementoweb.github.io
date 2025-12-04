@@ -1,0 +1,649 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+  
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Memento Guide: Resource Versioning and Memento</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-16" />
+
+<!-- Google Web Master Tools verification code -->  
+
+ <meta name="verify-v1" content="KwyQrdBgC6B1BxoehJe4mm1X7AxDurmC9KL6QsyIaNQ=" />
+  
+  <style type="text/css">
+.container {
+  background: #ffffff; 
+  width: 1000px;
+  margin: 0 auto;
+  }
+.table {
+	BORDER-RIGHT: #999999 1px solid;
+	BORDER-TOP: #999999 1px solid;
+	BORDER-LEFT: #999999 1px solid;
+	BORDER-BOTTOM: #999999 1px solid;
+	border-spacing: 2px;
+	}
+.bordertable {
+	BORDER-RIGHT: #000000 1px solid;
+	BORDER-TOP: #000000 1px solid;
+	BORDER-LEFT: #000000 1px solid;
+	BORDER-BOTTOM: #000000 1px solid;
+	border-spacing: 2px;
+}
+.trans_header_l_b {
+width: 10%; 
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+    text-align: center;
+      background-color: #ffffff;
+}
+.trans_header_r_b {
+width: 90%; 
+  border-bottom: 1px solid black;
+  text-align: left;
+        background-color: #ffffff;
+}
+.trans_row_l {
+width: 10%; 
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+    text-align: center;
+      background-color: #ffffff;
+}
+.trans_row_r {
+width: 90%; 
+  text-align: left;
+    border-bottom: 1px solid black;
+        background-color: #ffffff;
+}
+.trans_bot_l {
+width: 10%; 
+  border-right: 1px solid black;
+    text-align: center;
+      background-color: #ffffff;
+}
+.trans_bot_r {
+width: 90%; 
+  text-align: left;
+        background-color: #ffffff;
+}
+.th10 {
+  width: 10%;
+  background-color: #ffffff;
+  text-align: left;
+  }
+.th50 {
+  width: 50%;
+  background-color: #ffffff;
+  color: #666666;
+  text-align: center;
+  }
+  .th40 {
+  width: 40%;
+  background-color: #ffffff;
+  text-align: right;
+  }
+.t50_1 {
+  width: 50%;
+  background-color: #ffffff;
+  text-align: center;
+  }
+.t50_2 {
+  width: 50%;
+  background-color: #eeeeee;
+  text-align: center;
+  }
+.t100_1 {
+  width: 100%;
+  background-color: #eeeeee;
+  text-align: left;
+  }
+.t100_2 {
+  width: 100%;
+  background-color: #ffffff;
+  text-align: left;
+  }
+  .t100_3 {
+  width: 100%;
+  background-color: #ffffff;
+  text-align: center;
+  }
+.style3 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000000;
+}
+.style4 {
+  font-family: Arial, Helvetica, sans-serif; 
+  color: #000099;
+  }
+ img.center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+</style>
+
+</head>
+
+<body>
+<div class="container">
+
+
+<div id="menu_top">
+<iframe src="http://mementoweb.org/timetravel/menu_top.html" frameBorder="0" width="1000" height="102"></iframe>
+</div>
+
+<table width="1000">
+    <tbody>
+      <tr>
+        <td class="t100_1"><span class="style3"><h1>Memento Guide - Resource Versioning and Memento</h1>
+         <p>Last updated: November 5, 2014</p>
+        </span></td>
+      </tr>
+    </tbody>
+</table>
+  
+ 
+ <table width="1000">
+    <tbody>
+     <tr><td class="t100_2"><span class="style3"><h2>Introduction: A common resource versioning pattern</h2></span></td></tr>
+     <tr><td class="t100_2"><span class="style3">
+     The <a href="http://www.mementoweb.org/guide/rfc/">Memento protocol</a> is widely supported by web archives. It provides a uniform 
+     HTTP-based approach to access Mementos, archived versions of web resources, in distributed web archives around the world. Although 
+     the Memento protocol can provide the same uniform interface to access resource versions in systems such as wikis, content management systems, 
+     and software versioning systems, its applicability in that realm is not well understood. This document provides clarifications and details various 
+     ways in which resource versioning systems can support the Memento protocol.
+     <br /><br />
+       </span></td></tr>
+       <tr><td class="t100_2"><span class="style3">
+      The <a href="http://www.mementoweb.org/guide/rfc/">Memento protocol</a> is closely aligned with a common 
+      resource versioning pattern that consists of:
+      <ul>
+      <li>Having a <code>generic URI</code> where at any moment in time the current version of the resource is accessible. The Memento protocol refers to 
+      the resource identified by the <code>generic URI</code> as the <code>original resource</code>.</li>
+      <li>Having a dedicated <code>version URI</code> for each resource version. The Memento protocol refers to 
+      a resource identified by a <code>version URI</code> as a <code>Memento</code>.</li>
+      </ul>
+      This versioning pattern can, for example, be observed on top of W3C Specifications such as the 
+      <a href="http://www.w3.org/TR/webarch/">Architecture of the World Wide Web</a>:
+      <ul>
+      <li><code>http://www.w3.org/TR/webarch/</code> is the <code>generic URI</code> for that specification;</li>
+      <li><code>http://www.w3.org/TR/2004/REC-webarch-20041215/</code> is the <code>version URI</code> for the current version of that specification;</li>
+      <li><code>http://www.w3.org/TR/2004/PR-webarch-20041105/</code> is the <code>version URI</code> for the previous version of that specification;</li>
+      <li><code>http://www.w3.org/TR/2004/WD-webarch-20040816/</code> is the <code>version URI</code> for the version before that as indicated 
+      on top of the previous version of the specification.</li> 
+      </span></td></tr>
+      <tr><td class="t100_2"><span class="style3">
+     Supporting Memento in systems that follow such a versioning pattern 
+     does not necessarily require implementing all aspects of the <a href="http://www.mementoweb.org/guide/rfc/">protocol</a>. 
+     There are situations in which a little bit of Memento, for example only providing Memento HTTP headers and links with 
+     Memento relation types, can go a long way. 
+     <br /><br />
+     </span></td></tr>
+       <tr><td class="t100_2"><span class="style3">
+     This document describes, from simple to more complex, the ways in which a system that hosts resource versions 
+     can support the Memento framework by:
+     <ul>
+     <li><a href="#ResourceVersions">Providing HTTP response headers for resource versions to convey version date and links</a></li>
+     <li><a href="#TimeMap">Publishing a TimeMap, a list of versions of a resource</a></li>
+     <li><a href="#TimeGate">Exposing a TimeGate that supports datetime negotiation to access resource versions</a></li>
+     </ul>
+     It also describes how the Memento protocol can be used for 
+<a href="#FixedResources">Expressing that resources are frozen in time and place</a>, a special case of resource versioning 
+in that at the time of publication, or some time afterwards, it is known that the content of a resource 
+will no longer change while it will remain at its original URI of publication.
+<br /><br />
+  </span></td></tr>
+  <tr><td class="t100_2"><span class="style3">
+  The Memento HTTP headers and link relation types used in this document are registered in the 
+      <a href="http://www.iana.org/assignments/message-headers/message-headers.xhtml#perm-headers">Permanent IANA Message Header Registry</a>,
+and the 
+      <a href="http://www.iana.org/assignments/link-relations/link-relations.xhtml">IANA Link Relation Type Registry</a>, respectively. 
+      They are formally defined in <a href="http://www.mementoweb.org/guide/rfc/">RFC 7089</a>.
+    </span></td></tr>
+    </tbody>
+</table>
+   
+  <table width="1000">
+    <tbody>
+      <tr><td class="t100_2"><span class="style3"><h2 id="ResourceVersions">Providing HTTP response headers for resource versions to convey version date and links</h2></span></td></tr>
+      <tr><td class="t100_2"><span class="style3">
+      A version resource is a resource with frozen content that was current for a certain period in time.
+      It encapsulates a prior state of the generic resource, identified by its <code>generic URI</code>.  
+      Hence, a version resource is a Memento as defined in the <a href="http://www.mementoweb.org/guide/rfc/">Memento specification</a>, 
+      and the appropriate Memento HTTP headers can be applied. The headers are used  
+      to express the version datetime, to relate a <code>version URI</code> to the corresponding <code>generic URI</code>, and to support 
+      navigation between versions. In essence, they are introduced to convey the version information that is 
+      provided on top of the W3C specification in a machine-actionable manner. 
+                  <br /><br />
+            </span></td></tr>
+            <td class="t100_2"><span class="style3">
+      <img src="http://www.mementoweb.org/guide/howto/awww.png" alt="version information for a W3C specification" width="780" height="270" style="border-style: dotted" />
+      </span></td></tr>
+      <td class="t100_2"><span class="style3">
+      <ul>
+      <li><b>Express version datetime</b>: The <code>Memento-Datetime</code> header can be used 
+      to express the time beyond which the version resource will no longer change, typically the date/time of publication of the version. 
+      Using <code>http://www.w3.org/TR/2004/PR-webarch-20041105/</code> as an example <code>version URI</code>, the 
+      response to a HTTP HEAD/GET request against that URI would be:
+            <br /><br />
+       <textarea cols=100 rows=7>
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2013 17:32:36 GMT
+Last-Modified: Fri, 05 Nov 2004 19:00:40 GMT
+Content-Length: 193907
+Content-Type: text/html; charset=utf-8
+Memento-Datetime: Fri, 05 Nov 2004 19:00:40 GMT
+         </textarea>
+                     <br /><br />
+         Note that the values of the <code>Last-Modified</code> and <code>Memento-Datetime</code> headers are the same. 
+         Cases exist in which the date provided in the <code>Last-Modified</code> header is older or more recent than 
+         the date in <code>Memento-Datetime</code>; see the blog post 
+         <a href="http://ws-dl.blogspot.com/2010/11/2010-11-05-memento-datetime-is-not-last.html">Memento-Datetime is not Last-Modified</a> 
+         for details. 
+         Essentially, the <code>Last-Modified</code> header does not entail a promise that the the version resource will no longer change; 
+         the <code>Memento-Datetime</code> header does. 
+                              <br /><br />
+      </li>
+      <li><b>Relate a <code>version URI</code> to its corresponding <code>generic URI</code></b>: A special relation exists 
+      between the resource versions, each identified by their dedicated <code>version URI</code>, and the original resource 
+      identified by the <code>generic URI</code>. This relation can be expressed by including an HTTP <code>Link</code> header 
+      in the response to a HTTP HEAD/GET request on a <code>version URI</code>. The <code>Link</code> header contains a 
+      link with the <code>original</code> relation type pointing at the <code>generic URI</code>. 
+      Again, using <code>http://www.w3.org/TR/2004/PR-webarch-20041105/</code> as an example <code>version URI</code>, the 
+      response to a HTTP HEAD/GET request against that URI becomes:
+                  <br /><br />
+       <textarea cols=100 rows=8>
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2013 17:32:36 GMT
+Last-Modified: Fri, 05 Nov 2004 19:00:40 GMT
+Content-Length: 193907
+Content-Type: text/html; charset=utf-8
+Memento-Datetime: Fri, 05 Nov 2004 19:00:40 GMT
+Link: &lt;http://www.w3.org/TR/webarch/&gt;; rel="original"
+         </textarea>
+                     <br /><br />
+      </li>
+      <li><b>Support navigation between versions</b>: Navigation between resource versions can be enabled 
+      by using an HTTP <code>Link</code> header in responses to HTTP HEAD/GET requests against a <code>version URI</code>. 
+      This header includes links with relation types such as 
+      <code>prev</code>, <code>next</code>, <code>predecessor-version</code>, <code>successor-version</code>, 
+      <code>first</code>, <code>last</code> as detailed in 
+      <a href="http://www.ietf.org/rfc/rfc5988.txt">RFC5988</a> and <a href="http://www.ietf.org/rfc/rfc5829.txt">RFC5829</a>.
+      However, these links do not convey that each of the interlinked versions are Mementos, frozen in time, nor do they 
+      provide the datetime at which the versions were frozen. This missing information can be provided by using additional links 
+      that have the <code>memento</code> relation type. 
+                           <br /><br />
+      Using the example of the <a href="http://www.w3.org/TR/webarch/">Architecture of the World Wide Web</a> specification again, 
+      the response to a HTTP HEAD/GET request against the <code>version URI</code> <code>http://www.w3.org/TR/2004/PR-webarch-20041105/</code> 
+      becomes:
+                        <br /><br />
+       <textarea cols=100 rows=13>
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2013 17:32:36 GMT
+Last-Modified: Fri, 05 Nov 2004 19:00:40 GMT
+Content-Length: 193907
+Content-Type: text/html; charset=utf-8
+Memento-Datetime: Fri, 05 Nov 2004 19:00:40 GMT
+Link: &lt;http://www.w3.org/TR/webarch/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;; rel="original",
+&nbsp;&lt;http://www.w3.org/TR/2004/WD-webarch-20040816/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;; rel="prev memento"; datetime="Mon, 16 Aug 2004 05:48:58 GMT",
+&nbsp;&lt;http://www.w3.org/TR/2004/REC-webarch-20041215/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;; rel="next last memento"; datetime="Wed, 15 Dec 2004 20:19:19 GMT"
+         </textarea>
+      </li>
+      </ul>
+      </span></td></tr>
+</tbody>
+</table>
+
+ <table width="1000">
+    <tbody>
+     <tr><td class="t100_2"><span class="style3"><h2 id="TimeMap">Publishing a TimeMap, a list of resource versions</h2></span></td></tr>
+      <tr><td class="t100_2"><span class="style3">
+     A system that hosts resource versions can publish a TimeMap, a document that lists the <code>version URI</code> and version date 
+     of all resource versions as well as the associated <code>generic URI</code>. 
+          In essence, a TimeMap is very similar to the calendar view the Wayback Machine provides of Mementos it holds for a certain resource, 
+          with a TimeMap providing the information in a machine-actionable manner. 
+          The below picture shows 
+     <a href="http://web.archive.org/web/*/http://www.w3.org/TR/webarch/">the Wayback's calendar view for Mementos of the W3C specification.</a>.
+      <br /><br />
+  </span></td></tr>
+              <td class="t100_2"><span class="style3">
+      <img src="http://www.mementoweb.org/guide/howto/waybackversions.png" alt="Wayback Mementos for the W3C specification" width="780" height="762" style="border-style: dotted" />
+               <br /><br />
+      </span></td></tr>  
+        <tr><td class="t100_2"><span class="style3"> 
+     For self-containedness, the TimeMap also lists 
+     its own URI. In a full Memento implementation, which also entails 
+     <a href="#TimeGate">Exposing a TimeGate</a>, the TimeMap also lists the URI of the TimeGate. 
+    Because HTTP <code>Link</code> headers are used throughout the Memento protocol, the default serialization of a TimeMap 
+    is the same as that of the content of the HTTP <code>Link</code> header, defined in <a href="http://www.ietf.org/rfc/rfc5988.txt">RFC5988</a>. 
+    Its media type is <code>application/link-format</code>, defined in <a href="http://www.ietf.org/rfc/rfc6690.txt">RFC6690</a>. 
+    A JSON format for TimeMaps is currently under consideration. 
+         <br /><br />
+  </span></td></tr>
+    <tr><td class="t100_2"><span class="style3">
+    In the ongoing example of the <a href="http://www.w3.org/TR/webarch/">Architecture of the World Wide Web</a> specification, 
+    a TimeMap could be published at, for example, <code>http://www.w3.org/TR/timemap/webarch/</code> and the response to a HTTP GET 
+    on that URI would be:
+    <br /><br />
+           <textarea cols=100 rows=17>
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2013 22:07:14 GMT
+Content-Length: 511
+Content-Type: application/link-format
+Connection: close
+
+&lt;http://www.w3.org/TR/webarch/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;;rel="original",
+&nbsp;&lt;http://www.w3.org/TR/timemap/webarch/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;; rel="self"; type="application/link-format",
+&nbsp;&lt;http://www.w3.org/TR/2004/REC-webarch-20041215/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;; rel="memento last"; datetime="Wed, 15 Dec 2004 20:19:19 GMT",
+&nbsp;&lt;http://www.w3.org/TR/2004/PR-webarch-20041105/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;; rel="memento"; datetime="Mon, 05 Nov 2004 19:00:40 GMT",
+&nbsp;&lt;http://www.w3.org/TR/2004/WD-webarch-20040816/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;; rel="memento"; datetime="Mon, 16 Aug 2004 05:48:58 GMT"
+         </textarea>
+              <br /><br />
+  </span></td></tr>
+          <tr><td class="t100_2"><span class="style3">
+    The published TimeMap is made discoverable by means of a link with the <code>timemap</code> relation type 
+    provided in the <code>Link</code> header in responses to HTTP HEAD/GET requests 
+    against each <code>version URI</code> as well as the <code>generic URI</code>. 
+  Using <code>http://www.w3.org/TR/2004/PR-webarch-20041105/</code> as an example <code>version URI</code>, the 
+      response to a HTTP HEAD/GET request against that URI, omitting links among versions for brevity, becomes:
+                  <br /><br />
+       <textarea cols=100 rows=9>
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2013 22:31:08 GMT
+Last-Modified: Fri, 05 Nov 2004 19:00:40 GMT
+Content-Length: 193907
+Content-Type: text/html; charset=utf-8
+Memento-Datetime: Fri, 05 Nov 2004 19:00:40 GMT
+Link: &lt;http://www.w3.org/TR/webarch/&gt;; rel="original",
+&nbsp;&lt;http://www.w3.org/TR/timemap/webarch/&gt;; rel="timemap"
+         </textarea>
+    </tbody>
+</table>
+
+ <table width="1000">
+    <tbody>
+     <tr><td class="t100_2"><span class="style3"><h2 id="TimeGate">Exposing a TimeGate that supports datetime negotiation to access resource versions</h2></span></td></tr>
+      <tr><td class="t100_2"><span class="style3">
+     The most powerful feature of the Memento protocol is datetime negotiation, a variation on content negotiation. 
+     In datetime negotiation, an HTTP HEAD/GET is issued against the <code>generic URI</code>, including  
+     an <code>Accept-Datetime</code> request header that conveys the datetime of the resource version that is desired by the client. 
+     Through the intermediation of a TimeGate that has access to the version 
+     history of the original resource, the client will be led to the resource version (and hence the <code>version URI</code>) 
+     that was the current one at the datetime expressed by the client. 
+     <br /><br />
+  </span></td></tr>
+   <tr><td class="t100_2"><span class="style3">
+     Many datetime negotiation implementation patterns exist, detailed in the 
+     <a href="http://www.mementoweb.org/guide/rfc/#component-1.2">Datetime Negotiation section of the Memento protocol</a>, 
+     to accommodate situations in which:
+     <ul>
+     <li>The original resource and the resource versions are hosted by the same system, as is the case with wikis, content management systems, 
+     and software versioning systems. </li>
+     <li>The original resource and the resource versions are hosted by the different systems, as is the case with snapshots of resources 
+     in web archives.</li>
+     </ul>
+  </span></td></tr>
+   <tr><td class="t100_2"><span class="style3">
+   For wikis, content management systems, and software versioning systems that follow the versioning approach 
+   illustrated at the beginning of this document, the typical implementation of datetime negotiation is one of the following 
+   patterns detailed in <a href="http://www.mementoweb.org/guide/rfc/">RFC 7089</a>:
+     <ul>
+     <li><a href="http://www.mementoweb.org/guide/rfc/#Pattern1.1">Pattern 1.1</a> in which the original resource coincides with its TimeGate. 
+     When a client issues an HTTP HEAD/GET request against the 
+     <code>generic URI</code> of this resource, 
+     and that request includes <code>Accept-Datetime</code> request header it will be redirected (<code>302 Found</code> status code) 
+     to the <code>version URI</code> 
+     that was current at the time specified in the <code>Accept-Datetime</code> request header. Details for the ongoing example are 
+     <a href="#pattern1">here</a>.</li>
+     <li><a href="http://www.mementoweb.org/guide/rfc/#Pattern2.1">Pattern 2.1</a> in which the original resource does not
+     coincide with its TimeGate. When a client issues an HTTP HEAD/GET request, with or without an <code>Accept-Datetime</code> request header,  
+     against the <code>generic URI</code> of this resource, the response will contain an HTTP <code>Link</code> header that includes a link 
+     with the <code>timegate</code> relation type that points at the TimeGate associated with the original resource. 
+     The client then proceeds to issue an HTTP HEAD/GET request that includes the <code>Accept-Datetime</code> request header against the 
+     URI of the TimeGate associated with the original resource. As a result of this, the client will be redirected (<code>302 Found</code> status code) 
+     to the <code>version URI</code> that was current at the time specified in the <code>Accept-Datetime</code> request header.
+     Details for the ongoing example are 
+     <a href="#pattern2">here</a>.</li>
+     </ul>
+     The <a href="http://www.mediawiki.org/wiki/Extension:Memento">Memento extension for MediaWiki</a> supports both patterns. 
+     Out of the box, Pattern 1.1 is active, but the configuration 
+     options allow selecting Pattern 2.1.
+     <br /><br />
+     </span></td></tr>
+     <tr id="pattern1"><td class="t100_2"><span class="style3">
+         Following <a href="http://www.mementoweb.org/guide/rfc/#Pattern1.1">Pattern 1.1</a>, 
+          for the ongoing example of the <a href="http://www.w3.org/TR/webarch/">Architecture of the World Wide Web</a> specification, 
+         the TimeGate would 
+         coincide with the <code>generic URI</code> <code>http://www.w3.org/TR/webarch/</code>. Lets assume a client wants to access the 
+    version of the specification that was current on September 11 2004. In order to do so, the client issues the following HTTP HEAD (or GET) request 
+    against the specification's <code>generic URI</code> <code>http://www.w3.org/TR/webarch/</code>:
+    <br /><br />
+       <textarea cols=100 rows=5>
+HEAD /TR/webarch/ HTTP/1.1
+Host: www.w3.org
+Accept-Datetime: Sat, 11 Sep 2004 00:00:00 GMT
+Connection: close
+         </textarea>
+         <br /><br />
+         The response to this request is shown below. It is a redirection to 
+         <code>version URI</code> <code>http://www.w3.org/TR/2004/WD-webarch-20040816/</code>,
+         which was the current version between August 16 2008 and November 5 2008. Note the use of the <code>Vary</code> header to indicate 
+         the resource supports datetime negotiation. Note also the <code>Link</code> header that indicates that the original resource coincides 
+         with its TimeGate. It also includes a link to the <a href="#TimeMap">previously discussed TimeMap</a>.
+             <br /><br />
+       <textarea cols=100 rows=10>
+HTTP/1.1 302 Found
+Date: Sun, 15 Dec 2013 18:34:22 GMT
+Vary: accept-datetime
+Location: http://www.w3.org/TR/2004/WD-webarch-20040816/
+Link: &lt;http://www.w3.org/TR/webarch/&gt;; rel="original timegate",
+&nbsp;&lt;http://www.w3.org/TR/timemap/webarch/&gt;; rel="timemap"
+Content-Length: 0
+Content-Type: text/plain; charset=UTF-8
+Connection: close
+         </textarea>
+         <br /><br />
+         The client can then proceed to access the resource version it desired by issuing a HTTP GET request against the 
+         <code>version URI</code> <code>http://www.w3.org/TR/2004/WD-webarch-20040816/</code>. The response to that request 
+         includes the <code>Memento-Datetime</code> header and all previously discussed links:
+       <br /><br />
+       <textarea cols=100 rows=17>
+HTTP/1.1 200 OK
+Date: Sun, 15 Dec 2013 18:34:32 GMT
+Last-Modified: Mon, 16 Aug 2004 05:48:58 GMT
+Content-Length: 176246
+Content-Type: text/html; charset=utf-8
+Memento-Datetime: Mon, 16 Aug 2004 05:48:58 GMT
+Link: &lt;http://www.w3.org/TR/webarch/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;; rel="original timegate",
+&nbsp;&lt;http://www.w3.org/TR/timemap/webarch/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;; rel="timemap",
+&nbsp;&lt;http://www.w3.org/TR/2004/PR-webarch-20041105/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;; rel="memento next"; datetime="Mon, 05 Nov 2004 19:00:40 GMT",
+&nbsp;&lt;http://www.w3.org/TR/2004/WD-webarch-20040705/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;; rel="memento prev"; datetime="Mon, 05 Jul 2004 17:46:22",
+&nbsp;&lt;http://www.w3.org/TR/2004/REC-webarch-20041215/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;; rel="memento last"; datetime="Wed, 15 Dec 2004 20:19:19 GMT",
+         </textarea>
+         <br /><br />
+     </span></td></tr>
+     <tr id="pattern2"><td class="t100_2"><span class="style3">
+         Following <a href="http://www.mementoweb.org/guide/rfc/#Pattern2.1">Pattern 2.1</a>, the TimeGate would not 
+         coincide with the <code>generic URI</code> and could, for example, be exposed at <code>http://www.w3.org/TR/timegate/webarch/</code>. 
+         Lets again assume a client wants to access the 
+    version of the specification that was current on September 11 2004. In order to do so, the client issues the following HTTP HEAD (or GET) request 
+    against the specification's <code>generic URI</code> <code>http://www.w3.org/TR/webarch/</code>:
+    <br /><br />
+       <textarea cols=100 rows=5>
+HEAD /TR/webarch/ HTTP/1.1
+Host: www.w3.org
+Accept-Datetime: Sat, 11 Sep 2004 00:00:00 GMT
+Connection: close
+         </textarea>
+         <br /><br />
+      The response to that request includes a link to the TimeGate <code>http://www.w3.org/TR/timegate/webarch/</code> 
+      associated with the original resource <code>http://www.w3.org/TR/webarch/</code>:   
+       <br /><br />
+       <textarea cols=100 rows=7>
+HTTP/1.1 200 OK
+Date: Sun, 15 Dec 2013 19:04:13 GMT
+Link: &lt;http://www.w3.org/TR/timegate/webarch/&gt;; rel="timegate",
+Content-Length: 0
+Content-Type: text/plain; charset=UTF-8
+Connection: close
+         </textarea>    
+    <br /><br /> 
+    The client then engages in datetime negotiation with that TimeGate by issuing an HTTP HEAD request 
+    against its URI <code>http://www.w3.org/TR/timegate/webarch/</code> including the <code>Accept-Datetime</code> header:
+           <br /><br />
+       <textarea cols=100 rows=5>
+HEAD /TR/timegate/webarch/ HTTP/1.1
+Host: www.w3.org
+Accept-Datetime: Sat, 11 Sep 2004 00:00:00 GMT
+Connection: close
+         </textarea>
+         <br /><br />
+The response to this request is a redirection to the 
+         <code>version URI</code> <code>http://www.w3.org/TR/2004/WD-webarch-20040816/</code>,
+         which was the current version between August 16 2008 and November 5 2008. Note the use of the <code>Vary</code> header to indicate 
+         the resource supports datetime negotiation. Note also the <code>Link</code> header that points to the original resource and 
+         to the <a href="#TimeMap">previously discussed TimeMap</a>.
+         <br /><br />
+<textarea cols=100 rows=10>
+HTTP/1.1 302 Found
+Date: Sun, 15 Dec 2013 19:04:20 GMT
+Vary: accept-datetime
+Location: http://www.w3.org/TR/2004/WD-webarch-20040816/
+Link: &lt;http://www.w3.org/TR/webarch/&gt;; rel="original",
+&nbsp;&lt;http://www.w3.org/TR/timemap/webarch/&gt;; rel="timemap"
+Content-Length: 0
+Content-Type: text/plain; charset=UTF-8
+Connection: close
+         </textarea>
+         <br /><br />
+         The client can then proceed to access the resource version it desired by issuing a HTTP GET request against the 
+         <code>version URI</code> <code>http://www.w3.org/TR/2004/WD-webarch-20040816/</code>. The response to that request 
+         includes the <code>Memento-Datetime</code> header and all previously discussed links:
+       <br /><br />
+       <textarea cols=100 rows=19>
+HTTP/1.1 200 OK
+Date: Sun, 15 Dec 2013 18:34:32 GMT
+Last-Modified: Mon, 16 Aug 2004 05:48:58 GMT
+Content-Length: 176246
+Content-Type: text/html; charset=utf-8
+Memento-Datetime: Mon, 16 Aug 2004 05:48:58 GMT
+Link: &lt;http://www.w3.org/TR/webarch/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;; rel="original",
+&nbsp;&lt;http://www.w3.org/TR/timegate/webarch/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;; rel="timegate",
+&nbsp;&lt;http://www.w3.org/TR/timemap/webarch/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;; rel="timemap",
+&nbsp;&lt;http://www.w3.org/TR/2004/PR-webarch-20041105/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;; rel="memento next"; datetime="Mon, 05 Nov 2004 19:00:40 GMT",
+&nbsp;&lt;http://www.w3.org/TR/2004/WD-webarch-20040705/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;; rel="memento prev"; datetime="Mon, 05 Jul 2004 17:46:22",
+&nbsp;&lt;http://www.w3.org/TR/2004/REC-webarch-20041215/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;; rel="memento last"; datetime="Wed, 15 Dec 2004 20:19:19 GMT",
+         </textarea>
+    </span></td></tr>
+    </tbody>
+</table>
+
+<table width="1000">
+    <tbody>
+      <tr><td class="t100_2"><span class="style3"><h2 id="FixedResources">Special Case: Resources frozen in time and place</h2></span></td></tr>
+      <tr><td class="t100_2"><span class="style3">
+      The content of many resources stops changing some time after their initial publication 
+      or it is even intentionally stable at publication time. 
+      Once such resources stop changing, they are frozen in time, Mementos. Examples are tweets, news stories, blog posts. 
+      In addition, these kind of resources remain available at their original URI of publication 
+      and hence are also frozen in place. As a result, they are at the same time the original resource and its Memento. 
+      <br /><br />
+      Take as an example the tweet <a href="https://twitter.com/hvdsomp/status/401134723210416128"><code>https://twitter.com/hvdsomp/status/401134723210416128</code></a> posted on 
+      November 14 2013 at 4:49 PM Mountain Time. 
+            <br /><br />
+      </span></td></tr>
+      <td class="t100_2"><span class="style3">
+      <img src="http://www.mementoweb.org/guide/howto/tweet.png" alt="version information for a W3C specification" width="780" height="360" style="border-style: dotted" />
+      <br /><br />
+      </span></td></tr>
+      <td class="t100_2"><span class="style3">
+      The Memento protocol allows expressing that a resource is frozen in time and in place:
+      <ul>
+      <li>
+      <b>Expressing that a resource is frozen in time</b>:
+       A server can express that one of its resources will no longer change by using a <code>Memento-Datetime</code> 
+      HTTP header in responses to HTTP HEAD/GET requests on the resource URI. The value of this header is the date/time the resource became stable. 
+      This header sends a much stronger message about the stability of a 
+      resource than the provision of a <code>Last-Modified</code> header, 
+      which does not entail a promise that the resource will no longer change past the provided date.
+      <br /><br />
+      As an indication that the content of the example tweet will not change past its publication time, the <code>Memento-Datetime</code> header
+      can be included in a response to a HTTP HEAD/GET on the URI of the tweet. The value of the header is in this case equal to the publication time 
+      and is expressed in Greenwich Mean Time. Note that Twitter sets the value of the <code>Last-Modified</code> header equal to that of the 
+      <code>Date</code> header, which expresses the response time. This is another example of <code>Last-Modified</code> being more recent than 
+      <code>Memento-Datetime</code> as described in 
+      <a href="http://ws-dl.blogspot.com/2010/11/2010-11-05-memento-datetime-is-not-last.html">Memento-Datetime is not Last-Modified</a>.
+      <br /><br />
+       <textarea cols=100 rows=6>
+HTTP/1.1 200 OK
+Content-Type: text/html;charset=utf-8
+Date: Sat, 14 Dec 2013 13:47:46 GMT
+Last-Modified: Sat, 14 Dec 2013 13:47:46 GMT
+Memento-Datetime: Thu, 14 Nov 2013 23:49:00 GMT
+         </textarea>
+         <br/><br />
+         <li>
+         <b>Expressing that a resource is frozen in place</b>: 
+         A server can express that a resource is frozen at its original URI by providing an HTTP <code>Link</code> header 
+      in responses to HTTP HEAD/GET requests on the resource URI. This header contains a link with the 
+      <code>original</code> 
+      relation type pointing at the original URI. 
+         Providing these links helps to distinguish these "in situ" frozen resources from 
+         resources that are frozen at a URI that is different from their original URI, as is the case for snapshots in 
+         web archives and version resources in content management systems. 
+               <br /><br />
+         For the example tweet, the response header then looks as follows:
+      <br /><br />
+       <textarea cols=100 rows=7>
+HTTP/1.1 200 OK
+Content-Type: text/html;charset=utf-8
+Date: Sat, 14 Dec 2013 13:47:46 GMT
+Last-Modified: Sat, 14 Dec 2013 13:47:46 GMT
+Memento-Datetime: Thu, 14 Nov 2013 23:49:00 GMT
+Link: &lt;https://twitter.com/hvdsomp/status/401134723210416128&gt;; rel="original"
+         </textarea>
+         </li>
+         </ul>
+      </span></td></tr>
+    </tbody>
+</table>
+  
+  </div>
+  
+<!-- Google Analytics code  -->  
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-10627462-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+</body>
+
+</html>

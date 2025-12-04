@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>JSON TimeMaps</title>
+  <style type="text/css">
+body {
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+}
+.container {
+  background: #ffffff; 
+  width: 980px;
+  margin: 0 auto;
+  }
+.table {
+	BORDER-RIGHT: #999999 1px solid;
+	BORDER-TOP: #999999 1px solid;
+	BORDER-LEFT: #999999 1px solid;
+	BORDER-BOTTOM: #999999 1px solid;
+	border-spacing: 2px;
+	}
+.bordertable {
+	BORDER-RIGHT: #000000 1px solid;
+	BORDER-TOP: #000000 1px solid;
+	BORDER-LEFT: #000000 1px solid;
+	BORDER-BOTTOM: #000000 1px solid;
+	border-spacing: 2px;
+}
+.trans_header_l_b {
+width: 10%; 
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+    text-align: center;
+      background-color: #ffffff;
+  font-family: Courier, sans-serif;
+    font-size:80%;
+}
+.trans_header_l_b2 {
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+    text-align: center;
+      background-color: #ffffff;
+  font-family: Courier, sans-serif;
+    font-size:80%;
+}
+.trans_header_r_b {
+  border-bottom: 1px solid black;
+  text-align: left;
+        background-color: #ffffff;
+  font-family: Courier, sans-serif;
+    font-size:80%;
+}
+.trans_header_r_b2 {
+  border-bottom: 1px solid black;
+  text-align: center;
+        background-color: #ffffff;
+  font-family: Courier, sans-serif;
+    font-size:80%;
+}
+.trans_row_l {
+width: 10%; 
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+    text-align: center;
+      background-color: #ffffff;
+  font-family: Courier, sans-serif;
+    font-size:80%;
+}
+.trans_row_l2 {
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+    text-align: center;
+      background-color: #ffffff;
+  font-family: Courier, sans-serif;
+    font-size:80%;
+}
+.trans_row_r {
+  text-align: left;
+    border-bottom: 1px solid black;
+        background-color: #ffffff;
+  font-family: Courier, sans-serif;
+    font-size:80%;
+}
+.trans_row_r2 {
+  text-align: center;
+    border-bottom: 1px solid black;
+        background-color: #ffffff;
+  font-family: Courier, sans-serif;
+    font-size:80%;
+}
+.trans_bot_l {
+width: 10%; 
+  border-right: 1px solid black;
+    text-align: center;
+      background-color: #ffffff;
+  font-family: Courier, sans-serif;
+    font-size:80%;
+}
+.trans_bot_l2 {
+  border-right: 1px solid black;
+    text-align: center;
+      background-color: #ffffff;
+  font-family: Courier, sans-serif;
+    font-size:80%;
+}
+.trans_bot_r {
+  text-align: left;
+        background-color: #ffffff;
+  font-family: Courier, sans-serif;
+    font-size:80%;
+}
+.trans_bot_r2 {
+width: 10%; 
+  text-align: center;
+        background-color: #ffffff;
+  font-family: Courier, sans-serif;
+    font-size:80%;
+}
+.th10 {
+  width: 10%;
+  background-color: #ffffff;
+  text-align: left;
+  }
+.th50 {
+  width: 50%;
+  background-color: #ffffff;
+  color: #666666;
+  text-align: center;
+  }
+  .th40 {
+  width: 40%;
+  background-color: #ffffff;
+  text-align: right;
+  }
+.t50_1 {
+  width: 50%;
+  background-color: #ffffff;
+  text-align: center;
+  }
+.t50_2 {
+  width: 50%;
+  background-color: #eeeeee;
+  text-align: center;
+  }
+.t100_1 {
+  width: 100%;
+  background-color: #eeeeee;
+  text-align: left;
+  }
+.t100_2 {
+  width: 100%;
+  background-color: #ffffff;
+  text-align: left;
+  }
+  .t100_3 {
+  width: 100%;
+  background-color: #ffffff;
+  text-align: center;
+  }
+  .t100_4 {
+  width: 100%;
+  background-color: #fcfaee;
+  text-align: left;
+  }
+.style3 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000000;
+}
+.style4 { 
+  font-family: Arial, Helvetica, sans-serif; 
+  color: #000099;
+  }
+ .img.center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+</style>
+</head>
+
+<body>
+<div class="container">
+
+ <div id="menu_top">
+        <iframe id="menu_top_frame" src="https://mementoweb.github.io/static/menu_top_mw.html" style="border: 0; width: 980px; height: 102px"></iframe>
+ </div>
+     
+        <div class="t100_1"><div class="style3"><h1>JSON TimeMaps</h1>
+        </div>
+      </div>
+      
+  <br />
+
+  
+    <br />
+    
+  <div class="style3">
+    <div class="t100_2"><b>Authored by:</b><br /><div class="t100_2">
+    &nbsp;&nbsp;&nbsp;Yorick Chollet - Los Alamos National Laboratory
+  </div>
+  <div class="t100_2">
+    &nbsp;&nbsp;&nbsp;Harihar Shankar - Los Alamos National Laboratory
+  </div>
+      <div class="t100_2">
+    &nbsp;&nbsp;&nbsp;Herbert Van de Sompel - Los Alamos National Laboratory
+  </div>
+   <div class="t100_2"><b>Last updated:</b><div class="t100_2"> April 23, 2016
+  </div>
+  </div>
+  
+
+  
+   <div class="style3">
+    <div class="t100_2">
+    <a id="referencing"><h2>Abstract</h2></a>
+    This document describes how to express TimeMaps in JSON.
+    </div></div>
+    
+  
+
+    <div class="t100_2"><div class="style3">
+    <h2>Table of Contents</h2>
+    </div></div>
+    <div class="t100_2"><div class="style3">
+    <a href="#motivation">Motivation</a>
+    </div></div>
+    <div class="t100_2"><div class="style3">
+    <a href="#basic">TimeMap Basic Format</a>
+    </div></div>
+    <div class="t100_2"><div class="style3">
+    <a href="#page">TimeMap Paged Format</a>
+    </div></div>
+    <div class="t100_2"><div class="style3">
+    <a href="#index">TimeMap Index Format</a>
+    </div></div>
+    <div class="t100_2"><div class="style3">
+    <a href="#extensions">Extensions</a>
+    </div></div>
+    <div class="t100_2"><div class="style3">
+    <a href="#table2">Values Cardinality</a>
+    </div></div>
+<!--     <div class="t100_2">
+    <a href="#table1">Values Format</a>
+    </div> -->
+
+<!--     <div class="t100_2">
+    <a href="#cfg">Final JSON rules</a>
+    </div> -->
+  
+
+<!-- Motivation paragraph -->
+
+
+    <div class="t100_2"><div class="style3">
+    <a id="motivation"><h2>Motivation</h2></a>
+    <a href="https://mementoweb.github.io/guide/rfc/">RFC 7089</a> defines a TimeMap 
+    for an Original Resource as a resource from which a list of URIs of Mementos of the Original Resource is available. 
+    It specifies <a href="https://mementoweb.github.io/guide/rfc/#Pattern6">the content that needs to be expressed in a TimeMap</a> 
+    and defines a serialization based on the <a href="http://www.ietf.org/rfc/rfc6690.txt"><code>application/link-format</code></a> media type, 
+    which itself is based on
+    the definition of content for the <a href="http://www.ietf.org/rfc/rfc5988.txt">HTTP Link header field</a>. This TimeMap format 
+    was chosen because Memento clients must be able to parse HTTP Link headers anyhow when engaging in datetime negotiation. However, 
+    the format is not particularly appealing for consumption by, for example, JavaScript applications.
+    In order to meet the needs of such applications, a JSON TimeMap format is defined in this document.  
+    </div></div>
+  
+<!-- TimeMap Basic Format and example -->
+
+    <div class="t100_2"><div class="style3">
+    <a id="basic"><h2>TimeMap - Basic Format</h2></a>
+    </div></div>
+  
+      <div class="t100_2"><div class="style3">
+    This section details how a basic TimeMap should be serialized as a JSON document with MIME type <code>application/json</code>. 
+    A basic TimeMap conveys information about all Mementos known to the responding server. Sometimes there are too many 
+    Mementos for the information to reasonably fit into a single TimeMap, in which case either <a href="#page">Paged TimeMaps</a> or a 
+    <a href="#index">TimeMap Index</a> need to be used.
+        <br /><br />
+    A basic TimeMap must contain the URI of the Original Resource (<code>original_uri</code>) and it must list the Mementos 
+    for that resource. All Mementos known by the server that provides the TimeMap must be listed in an array (<code>mementos.list</code>). 
+    For each Memento, its URI (<code>uri</code>) and its archival/version datetime (<code>datetime</code>) must be provided. 
+    <br /><br />
+    It is highly recommended that the TimeMap also provide some additional information. 
+    It should contain the URI of the TimeGate 
+    for the Original Resource (<code>timegate_uri</code>) and the URI of the TimeMap itself (<code>timemap_uri</code>), 
+    serialized as <code>application/json</code> (<code>timemap_uri.json_format</code>) and/or 
+    <code>application/link-format</code> (<code>timemap_uri.link_format</code>). 
+    In addition, the first and last Mementos known by the responding server should be provided 
+    separately (<code>mementos.first</code> and <code>mementos.last</code>, respectively). 
+    If these special Mementos are provided in this manner, 
+    they still must be provided in <code>mementos.list</code> too.
+         </div></div>
+  
+<br />
+
+
+    <div class="t100_4">
+                <div class="style4">
+                    <a id="example1">Example 1</a>: Assuming <code>http://example.com/</code> is an Original Resource for which 
+                    <code>http://an.archive.org/timemap/json/http://example.com/</code> is a JSON formatted TimeMap. 
+                    A TimeMap serialization that contains all required and recommended information looks as follows:
+                </div>
+                <br />
+    <pre>
+{
+  "original_uri": "http://example.com/",
+  "timegate_uri": "http://an.archive.org/timegate/http://example.com/",
+  "timemap_uri": {
+    "json_format": "http://an.archive.org/timemap/json/http://example.com/",
+    "link_format": "http://an.archive.org/timemap/link/http://example.com/"
+  },
+  "mementos": {
+    "first": {
+      "datetime": "2000-06-21T04:41:56Z",
+      "uri": "http://an.archive.org/20000621044156/http://example.com/"
+    },
+    "last": {
+      "datetime": "2012-08-31T12:22:34Z",
+      "uri": "http://an.archive.org/20120831122234/http://example.com/"
+    },
+    "list": [
+      {
+        "datetime": "2000-06-21T04:41:56Z",
+        "uri": "http://an.archive.org/20000621044156/http://example.com/"
+      },
+      {
+        "datetime": "2008-04-10T20:30:51Z",
+        "uri": "http://an.archive.org/20080410203051/http://example.com/"
+      },
+      {
+        "datetime": "2012-08-31T12:22:34Z",
+        "uri": "http://an.archive.org/20120831122234/http://example.com/"
+      }
+    ]
+  }
+}
+    </pre>
+</div>
+<!-- End TimeMap Basic Format and Example -->
+
+<br />
+
+
+<!-- TimeMap PAGED Format and example -->
+
+
+    <div class="t100_2"><div class="style3">
+    <a id="page"><h2>TimeMap Paged Format</h2></a>
+    </div></div>
+    
+    <div class="t100_2"><div class="style3">
+    Whenever possible, <a href="#basic">basic TimeMaps</a> should be used. 
+    But there are cases where there are just too many Mementos for all information to reasonably fit into 
+    a single TimeMap. In these cases, either Paged TimeMaps, described here, or a <a href="#index">TimeMap Index</a> 
+    should be used.
+        <br /><br />
+    When paging JSON TimeMaps, each of the individual TimeMaps must be a JSON document with 
+    MIME type <code>application/json</code>. Certain information is repeated in each of the paged TimeMaps. 
+    This is the case for the mandatory URI of the Original Resource (<code>original_uri</code>), the recommended 
+    URI of the TimeGate for the Original Resource (<code>timegate_uri</code>), and the recommended URI of the 
+    first and last Mementos known by the responding server (<code>mementos.first</code> and <code>mementos.last</code>, 
+    respectively). In addition, it is recommended that each paged TimeMap lists its own URI (<code>timemap_uri</code>), 
+    serialized as <code>application/json</code> (<code>timemap_uri.json_format</code>) and/or 
+    <code>application/link-format</code> (<code>timemap_uri.link_format</code>).
+            <br /><br /> 
+    In addition, using an array (<code>mementos.list</code>), each paged TimeMap must provide information about a 
+    subset of all Mementos known to the responding server. 
+    For each Memento, its URI (<code>uri</code>) and its 
+    archival/version datetime (<code>datetime</code>) must be provided. 
+    Subsets should be created in such a manner that the number of individual TimeMaps is minimized while their size remains    
+    reasonable for transfer and consumption. 
+                <br /><br /> 
+    As a paging mechanism, each paged TimeMap must include references to previous and next TimeMaps, as applicable 
+    (<code>pages.prev</code>,<code> pages.next</code>, respectively). For each referenced TimeMap, its URI (<code>uri</code>) must 
+    be provided. If the subsets of Mementos are created in a manner by which the archival/version datetimes are sorted, 
+    it is also highly recommended that the references include the timespan covered by each referenced TimeMap 
+    (<code>from</code> and <code> until</code>).
+    <br />
+   </div></div>
+  
+<br />
+
+
+    <div class="t100_4">
+                <div class="style4">
+                    <a id="example3">Example 3</a>: 
+    Assume a TimeMap for the Original Resource <code>http://example.com/</code> that is split into 3 paged TimeMaps,
+    each of which can be accessed at <code>http://an.archive.org/timemap/X/</code>, where <code>X</code> is the page number. 
+    This example shows TimeMap <code>#2</code>, which covers Mementos between 
+    <code>2003-05-13T00:00:13Z</code> and <code>2006-10-05T20:30:51Z</code>, 
+    with all the mandatory and recommended information elements. Remember that TimeMap <code>#1</code> and <code>#3</code> 
+    will list the same information 
+    for <code>original_uri</code>, <code>timegate_uri</code>, <code>mementos.first</code>, and <code>mementos.last</code>.
+    Note also that the values for <code>pages.prev</code> and 
+    <code>pages.next</code> will be empty for the first and last paged TimeMap, respectively.
+                </div>
+                <br />
+    <pre>
+{
+  "original_uri": "http://example.com/",
+  "timegate_uri": "http://an.archive.org/timegate/http://example.com/",
+  "timemap_uri": {
+    "json_format": "http://an.archive.org/timemap/2/json/http://example.com/",
+    "link_format": "http://an.archive.org/timemap/2/link/http://example.com/"
+  },
+  "mementos": {
+    "first": {
+      "datetime": "2000-06-21T04:41:56Z",
+      "uri": "http://an.archive.org/20000621044156/http://example.com/"
+    },
+    "last": {
+      "datetime": "2009-04-10T23:45:20Z",
+      "uri": "http://an.archive.org/20090410234520/http://example.com/"
+    },
+    "list": [
+      {
+        "datetime": "2003-05-13T00:00:13Z",
+        "uri": "http://an.archive.org/20030513000013/http://example.com/"
+      },
+      {
+        "datetime": "2005-04-10T07:05:12Z",
+        "uri": "http://an.archive.org/20050410070512/http://example.com/"
+      },
+      {
+        "datetime": "2006-10-05T20:30:51Z",
+        "uri": "http://an.archive.org/20061005203051/http://example.com/"
+      }
+    ]
+  },
+  "pages": {
+    "prev": {
+      "from": "2000-06-21T04:41:56Z",
+      "until": "2003-05-12T22:25:15Z",
+      "uri": "http://an.archive.org/timemap/1/json/http://example.com/"
+    },
+    "next": {
+      "from": "2006-10-06T00:00:57Z",
+      "until": "2009-04-10T23:45:20Z",
+      "uri": "http://an.archive.org/timemap/3/json/http://example.com/"
+    }
+  }
+}
+    </pre>
+</div> 
+<!-- End TimeMap PAGED Format and Example -->
+
+
+<br />
+
+<!-- TimeMap INDEX Format and example -->
+
+
+    <div class="t100_2"><div class="style3">
+    <a id="index"><h2>TimeMap Index Format</h2></a>
+    </div></div>
+    
+        <div class="t100_2"><div class="style3">
+    Whenever possible, <a href="#basic">basic TimeMaps</a> should be used. 
+    But there are cases where there are just too many Mementos for all information to reasonably fit into 
+    a single TimeMap. In these cases, either a TimeMap Index, described here, or <a href="#page">Paged TimeMaps</a> 
+    should be used.
+        <br /><br />
+    An Index TimeMap is a TimeMap that does not list any Mementos but rather provides 
+    pointers to several individual TimeMaps that, together, cover all Mementos known by the responding server. 
+    Both the Index TimeMap and the individual TimeMaps are JSON documents with MIME type <code>application/json</code>.  
+            <br /><br />
+    The Index TimeMap must list the URI of the Original Resource (<code>original_uri</code>). 
+    In addition, it should list 
+    the URI of the TimeGate for the Original Resource (<code>timegate_uri</code>) as well as  
+    its own URI (<code>timemap_uri</code>), 
+    serialized as <code>application/json</code> (<code>timemap_uri.json_format</code>) and/or 
+    <code>application/link-format</code> (<code>timemap_uri.link_format</code>).
+                <br /><br />
+    The Index TimeMap must provide references to all individual TimeMaps in an array (<code>indexes</code>).
+    For each referenced TimeMap, its URI (<code>uri</code>) must be provided. 
+    If the Mementos listed in a referenced TimeMap fully cover an interval of archival/version datetimes
+    (no other TimeMap lists any Mementos in that interval), 
+    then it is also highly recommended that the reference includes the start and end time of that interval  
+    (<code>from</code> and <code> until</code>).
+    <br /> <br />
+    Each individual TimeMaps referenced by the TimeMap Index contains the information and is serialized like a 
+    <a href="#page">Paged TimeMap</a> as shown in <a href="#example3">Example 3</a>, but it does not  
+    need to include references to previous and next TimeMaps as that information is already available in the 
+    Index TimeMap.
+    </div></div>
+  
+<br />
+
+    <div class="t100_4">
+    <div class="style4">
+                    <a id="example4">Example 4</a>: 
+    Assume that three individual TimeMaps describe the Mementos available 
+    for Original Resource (<code>http://example.com/</code>). 
+    Each TimeMap can be accessed at <code>http://an.archive.org/timemap/json/X/http://example.com/</code> where <code>X</code> 
+    is the TimeMap's number. 
+    These three TimeMaps are referenced in the TimeMap Index, shown below,  
+    available at <code>http://an.archive.org/timemap/link/http://example.com/</code>. 
+    </div>
+    <br />
+    <pre>
+{
+  "original_uri": "http://example.com/",
+  "timegate_uri": "http://an.archive.org/timegate/http://example.com/",
+  "timemap_uri": {
+    "json_format": "http://an.archive.org/timemap/json/http://example.com/",
+    "link_format": "http://an.archive.org/timemap/link/http://example.com/"
+  },
+  "timemap_index": [
+    {
+      "from": "2000-06-21T04:41:56Z",
+      "until": "2003-05-12T22:25:15Z",
+      "uri": "http://an.archive.org/timemap/1/json/http://example.com/"
+    },
+    {
+      "from": "2003-05-13T00:00:13Z",
+      "until": "2006-10-05T20:30:51Z",
+      "uri": "http://an.archive.org/timemap/2/json/http://example.com/"
+    },
+    {
+      "from": "2006-10-06T00:00:57Z",
+      "until": "2012-08-31T12:22:34Z",
+      "uri": "http://an.archive.org/timemap/3/json/http://example.com/"
+    }
+  ]
+}
+    </pre>
+</div>
+<!-- End TimeMap INDEX Format and Example -->
+
+    <div class="t100_2"><div class="style3">
+    <a id="extensions"><h2>Extensions</h2></a>
+    </div></div>
+
+    <div class="t100_2"><div class="style3">
+    The JSON TimeMap format allows for the introduction of extensions that can not readily be 
+    covered by the <code>application/link-format</code> TimeMap format. At this point the following 
+    extensions have been defined:
+    <ul>
+    <li><code>memento_compliant</code>: An indicator to convey whether an archive is compliant with the Memento protocol or not. It is used 
+    as a qualifier for TimeMap URIs. Values are <code>yes</code> or <code>no</code>. Introduced in <a href="http://timetravel.mementoweb.org/guide/api/#timemap-diy">DIY TimeMaps</a> 
+    exposed by the <a href="http://timetravel.mementoweb.org/">Time Travel service</a>.</li>
+    <li><code>archive_id</code>: A short name for an archive. It is used as a qualifier 
+    to a TimeMap URI. Values are provided by the <a href="http://labs.mementoweb.org/aggregator_config/archivelist.xml">Time Travel Archive Registry</a>, 
+    in the <code>id</code> attribute of the <code>link</code> element. 
+    Introduced in <a href="http://timetravel.mementoweb.org/guide/api/#timemap-diy">DIY TimeMaps</a> 
+    exposed by the <a href="http://timetravel.mementoweb.org/">Time Travel service</a>.</li>
+    </ul>
+    </div></div>
+
+
+
+<br />
+
+
+<!-- Cardinality Table Title -->
+
+    <div class="t100_2"><div class="style3">
+    <a id="table2"><h2>Values Cardinality</h2></a>
+    </div></div>
+    
+    <div class="t100_2"><div class="style3">
+    This table explains which value are mandatory (<code>1</code>), recommended (<code>>=0</code>) or if they do not apply(<code>0</code>).
+    If the enclosing Object do not apply, then the table enytry is (<code>-</code>). <br /><br />
+    </div></div>
+
+
+<!-- Start Cardinality Table -->
+
+ <table class="bordertable">
+ <tbody>
+ <tr>
+  <td class="trans_header_l_b2">Key</td><td class="trans_header_l_b2">Key</td><td class="trans_header_l_b2">Key</td><td class="trans_header_l_b2">Value Type</td><td class="trans_header_l_b2">Basic Format</td><td class="trans_header_l_b2">Paged Format</td><td class="trans_header_r_b2">Indexed Format</td>
+ </tr>
+  <tr>
+  <td class="trans_row_l2">original_uri</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">string (RFC3986)</td><td class="trans_row_l2">1</td><td class="trans_row_l2">1</td><td class="trans_row_r2">1</td>
+ </tr>
+  <tr class="odd">
+  <td class="trans_row_l2">timegate_uri</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">string (RFC3986)</td><td class="trans_row_l2">>=0</td><td class="trans_row_l2">>=0</td><td class="trans_row_r2">>=0</td>
+ </tr>
+ <tr class="even">
+  <td class="trans_row_l2">timemap_uri</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">string (RFC3986)</td><td class="trans_row_l2">>=0</td><td class="trans_row_l2">>=0</td><td class="trans_row_r2">>=0</td>
+ </tr>
+   <tr class="odd">
+  <td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">json_format</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">string (RFC3986)</td><td class="trans_row_l2">>=0</td><td class="trans_row_l2">>=0</td><td class="trans_row_r2">>=0</td>
+ </tr>
+    <tr class="even">
+  <td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">link_format</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">string (RFC3986)</td><td class="trans_row_l2">>=0</td><td class="trans_row_l2">>=0</td><td class="trans_row_r2">>=0</td>
+ </tr>
+   <tr class="odd">
+  <td class="trans_row_l2">mementos</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">object</td><td class="trans_row_l2">1</td><td class="trans_row_l2">1</td><td class="trans_row_r2">0</td>
+ </tr>
+  <tr class="odd">
+  <td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">first/last</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">object</td><td class="trans_row_l2">>=0</td><td class="trans_row_l2">>=0</td><td class="trans_row_r2">-</td>
+ </tr>
+  <tr class="odd">
+  <td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">prev/next</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">object</td><td class="trans_row_l2">0</td><td class="trans_row_l2">0</td><td class="trans_row_r2">-</td>
+ </tr>
+  <tr class="odd">
+  <td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">closest</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">object</td><td class="trans_row_l2">0</td><td class="trans_row_l2">>=0</td><td class="trans_row_r2">-</td>
+ </tr>
+ <tr class="odd">
+  <td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">all</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">array</td><td class="trans_row_l2">1</td><td class="trans_row_l2">1</td><td class="trans_row_r2">-</td>
+ </tr>
+ <tr class="even">
+  <td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">datetime</td><td class="trans_row_l2">string (ISO8601)</td><td class="trans_row_l2">1</td><td class="trans_row_l2">1</td><td class="trans_row_r2">-</td>
+ </tr>
+   <tr class="even">
+  <td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">uri</td><td class="trans_row_l2">string (RFC3986)</td><td class="trans_row_l2">1</td><td class="trans_row_l2">1</td><td class="trans_row_r2">-</td>
+ </tr>
+   <tr class="odd">
+  <td class="trans_row_l2">pages</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">object</td><td class="trans_row_l2">0</td><td class="trans_row_l2">1</td><td class="trans_row_r2">0</td>
+ </tr>
+   <tr class="odd">
+  <td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">prev/next</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">object</td><td class="trans_row_l2">-</td><td class="trans_row_l2">1</td><td class="trans_row_r2">-</td>
+ </tr>
+    <tr class="odd">
+  <td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">from</td><td class="trans_row_l2">string (ISO8601)</td><td class="trans_row_l2">-</td><td class="trans_row_l2">1</td><td class="trans_row_r2">-</td>
+  </tr>
+    <tr class="odd">
+ <td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">until</td><td class="trans_row_l2">string (ISO8601)</td><td class="trans_row_l2">-</td><td class="trans_row_l2">1</td><td class="trans_row_r2">-</td>
+ </tr>
+   <tr class="even">
+  <td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">uri</td><td class="trans_row_l2">string (RFC3986)</td><td class="trans_row_l2">-</td><td class="trans_row_l2">1</td><td class="trans_row_r2">-</td>
+  </tr>
+   <tr class="odd">
+  <td class="trans_row_l2">timemap_index</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">array</td><td class="trans_row_l2">0</td><td class="trans_row_l2">0</td><td class="trans_row_r2">1</td>
+ </tr>
+    <tr class="odd">
+  <td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">from</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">string (ISO8601)</td><td class="trans_row_l2">-</td><td class="trans_row_l2">-</td><td class="trans_row_r2">1</td>
+  </tr>
+    <tr class="odd">
+ <td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">until</td><td class="trans_row_l2">&nbsp;</td><td class="trans_row_l2">string (ISO8601)</td><td class="trans_row_l2">-</td><td class="trans_row_l2">-</td><td class="trans_row_r2">1</td>
+ </tr>
+  <tr class="odd">
+    <td class="trans_bot_l2">&nbsp;</td><td class="trans_bot_l2">uri</td><td class="trans_bot_l2">&nbsp;</td><td class="trans_bot_l2">string (RFC3986)</td><td class="trans_bot_l2">-</td><td class="trans_bot_l2">-</td><td class="trans_bot_r2">1</td>
+ </tr>
+</tbody></table>
+
+<!-- End Cardinality Table -->
+
+    <br /><br /><br /><br />
+
+<div id="menu_bottom" style="background: #eee; height: 60px; bottom: 0; position: relative; width: 980px; margin: 0;">
+<iframe src="https://mementoweb.github.io/static/menu_bottom_cc.html" style="border: 0; width: 980px; height: 55px"></iframe>
+</div> 
+
+
+  
+  </div>
+  
+    
+
+</body>
+
+</html>
