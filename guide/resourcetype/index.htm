@@ -141,7 +141,7 @@ width: 90%;
 
 
 <div id="menu_top">
-<iframe src="https://mementoweb.github.io/timetravel/menu_top.html" frameBorder="0" width="1000" height="102"></iframe>
+<iframe src="https://mementoweb.github.io/static/menu_top_mw.html" frameBorder="0" width="1000" height="102"></iframe>
 </div>
 
 <table width="1000">
@@ -199,19 +199,19 @@ width: 90%;
       <tr>
         <td class="trans_row_l"><span class="style3"></span></td>
         <td class="trans_row_r"><span class="style3">
-        The resource (URI-Q) can be unambiguously characterized as a Memento because both a <a href="http://www.mementoweb.org/guide/rfc/#Accept-Memento-Datetime">Memento-Datetime</a> 
-        header and a HTTP Link header with a Relation Type of &quot;<a href="http://www.mementoweb.org/guide/rfc/#rfc.section.2.2.1">original</a>&quot; are included 
+        The resource (URI-Q) can be unambiguously characterized as a Memento because both a <a href="https://datatracker.ietf.org/doc/html/rfc7089#Accept-Memento-Datetime">Memento-Datetime</a> 
+        header and a HTTP Link header with a Relation Type of &quot;<a href="https://datatracker.ietf.org/doc/html/rfc7089#rfc.section.2.2.1">original</a>&quot; are included 
         in its HTTP response headers. 
         <br />
         <br />
         The value of the Memento-Datetime header indicates the archival datetime of the resource, i.e. the datetime since when the resource has been stable and will remain to be stable. 
-        The &quot;<a href="http://www.mementoweb.org/guide/rfc/#rfc.section.2.2.1.1">original</a>&quot; Link points at the Original Resource (URI-R) for which the current resource (URI-Q) is a Memento. 
+        The &quot;<a href="https://datatracker.ietf.org/doc/html/rfc7089#rfc.section.2.2.1.1">original</a>&quot; Link points at the Original Resource (URI-R) for which the current resource (URI-Q) is a Memento. 
         <br />
         <br />
         Further HTTP Link relationships may be included in the 
-        response header from URI-Q, specifically &quot;<a href="http://www.mementoweb.org/guide/rfc/#rfc.section.2.2.2">timegate</a>&quot;, 
-        &quot;<a href="http://www.mementoweb.org/guide/rfc/#rfc.section.2.2.3">timemap</a>&quot; and 
-        &quot;<a href="http://www.mementoweb.org/guide/rfc/#rfc.section.2.2.4">memento</a>&quot; Links.
+        response header from URI-Q, specifically &quot;<a href="https://datatracker.ietf.org/doc/html/rfc7089#rfc.section.2.2.2">timegate</a>&quot;, 
+        &quot;<a href="https://datatracker.ietf.org/doc/html/rfc7089#rfc.section.2.2.3">timemap</a>&quot; and 
+        &quot;<a href="https://datatracker.ietf.org/doc/html/rfc7089#rfc.section.2.2.4">memento</a>&quot; Links.
         </span></td>
       </tr>
       <tr>
@@ -272,9 +272,9 @@ Connection: keep-alive
         supports HTTP content negotiation in the datetime dimension.
         <br />
 		<br />
-		The response header will typcially also include HTTP Link headers, specifically &quot;<a href="http://www.mementoweb.org/guide/rfc/#rfc.section.2.2.1">original</a>&quot;,
-        &quot;<a href="http://www.mementoweb.org/guide/rfc/#rfc.section.2.2.3">timemap</a>&quot;, and 
-        &quot;<a href="http://www.mementoweb.org/guide/rfc/#rfc.section.2.2.4">memento</a>&quot; Links. 
+		The response header will typcially also include HTTP Link headers, specifically &quot;<a href="https://datatracker.ietf.org/doc/html/rfc7089#rfc.section.2.2.1">original</a>&quot;,
+        &quot;<a href="https://datatracker.ietf.org/doc/html/rfc7089#rfc.section.2.2.3">timemap</a>&quot;, and 
+        &quot;<a href="https://datatracker.ietf.org/doc/html/rfc7089#rfc.section.2.2.4">memento</a>&quot; Links. 
         Also, additional values may be provided in the Vary header, for example, &quot;accept&quot; to 
         indicate that HTTP content negotiation is available in the media type dimension too.
         </span></td>
@@ -329,8 +329,8 @@ Connection: keep-alive
             <tr>
         <td class="trans_row_l"><span class="style3"></span></td>
         <td class="trans_row_r"><span class="style3">
-        In a perfectly Memento-ized Web, the abscence of both a <a href="http://www.mementoweb.org/guide/rfc/#Accept-Memento-Datetime">Memento-Datetime</a> header 
-        and an &quot;<a href="http://www.mementoweb.org/guide/rfc/#rfc.section.2.2.1.1">original</a>&quot; HTTP Link header 
+        In a perfectly Memento-ized Web, the abscence of both a <a href="https://datatracker.ietf.org/doc/html/rfc7089#Accept-Memento-Datetime">Memento-Datetime</a> header 
+        and an &quot;<a href="https://datatracker.ietf.org/doc/html/rfc7089#rfc.section.2.2.1.1">original</a>&quot; HTTP Link header 
         would be sufficient to decide that URI-Q is an Original Resource. 
         <br />
 		<br />     
@@ -342,8 +342,8 @@ Connection: keep-alive
         <br /> 
         One way to approach the problem is by introducing a reference list for URI syntaxes used for Mementos by major Web Archives and Content Management Systems. 
         This is rather imperfect and definitely not very scalable. But all of this sorrow goes away if Web Archives and Content Management Systems 
-        implement the <a href="http://www.mementoweb.org/guide/rfc/#Accept-Memento-Datetime">Memento-Datetime</a> and 
-        the &quot;<a href="http://www.mementoweb.org/guide/rfc/#rfc.section.2.2.1.1">original</a>&quot; HTTP Link header. 
+        implement the <a href="https://datatracker.ietf.org/doc/html/rfc7089#Accept-Memento-Datetime">Memento-Datetime</a> and 
+        the &quot;<a href="https://datatracker.ietf.org/doc/html/rfc7089#rfc.section.2.2.1.1">original</a>&quot; HTTP Link header. 
         What are you waiting for? Ping that archive or CMS near to you and get them going!
         </span></td>
       </tr> 
@@ -357,7 +357,7 @@ Connection: keep-alive
         whether URI-Q matches one of the URI syntaxes in the reference list. If it does, URI-Q can be categorized as a Memento, and the value of its
         <a href=http://tools.ietf.org/html/rfc2616#section-14.29">Last-Modified</a> header (if available) can be interpreted as the Memento's datetime, 
         which, in a perfect world, would be expressed in the
-        <a href="http://www.mementoweb.org/guide/rfc/#Accept-Memento-Datetime">Memento-Datetime</a> header.
+        <a href="https://datatracker.ietf.org/doc/html/rfc7089#Accept-Memento-Datetime">Memento-Datetime</a> header.
         <br />
         <br />  
 	</span></td>
@@ -387,7 +387,7 @@ Connection: keep-alive
         As per [1] above, the resource (URI-Q) can unambiguously be characterized as a Memento because it has the necessary Memento-Datetime HTTP response header.
         <br />
         <br />
-        In this particular case, the &quot;<a href="http://www.mementoweb.org/guide/rfc/#rfc.section.2.2.1">original</a>&quot; link points at URI-Q itself, indicating that
+        In this particular case, the &quot;<a href="https://datatracker.ietf.org/doc/html/rfc7089#rfc.section.2.2.1">original</a>&quot; link points at URI-Q itself, indicating that
         URI-Q is both a Memento and an Original Resource. 
         This happens in cases where a resource is archived/stabilized at its original Web location and may not necessarily also be 
         available at another Web location for archival purposes.
@@ -451,8 +451,8 @@ Connection: Keep-Alive
         <br/>
         In cases like this, the redirecting response from 
         URI-M<sub>i</sub> (i &gt; 1) to URI-M<sub>1</sub> includes a HTTP Link header that contains a link with 
-        an &quot;<a href="http://www.mementoweb.org/guide/rfc/#rfc.section.2.2.1">original</a>&quot; relation type that points at the Original Resource (URI-R), 
-        and it does not contain a <a href="http://www.mementoweb.org/guide/rfc/#Accept-Memento-Datetime">Memento-Datetime</a> header (as no Memento is served yet), 
+        an &quot;<a href="https://datatracker.ietf.org/doc/html/rfc7089#rfc.section.2.2.1">original</a>&quot; relation type that points at the Original Resource (URI-R), 
+        and it does not contain a <a href="https://datatracker.ietf.org/doc/html/rfc7089#Accept-Memento-Datetime">Memento-Datetime</a> header (as no Memento is served yet), 
         and no Vary header (as URI-M<sub>i</sub> is not a TimeGate). 
         <br/>
         <br/>
@@ -550,14 +550,14 @@ Age: 0
         <br/>
         <br/>
         In cases like this, the response (typically with a HTTP 504 status code) includes a HTTP Link header that contains a link with 
-        an &quot;<a href="http://www.mementoweb.org/guide/rfc/#rfc.section.2.2.1.1">original</a>&quot; relation type that points at the Original Resource (URI-R), 
-        and it does not contain a <a href="http://www.mementoweb.org/guide/rfc/#Accept-Memento-Datetime">Memento-Datetime</a> header (as no Memento is served yet), 
+        an &quot;<a href="https://datatracker.ietf.org/doc/html/rfc7089#rfc.section.2.2.1.1">original</a>&quot; relation type that points at the Original Resource (URI-R), 
+        and it does not contain a <a href="https://datatracker.ietf.org/doc/html/rfc7089#Accept-Memento-Datetime">Memento-Datetime</a> header (as no Memento is served yet), 
         and no Vary header (as URI-Q is not a TimeGate). 
         <br/>
         <br/>
         In this scenario, a client can decide to make no further attempts to access URI-Q, but rather 
         start a new Memento cycle using the URI-R of the Original Resource that is provided in the 
-        &quot;<a href="http://www.mementoweb.org/guide/rfc/#rfc.section.2.2.1.1">original</a>&quot; link.
+        &quot;<a href="https://datatracker.ietf.org/doc/html/rfc7089#rfc.section.2.2.1.1">original</a>&quot; link.
 	</span></td>
       </tr>
     </tbody>
@@ -670,13 +670,13 @@ Age: 0
         <td class="trans_bot_l"><span class="style3"></span></td>
         <td class="trans_bot_r"><span class="style3">
         The resource (URI-Q) can be unambiguously characterized as a TimeBundle because of the presence of both the HTTP 303 status code and a 
-        Link header that contains a link with an &quot;<a href="http://www.mementoweb.org/guide/rfc/#rfc.section.2.2.1.1">original</a>&quot; relation type pointing 
+        Link header that contains a link with an &quot;<a href="https://datatracker.ietf.org/doc/html/rfc7089#rfc.section.2.2.1.1">original</a>&quot; relation type pointing 
         at Original Resource URI-R. 
         <br />
 		<br />
 		The response header will typcially also include HTTP Link headers, specifically 
-        &quot;<a href="http://www.mementoweb.org/guide/rfc/#rfc.section.2.2.1.3">timemap</a>&quot;, and 
-        &quot;<a href="http://www.mementoweb.org/guide/rfc/#rfc.section.2.2.1.4">memento</a>&quot; Links. 
+        &quot;<a href="https://datatracker.ietf.org/doc/html/rfc7089#rfc.section.2.2.1.3">timemap</a>&quot;, and 
+        &quot;<a href="https://datatracker.ietf.org/doc/html/rfc7089#rfc.section.2.2.1.4">memento</a>&quot; Links. 
         Also, additional values may be provided in the Vary header, for example, &quot;accept&quot; to 
         indicate that HTTP content negotiation is available in the media type dimension too.
 	</span></td>
@@ -691,6 +691,11 @@ Age: 0
   
   </div>
   
+    <div id="menu_bottom" style="background: #eee; height: 60px; bottom: 0; position: relative; width: 980px; margin: 0;">
+<iframe src="https://mementoweb.github.io/static/menu_bottom_cc.html" style="border: 0; width: 980px; height: 55px"></iframe>
+</div> 
+  
+  </div>
 
 </body>
 

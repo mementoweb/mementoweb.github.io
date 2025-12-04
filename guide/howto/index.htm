@@ -5,12 +5,9 @@
 
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <title>Memento Guide: Resource Versioning and Memento</title>
+  <title>Resource Versioning and the Memento Protocol</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-16" />
 
-<!-- Google Web Master Tools verification code -->  
-
- <meta name="verify-v1" content="KwyQrdBgC6B1BxoehJe4mm1X7AxDurmC9KL6QsyIaNQ=" />
   
   <style type="text/css">
 .container {
@@ -132,14 +129,13 @@ width: 90%;
 
 
 <div id="menu_top">
-<iframe src="http://mementoweb.org/timetravel/menu_top.html" frameBorder="0" width="1000" height="102"></iframe>
+<iframe src="https://mementoweb.github.io/static/menu_top_mw.html" frameBorder="0" width="1000" height="102"></iframe>
 </div>
 
 <table width="1000">
     <tbody>
       <tr>
-        <td class="t100_1"><span class="style3"><h1>Memento Guide - Resource Versioning and Memento</h1>
-         <p>Last updated: November 5, 2014</p>
+        <td class="t100_1"><span class="style3"><h1>Resource Versioning and the Memento Protocol</h1>
         </span></td>
       </tr>
     </tbody>
@@ -150,7 +146,7 @@ width: 90%;
     <tbody>
      <tr><td class="t100_2"><span class="style3"><h2>Introduction: A common resource versioning pattern</h2></span></td></tr>
      <tr><td class="t100_2"><span class="style3">
-     The <a href="http://www.mementoweb.org/guide/rfc/">Memento protocol</a> is widely supported by web archives. It provides a uniform 
+     The <a href="https://datatracker.ietf.org/doc/html/rfc7089">Memento protocol</a> is widely supported by web archives. It provides a uniform 
      HTTP-based approach to access Mementos, archived versions of web resources, in distributed web archives around the world. Although 
      the Memento protocol can provide the same uniform interface to access resource versions in systems such as wikis, content management systems, 
      and software versioning systems, its applicability in that realm is not well understood. This document provides clarifications and details various 
@@ -158,7 +154,7 @@ width: 90%;
      <br /><br />
        </span></td></tr>
        <tr><td class="t100_2"><span class="style3">
-      The <a href="http://www.mementoweb.org/guide/rfc/">Memento protocol</a> is closely aligned with a common 
+      The <a href="https://datatracker.ietf.org/doc/html/rfc7089">Memento protocol</a> is closely aligned with a common 
       resource versioning pattern that consists of:
       <ul>
       <li>Having a <code>generic URI</code> where at any moment in time the current version of the resource is accessible. The Memento protocol refers to 
@@ -177,7 +173,7 @@ width: 90%;
       </span></td></tr>
       <tr><td class="t100_2"><span class="style3">
      Supporting Memento in systems that follow such a versioning pattern 
-     does not necessarily require implementing all aspects of the <a href="http://www.mementoweb.org/guide/rfc/">protocol</a>. 
+     does not necessarily require implementing all aspects of the <a href="https://datatracker.ietf.org/doc/html/rfc7089">protocol</a>. 
      There are situations in which a little bit of Memento, for example only providing Memento HTTP headers and links with 
      Memento relation types, can go a long way. 
      <br /><br />
@@ -201,7 +197,7 @@ will no longer change while it will remain at its original URI of publication.
       <a href="http://www.iana.org/assignments/message-headers/message-headers.xhtml#perm-headers">Permanent IANA Message Header Registry</a>,
 and the 
       <a href="http://www.iana.org/assignments/link-relations/link-relations.xhtml">IANA Link Relation Type Registry</a>, respectively. 
-      They are formally defined in <a href="http://www.mementoweb.org/guide/rfc/">RFC 7089</a>.
+      They are formally defined in <a href="https://datatracker.ietf.org/doc/html/rfc7089">RFC 7089</a>.
     </span></td></tr>
     </tbody>
 </table>
@@ -212,7 +208,7 @@ and the
       <tr><td class="t100_2"><span class="style3">
       A version resource is a resource with frozen content that was current for a certain period in time.
       It encapsulates a prior state of the generic resource, identified by its <code>generic URI</code>.  
-      Hence, a version resource is a Memento as defined in the <a href="http://www.mementoweb.org/guide/rfc/">Memento specification</a>, 
+      Hence, a version resource is a Memento as defined in the <a href="https://datatracker.ietf.org/doc/html/rfc7089">Memento specification</a>, 
       and the appropriate Memento HTTP headers can be applied. The headers are used  
       to express the version datetime, to relate a <code>version URI</code> to the corresponding <code>generic URI</code>, and to support 
       navigation between versions. In essence, they are introduced to convey the version information that is 
@@ -385,7 +381,7 @@ Link: &lt;http://www.w3.org/TR/webarch/&gt;; rel="original",
   </span></td></tr>
    <tr><td class="t100_2"><span class="style3">
      Many datetime negotiation implementation patterns exist, detailed in the 
-     <a href="http://www.mementoweb.org/guide/rfc/#component-1.2">Datetime Negotiation section of the Memento protocol</a>, 
+     <a href="https://datatracker.ietf.org/doc/html/rfc7089#component-1.2">Datetime Negotiation section of the Memento protocol</a>, 
      to accommodate situations in which:
      <ul>
      <li>The original resource and the resource versions are hosted by the same system, as is the case with wikis, content management systems, 
@@ -397,16 +393,16 @@ Link: &lt;http://www.w3.org/TR/webarch/&gt;; rel="original",
    <tr><td class="t100_2"><span class="style3">
    For wikis, content management systems, and software versioning systems that follow the versioning approach 
    illustrated at the beginning of this document, the typical implementation of datetime negotiation is one of the following 
-   patterns detailed in <a href="http://www.mementoweb.org/guide/rfc/">RFC 7089</a>:
+   patterns detailed in <a href="https://datatracker.ietf.org/doc/html/rfc7089">RFC 7089</a>:
      <ul>
-     <li><a href="http://www.mementoweb.org/guide/rfc/#Pattern1.1">Pattern 1.1</a> in which the original resource coincides with its TimeGate. 
+     <li><a href="https://datatracker.ietf.org/doc/html/rfc7089#Pattern1.1">Pattern 1.1</a> in which the original resource coincides with its TimeGate. 
      When a client issues an HTTP HEAD/GET request against the 
      <code>generic URI</code> of this resource, 
      and that request includes <code>Accept-Datetime</code> request header it will be redirected (<code>302 Found</code> status code) 
      to the <code>version URI</code> 
      that was current at the time specified in the <code>Accept-Datetime</code> request header. Details for the ongoing example are 
      <a href="#pattern1">here</a>.</li>
-     <li><a href="http://www.mementoweb.org/guide/rfc/#Pattern2.1">Pattern 2.1</a> in which the original resource does not
+     <li><a href="https://datatracker.ietf.org/doc/html/rfc7089#Pattern2.1">Pattern 2.1</a> in which the original resource does not
      coincide with its TimeGate. When a client issues an HTTP HEAD/GET request, with or without an <code>Accept-Datetime</code> request header,  
      against the <code>generic URI</code> of this resource, the response will contain an HTTP <code>Link</code> header that includes a link 
      with the <code>timegate</code> relation type that points at the TimeGate associated with the original resource. 
@@ -422,7 +418,7 @@ Link: &lt;http://www.w3.org/TR/webarch/&gt;; rel="original",
      <br /><br />
      </span></td></tr>
      <tr id="pattern1"><td class="t100_2"><span class="style3">
-         Following <a href="http://www.mementoweb.org/guide/rfc/#Pattern1.1">Pattern 1.1</a>, 
+         Following <a href="https://datatracker.ietf.org/doc/html/rfc7089#Pattern1.1">Pattern 1.1</a>, 
           for the ongoing example of the <a href="http://www.w3.org/TR/webarch/">Architecture of the World Wide Web</a> specification, 
          the TimeGate would 
          coincide with the <code>generic URI</code> <code>http://www.w3.org/TR/webarch/</code>. Lets assume a client wants to access the 
@@ -479,7 +475,7 @@ Link: &lt;http://www.w3.org/TR/webarch/&gt;
          <br /><br />
      </span></td></tr>
      <tr id="pattern2"><td class="t100_2"><span class="style3">
-         Following <a href="http://www.mementoweb.org/guide/rfc/#Pattern2.1">Pattern 2.1</a>, the TimeGate would not 
+         Following <a href="https://datatracker.ietf.org/doc/html/rfc7089#Pattern2.1">Pattern 2.1</a>, the TimeGate would not 
          coincide with the <code>generic URI</code> and could, for example, be exposed at <code>http://www.w3.org/TR/timegate/webarch/</code>. 
          Lets again assume a client wants to access the 
     version of the specification that was current on September 11 2004. In order to do so, the client issues the following HTTP HEAD (or GET) request 
@@ -632,17 +628,11 @@ Link: &lt;https://twitter.com/hvdsomp/status/401134723210416128&gt;; rel="origin
   
   </div>
   
-<!-- Google Analytics code  -->  
-
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-10627462-1");
-pageTracker._trackPageview();
-} catch(err) {}</script>
+    <div id="menu_bottom" style="background: #eee; height: 60px; bottom: 0; position: relative; width: 980px; margin: 0;">
+<iframe src="https://mementoweb.github.io/static/menu_bottom_cc.html" style="border: 0; width: 980px; height: 55px"></iframe>
+</div> 
+  
+  </div>
 
 </body>
 
