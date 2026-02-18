@@ -22,7 +22,7 @@ select {
 <script>
 var mementoweb_links = {
         "title": "Memento Project",
-        "logo": "https://mementoweb.github.io/static/css/images/memento_logo.svg",
+        "logo": "/static/css/images/memento_logo.svg",
         "menu_items": {
             "https://mementoweb.org/about/": "About",
             "https://mementoweb.org/demo/": "Demos",
@@ -33,7 +33,7 @@ var mementoweb_links = {
 }
 var timetravel_links = {
         "title": "Time Travel",
-        "logo": "https://mementoweb.github.io/static/css/images/timetravel_logo.png",
+        "logo": "/static/css/images/timetravel_logo.png",
         "menu_items": {
             "https://timetravel.mementoweb.org/about/": "About",
             "https://timetravel.mementoweb.org/api/": "API",
@@ -45,7 +45,7 @@ var apps = {
     "https://mementoweb.org/": mementoweb_links,
     "https://robustlinks.mementoweb.org/": {
         "title": "Robust Links",
-        "logo": "https://mementoweb.github.io/static/css/images/robustlinks.png",
+        "logo": "/static/css/images/robustlinks.png",
         "menu_items": {
             "https://robustlinks.mementoweb.org/about/": "About",
             "https://robustlinks.mementoweb.org/demo/": "Demos",
@@ -56,7 +56,7 @@ var apps = {
     "https://timetravel.mementoweb.org/": timetravel_links,
     "https://whatdiditlooklike.mementoweb.org/": {
         "title": "What Did It Look Like",
-        "logo": "https://mementoweb.github.io/static/css/images/whatdiditlooklike.png",
+        "logo": "/static/css/images/whatdiditlooklike.png",
         "menu_items": {
             "https://whatdiditlooklike.mementoweb.org/about": "About",
             "https://whatdiditlooklike.mementoweb.org/archives": "Archive",
@@ -113,7 +113,7 @@ window.addEventListener("message", function(event) {
     <div style="border-bottom: 1px solid #ddd; height: 1px; position: absolute; width: 50%; padding-top: 38px; z-index: -10;margin-left: 280px;"></div>
     <span id="app_logo">
                 <a href="https://timetravel.mementoweb.org/" target="_parent">
-                    <img id="app_logo_img" src="https://mementoweb.github.io/static/css/images/timetravel_logo.png" style="width: 80px; height: 80px;"/>
+                    <img id="app_logo_img" src="/static/css/images/timetravel_logo.png" style="width: 80px; height: 80px;"/>
                 </a>
                 <!--
                 <select id="app_select" onchange="window.top.location = this.options[this.selectedIndex].value;">

@@ -1,0 +1,94 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoascreenfonts1\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 ArialMT;}
+{\colortbl;\red255\green255\blue255;\red26\green26\blue26;}
+{\*\expandedcolortbl;;\csgenericrgb\c10196\c10196\c10196;}
+\paperw12240\paperh15840\margl1440\margr1440\vieww14820\viewh16240\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs26 \cf2 A Memento client interacts with web resources by including an Accept-Datetime HTTP header that conveys its preferred datetime. The challenge for a Memento client is determining the Resource Type (https://mementoweb.org/guide/resourcetype/) of the resource it is currently interacting with (URI-Q): is it an Original Resource (URI-R), a TimeGate (URI-G), or a Memento (URI-M)?\
+\
+[INIT]\
+\
+SET URI-R=blank\
+SET TimeGate-FLAG=FALSE\
+\
+===========\
+\
+[START]\
+\
+Issue an HTTP HEAD against URI-Q with an Accept-Datetime HTTP header and value that conveys the preferred datetime\
+GOTO [TEST-0]\
+\
+===========\
+\
+[TEST-0]\
+\
+! \'97 Is URI-Q a TimeGate?\
+\
+IF (the response header from URI-Q contains "Vary: accept-datetime\'94) THEN\
+	SET TimeGate-FLAG=TRUE\
+ENDIF\
+GOTO [TEST-1]\
+\
+============\
+\
+[TEST-1] \
+\
+! \'97 Is URI-Q a Memento?\
+\
+IF (the response header from URI-Q contains \'93Memento-Datetime:\'93) THEN\
+	SET TimeGate-FLAG=FALSE\
+	SET URI-R=blank\
+		IF (the response status code from URI-Q is a 3XX) THEN\
+			GOTO [FOLLOW]\
+		ELSE\
+			STOP !\'97 SUCCESS, you got a Memento\
+		ENDIF\
+ELSE\
+	GOTO [TEST-2]\
+ENDIF\
+\
+============\
+\
+[TEST-2]\
+\
+! Follow redirects\
+\
+IF (the response status code from URI-Q is a 3XX) THEN\
+	GOTO [FOLLOW]\
+ELSE\
+	GOTO [TEST-3]\
+ENDIF\
+\
+============\
+\
+[TEST-3]\
+\
+IF (TimeGate-FLAG=TRUE) AND (the response status code from URI-Q is a a 4XX or 5XX) THEN\
+	We got a case of TimeGate error. How does the user agent handle this?\
+ELSE\
+	GOTO [TEST-4]\
+ENDIF\
+\
+============\
+\
+[TEST-4]\
+\
+! It\'92s an Original Resource\
+\
+SET URI-R=URI-Q\
+IF (the response header from URI-Q contains a \'93timegate\'94 link) THEN\
+	SET URI-Q=the URI that is the target of the \'93timegate\'94 link\
+ELSE\
+	SET URI-Q=the URI of the user agent\'92s preferred TimeGate\
+ENDIF\
+GOTO [START]\
+\
+============\
+\
+[FOLLOW]\
+\
+URI-Q = the value of Location HTTP response header returned by URI-Q\
+GOTO [START]\
+}

@@ -1,0 +1,245 @@
+<!DOCTYPE html>  
+<html lang="en" itemscope itemtype="http://schema.org/WebPage" itemid="https://robustlinks.mementoweb.org/demo/">
+<head>
+  <meta charset="utf-8" />
+  <meta itemprop="dateModified" content="2020-06-29">
+  <meta itemprop="datePublished" content="2015-01-22">
+      <link rel="icon" type="image/png" href="https://mementoweb.org/static/css/images/robustlinks_20x20.png">
+  <title>Robust Links - Demos</title>
+
+  <style type="text/css">
+body {
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+}
+.container {
+  background: #ffffff; 
+  width: 980px;
+  margin: 0 auto;
+  }
+.table {
+	BORDER-RIGHT: #999999 1px solid;
+	BORDER-TOP: #999999 1px solid;
+	BORDER-LEFT: #999999 1px solid;
+	BORDER-BOTTOM: #999999 1px solid;
+	border-spacing: 2px;
+}
+  .th10 {
+  width: 10%;
+  background-color: #ffffff;
+  text-align: left;
+  }
+  .th20 {
+  width: 20%;
+  background-color: #ffffff;
+  text-align: left;
+  }
+  .th80 {
+  width: 80%;
+  background-color: #ffffff;
+  text-align: right;
+  }
+.th50 {
+  width: 50%;
+  background-color: #ffffff;
+  color: #666666;
+  text-align: center;
+  }
+  .th40 {
+  width: 40%;
+  background-color: #ffffff;
+  text-align: right;
+  }
+.t50_1 {
+  width: 50%;
+  background-color: #ffffff;
+  text-align: center;
+  }
+.t50_2 {
+  width: 50%;
+  background-color: #eeeeee;
+  text-align: center;
+  }
+.t100_1 {
+  width: 100%;
+  background-color: #eeeeee;
+  text-align: left;
+  }
+.t100_2 {
+  width: 100%;
+  background-color: #ffffff;
+  text-align: left;
+  }
+  .t100_3 {
+  width: 100%;
+  background-color: #ffffff;
+  text-align: center;
+  }
+  .t100_4 {
+  width: 100%;
+  background-color: #eeeeee;
+  text-align: center;
+  }
+  .t100_5 {
+  width: 100%;
+  background-color: #ffffff;
+  text-align: right;
+  }
+.style3 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000000;
+}
+.style4 {
+  font-family: Arial, Helvetica, sans-serif; 
+  color: #000099;
+  }
+ .img.center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+ <div id="menu_top">
+    <iframe id="menu_top_frame" src="https://mementoweb.org/static/menu_top_rl.html" style="border: 0; width: 980px; height: 102px"></iframe>
+ </div>
+
+
+    
+      
+        <div class="t100_1"><div class="style3"><h1>Robust Links - Demos</h1>
+        </div>
+      </div>
+    
+
+  
+  <br />
+  
+
+ 
+      
+        <div class="t100_2">
+        <div class="style3">This page lists examples of the use of <a href="https://robustlinks.mementoweb.org/spec/">robustified links</a>.
+        </div>
+      </div>
+      
+              <br />
+                        
+        <div class="t100_2"><div class="style3"><b>Reference List demonstration page</b>:
+                <br /><br />
+       Links in references in the <a href="https://robustlinks.mementoweb.org/demo/uri_references_js.html">Reference List demonstration page</a> are robustified with 
+        the <a href="https://robustlinks.mementoweb.org/spec/#data-attributes"><code>data-versionurl</code></a> and 
+        <a href="https://robustlinks.mementoweb.org/spec/#data-attributes"><code>data-versiondate</code></a> attributes:
+        <ul>
+        <li>The <code>data-versionurl</code> attribute contains the URI of a snapshot of the linked resource that was created when referencing it. 
+        In the Reference List demo, that URI is used to provide a <code>Version archived on</code> option.</li>
+        <li>The <code>data-versiondate</code> attribute contains the datetime of taking the snapshot. 
+        In combination with the URI of the original resource provided in the <code>href</code> attribute of the link, it is used to provide a 
+        <code>Version archived near</code> option. This feature will find a snapshot of the linked 
+        resource that was created around the time of taking the snapshot, even if the snapshot that was taken is itself not accessible.</li>
+        </ul> 
+        These attributes are made actionable using the Robust Links JavaScript and CSS code, available in the 
+<a href="https://github.com/iipc/robustlinks">IIPC Robust Links GitHub repository</a>. They are embedded in the Reference List demo by including persistent 
+links to <a href="https://doi.org/10.25776/h1fa-7a28"><code>https://doi.org/10.25776/h1fa-7a28</code></a> for the JavaScript and 
+    <a href="https://doi.org/10.25776/z58z-r575"><code>https://doi.org/10.25776/z58z-r575</code></a> for the CSS, respectively.
+ <!-- The demonstration page 
+        also contains a creation date for the page expressed by means of schema.org's 
+        <a href="https://robustlinks.mementoweb.org/spec/#page-date"><code>datePublished</code></a> item property. 
+        This datetime is used in the demonstration to provide a "Get near page date" feature for links.
+        <ul>
+        <li><a href="https://robustlinks.mementoweb.org/demo/uri_references_js.html">Reference List demo</a> that works with any browser 
+        and that has embedded JavaScript to make Robust Links 
+        operational.</li>
+        <li><a href="https://robustlinks.mementoweb.org/demo/uri_references.html">Reference List demo</a> that requires a Chrome browser equipped with 
+        the <a href="https://chrome.google.com/webstore/detail/memento/jgbfpjledahoajcppakbgilmojkaghgm">Memento Time Travel</a> extension.</li>
+        </ul>
+        -->
+        </div></div>
+        
+        <br />
+	        
+          <div class="t100_2"><div class="style3"><b>A code4lib article that features Robust Links</b>:
+                <br /><br />
+       This <a href="https://journal.code4lib.org/articles/15509">code4lib article</a> 
+       has robustified links with the 
+       <a href="https://robustlinks.mementoweb.org/spec/#data-attributes"><code>data-versionurl</code></a> 
+       and <a href="https://robustlinks.mementoweb.org/spec/#data-attributes"><code>data-versiondate</code></a> 
+       attributes that are made actionable using the Robust Links JavaScript and CSS code, available in the 
+<a href="https://github.com/iipc/robustlinks">IIPC Robust Links GitHub repository</a>. They are embedded in the code4lib article by 
+including persistent links to the respective code, in the same way as described above for the Reference List demo.
+    
+        </div></div>
+  
+    <br />
+    
+            <div class="t100_2"><div class="style3"><b>robustify.js demonstration page</b>:
+                <br /><br />
+       The <a href="http://digitopia.nl/robustify/example.html">page</a> that demonstrates 
+       <a href="https://github.com/renevoorburg/robustify.js">robustify.js</a> has several links that use the 
+       <a href="https://robustlinks.mementoweb.org/spec/#data-attributes"><code>data-versionurl</code></a> and 
+        <a href="https://robustlinks.mementoweb.org/spec/#data-attributes"><code>data-versiondate</code></a> attributes to robustify its links.
+        When a link is clicked, a server-side script is called that checks whether it still works. 
+        <ul>
+        <li>
+        If the link is rotten, the user is 
+        informed about the link malfunction and is then redirected to a snapshot in a web archive. 
+        The nature of the redirection is dependent on the availability of 
+        the attributes of robustified links.
+        <ul>
+        <li>If <a href="https://robustlinks.mementoweb.org/spec/#data-attributes"><code>data-versionurl</code></a> is provided, 
+        the user is redirected to the snapshot provided in the attribute.</li>
+        <li>If <a href="https://robustlinks.mementoweb.org/spec/#data-attributes"><code>data-versiondate</code></a> is available, 
+        the redirection is based on its datetime value.</li> 
+        <!-- <li> If no attributes are available, the redirection happens on the 
+        basis of a date that is determined dynamically and can be 
+        <a href="https://robustlinks.mementoweb.org/spec/#page-date">page creation date</a>, 
+        <a href="https://robustlinks.mementoweb.org/spec/#page-date">page modification date</a>, 
+        a date set in the script, today's date.
+        </a> -->
+        </ul>
+        </li>
+        <li>If the link still works, it will function as usual. However, when a 
+        <a href="https://robustlinks.mementoweb.org/spec/#data-attributes"><code>data-versionurl</code></a> 
+        or <a href="https://robustlinks.mementoweb.org/spec/#data-attributes"><code>data-versiondate</code></a> 
+        attribute is provided the user is offered a choice: visit the live resource or visit a snapshot 
+        that is obtained on the basis of the provided attributes. 
+        This approach deals with the content drift aspect of reference rot: a user can visit the snapshot that was created 
+        by the web page author to see what the linked page looked like when the link was put in place.</li>
+        </ul>
+        </div></div>
+    
+        <br />
+    <!--
+            <div class="t100_2"><div class="style3">
+        <b>Bookmarks at <a href="http://bibsonomy.org">BibSonomy</a></b>: 
+                        <br /><br />
+        Requires the use 
+        of a Chrome browser equipped with 
+        the <a href="https://chrome.google.com/webstore/detail/memento/jgbfpjledahoajcppakbgilmojkaghgm">Memento Time Travel</a> extension.
+        <br /><br />
+        Right-clicking on the title or URI of a bookmarked item 
+        will reveal a "Get near link date" option in the Memento extension. Selecting this option will find a snapshot of the bookmarked 
+        resource that was created around the time of bookmarking. This option is enabled by means of the provision of the 
+        <a href="https://robustlinks.mementoweb.org/spec/#data-attributes"><code>data-versiondate</code></a> 
+        attribute on links with as value the date of bookmarking.
+        </div></div>
+        
+                        <br />
+                        
+                        -->
+
+<div id="menu_bottom" style="background: #eee; height: 60px; bottom: 0; position: relative; width: 980px; margin: 0;">
+<iframe src="https://mementoweb.org/static/menu_bottom_cc.html" style="border: 0; width: 980px; height: 55px"></iframe>
+</div> 
+
+
+  
+  </div>
+</body>
+
+</html>

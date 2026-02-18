@@ -1,0 +1,227 @@
+<!DOCTYPE html>  
+<!-- schema.org itemscope, itemtype, and itemid -->
+<html lang="en" itemscope itemtype="http://schema.org/WebPage" itemid="https://robustlinks.mementoweb.org/about/">
+<head>
+  <meta charset="utf-8" />
+  <meta itemprop="dateModified" content="2020-06-29">
+  <meta itemprop="datePublished" content="2015-01-22">
+  <link rel="icon" type="image/png" href="https://mementoweb.org/static/css/images/robustlinks_20x20.png">
+  <title>Robust Links - Motivation</title>
+
+  <!-- RobustLinks CSS -->
+  <link rel="stylesheet" type="text/css" href="https://doi.org/10.25776/z58z-r575" />
+  <!-- RobustLinks Javascript -->
+  <script type="text/javascript" src="https://doi.org/10.25776/h1fa-7a28"></script>
+
+  
+<style type="text/css">
+body {
+    height: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+}
+.container {
+  background: #ffffff; 
+  width: 980px;
+  margin: 0 auto;
+  }
+.table {
+	BORDER-RIGHT: #999999 1px solid;
+	BORDER-TOP: #999999 1px solid;
+	BORDER-LEFT: #999999 1px solid;
+	BORDER-BOTTOM: #999999 1px solid;
+	border-spacing: 2px;
+}
+  .th10 {
+  width: 10%;
+  background-color: #ffffff;
+  text-align: left;
+  }
+  .th20 {
+  width: 20%;
+  background-color: #ffffff;
+  text-align: left;
+  }
+  .th80 {
+  width: 80%;
+  background-color: #ffffff;
+  text-align: right;
+  }
+.th50 {
+  width: 50%;
+  background-color: #ffffff;
+  color: #666666;
+  text-align: center;
+  }
+  .th40 {
+  width: 40%;
+  background-color: #ffffff;
+  text-align: right;
+  }
+.t50_1 {
+  width: 50%;
+  background-color: #ffffff;
+  text-align: center;
+  }
+.t50_2 {
+  width: 50%;
+  background-color: #eeeeee;
+  text-align: center;
+  }
+.t100_1 {
+  width: 100%;
+  background-color: #eeeeee;
+  text-align: left;
+  }
+.t100_2 {
+  width: 100%;
+  background-color: #ffffff;
+  text-align: left;
+  }
+  .t100_3 {
+  width: 100%;
+  background-color: #ffffff;
+  text-align: center;
+  }
+  .t100_4 {
+  width: 100%;
+  background-color: #eeeeee;
+  text-align: center;
+  }
+  .t100_5 {
+  width: 100%;
+  background-color: #ffffff;
+  text-align: right;
+  }
+.style3 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000000;
+}
+.style4 {
+  font-family: Arial, Helvetica, sans-serif; 
+  color: #000099;
+  }
+ .img.center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+ <div id="menu_top">
+        <iframe id="menu_top_frame" src="https://mementoweb.org/static/menu_top_rl.html" style="border: 0; width: 980px; height: 102px"></iframe>
+ </div>
+  
+
+    
+      
+        <div class="t100_1"><div class="style3"><h1>Robust Links - Motivation</h1>
+        </div>
+      </div>
+    
+
+
+<br /> 			
+
+
+  
+    <div class="t100_2"><div class="style3">
+    Links on the web break all the time, robustify them!
+    <br /><br />
+    There are really two problems:
+    <ul>
+    <li>Link rot: Following a link yields a "404 Not Found" error message.</li>
+    <li>Content drift: The content at the end of the link changes over time, 
+    possibly to the point where it loses all similarity with the originally 
+    linked content.</li>
+    </ul>
+    In order to address these problems, a common approach is to:
+    <ul>
+    <li>Create a snapshot of the page in a publicly accessible web archive.
+    Several web archives provide on-demand snapshot functionality, 
+    including the <a href="http://web.archive.org/">Internet Archive</a>, 
+    <a href="http://archive.today">archive.today</a>, and 
+    <a href="http://perma.cc">perma.cc</a>.</li>
+    <li>Link to the snapshot rather than to the original web page.</li>
+    </ul>
+    For example, we wrote the first version of this web page on January 21 2015 and wanted to link to 
+    <code>http://www.w3.org/</code>. This page changes rather frequently and in order for future readers 
+    to see the same W3C content that we saw when linking, we created a snapshot in the 
+    <a href="http://archive.today/">archive.today</a> web archive. 
+    That snapshot is at 
+    <a href="https://archive.today/r7cov">https://archive.today/r7cov</a> and, rather than linking to 
+    <code>http://www.w3.org/</code>, we link to <code>https://archive.today/r7cov</code>.
+    <br /><br />
+    While the creation of the snapshot is definitely an essential step in the right direction, 
+    there are problems with this approach:
+    <ul>
+    <li>Linking to the snapshot <code>https://archive.today/r7cov</code>, 
+    assumes that the <a href="http://archive.today/">archive.today</a> web archive will exist forever. 
+    Unfortunately, not even web archives are free from technical, longevity, and sustainability issues and so we can not
+    assume they will live forever. If the web archive in which we created the snapshot suffers a temporary glitch, moves 
+    its content to another web location, or ceases to exist, visiting the snapshot becomes impossible.
+    </li>
+    <li>When linking to the snapshot <code>https://archive.today/r7cov</code>, 
+    the URI of the W3C's page (<code>http://www.w3.org/</code>) is lost. 
+    As a result, future readers of this page cannot visit the W3C page 
+    to see its evolved state.</li>
+    </ul>
+    Robustifying your links addresses these problems. It increases the chances 
+    that links will lead to meaningful content, even long after they were put in place. 
+    The following three pieces of information robustify a link in a machine-actionable manner:
+    <ul>
+    <li>The URI of the original resource, in our example <code>http://www.w3.org/</code>;</li>
+    <li>The URI of the snapshot, in our example <code>https://archive.today/r7cov</code>;</li>
+    <li>The date of linking, in our example <code>January 21 2015</code>.</li>
+    </ul>
+    With these three pieces of information, we can:
+    <ul>
+     <li>access the live web version of the page, if available, or</li>
+     <li>visit the archived snapshot, if the live version is not available or its content has drifted, or</li>
+     <li>use the date of linking and the URI of the original resource to find another archived snapshot 
+     in another web archive, if <a href="http://archive.today/">archive.today</a>'s service is interrupted or the snapshot
+     becomes inaccessible.</li>
+    </ul>
+
+        <br />
+        To create a Robust Link, we make use of <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes">
+        HTML5's attribute extensibility mechanism</a> and add two new elements to existing links. The HTML for 
+        <a href="http://www.w3.org/" data-versionurl="https://archive.today/r7cov" 
+        data-versiondate="2015-01-21">our W3C home page Robust Link</a> is shown below:
+        <br />
+<pre>&lt;a href="http://www.w3.org/"
+   data-versionurl="https://archive.today/r7cov"
+   data-versiondate="2015-01-21"&gt;our W3C home page Robust Link&lt;/a&gt;
+</pre>
+
+    The arrow next to the link provides a menu to view the original resource, its snapshot, or snapshots from other web archives.
+    This menu showcases just one way to make Robust Links actionable; it becomes available after injecting code that is available from the 
+    <a href="https://github.com/iipc/robustlinks">IIPC Robust Links repository</a> into a web page:  
+    a <a href="https://doi.org/10.25776/h1fa-7a28">JavaScript</a> and a
+    <a href="https://doi.org/10.25776/z58z-r575">CSS</a>. 
+<br/><br/>
+    The full details on how to create Robust Links are available in the <a href="https://robustlinks.mementoweb.org/spec/">Robust Links Specification</a>.
+    </div></div>
+  
+<!--
+        <div class="t100_3">
+        <iframe allowfullscreen="" height="356" src="https://www.slideshare.net/slideshow/embed_code/40747060" 
+        style="border-width: 1px; border: 1px solid #CCC; margin-bottom: 5px; max-width: 100%;" width="427">
+        </iframe>      
+       </div> 
+-->
+    <br /><br />
+
+<div id="menu_bottom" style="background: #eee; height: 60px; bottom: 0; position: relative; width: 980px; margin: 0;">
+  <iframe src="https://mementoweb.org/static/menu_bottom_cc.html" style="border: 0; width: 980px; height: 55px"></iframe>
+</div> 
+  
+  </div>
+</body>
+
+</html>

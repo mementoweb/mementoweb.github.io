@@ -1,0 +1,367 @@
+<!DOCTYPE html>  
+<html lang="en" itemscope itemtype="http://schema.org/WebPage" itemid="https://robustlinks.mementoweb.org/spec/">
+<head>
+  <meta charset="utf-8" />
+  <meta itemprop="dateModified" content="2020-07-29">
+  <meta itemprop="datePublished" content="2015-01-23">
+  <link rel="icon" type="image/png" href="https://mementoweb.org/static/css/images/robustlinks_20x20.png">
+  <title>Robust Links - Specification</title>
+
+  <style type="text/css">
+body {
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+}
+.container {
+  background: #ffffff; 
+  width: 980px;
+  margin: 0 auto;
+  }
+.table {
+	BORDER-RIGHT: #999999 1px solid;
+	BORDER-TOP: #999999 1px solid;
+	BORDER-LEFT: #999999 1px solid;
+	BORDER-BOTTOM: #999999 1px solid;
+	border-spacing: 2px;
+}
+  .th10 {
+  width: 10%;
+  background-color: #ffffff;
+  text-align: left;
+  }
+  .th20 {
+  width: 20%;
+  background-color: #ffffff;
+  text-align: left;
+  }
+  .th80 {
+  width: 80%;
+  background-color: #ffffff;
+  text-align: right;
+  }
+.th50 {
+  width: 50%;
+  background-color: #ffffff;
+  color: #666666;
+  text-align: center;
+  }
+  .th40 {
+  width: 40%;
+  background-color: #ffffff;
+  text-align: right;
+  }
+.t50_1 {
+  width: 50%;
+  background-color: #ffffff;
+  text-align: center;
+  }
+.t50_2 {
+  width: 50%;
+  background-color: #eeeeee;
+  text-align: center;
+  }
+.t100_1 {
+  width: 100%;
+  background-color: #eeeeee;
+  text-align: left;
+  }
+.t100_2 {
+  width: 100%;
+  background-color: #ffffff;
+  text-align: left;
+  }
+  .t100_3 {
+  width: 100%;
+  background-color: #ffffff;
+  text-align: center;
+  }
+  .t100_4 {
+  width: 100%;
+  background-color: #eeeeee;
+  text-align: center;
+  }
+  .t100_5 {
+  width: 100%;
+  background-color: #ffffff;
+  text-align: right;
+  }
+.style3 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000000;
+}
+.style4 {
+  font-family: Arial, Helvetica, sans-serif; 
+  color: #000099;
+  }
+ .img.center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+ <div id="menu_top">
+  <iframe id="menu_top_frame" src="https://mementoweb.org/static/menu_top_rl.html" style="border: 0; width: 980px; height: 102px"></iframe>
+ </div>
+  
+
+    
+      
+        <div class="t100_1"><div class="style3"><h1>Robust Links -  Specification</h1>
+        </div>
+      </div>
+    
+<br />
+
+<div class="style3">
+    <div class="t100_2"><b>Archived copy of this version (July 29, 2020):</b><br />
+    &nbsp;&nbsp;&nbsp;<a href="http://web.archive.org/web/20201018132742/https://robustlinks.mementoweb.org/spec/">http://web.archive.org/web/20201018132742/https://robustlinks.mementoweb.org/spec/</a>
+    </div>
+    <div class="t100_2"><b>Latest version:</b><br />
+    &nbsp;&nbsp;&nbsp;<a href="http://robustlinks.mementoweb.org/spec/">http://robustlinks.mementoweb.org/spec/</a>
+    </div>
+    <div class="t100_2"><b>Archived copy of prior version (June 11, 2020):</b><br />
+    &nbsp;&nbsp;&nbsp;<a href="http://web.archive.org/web/20200611203411/https://robustlinks.mementoweb.org/spec/">http://web.archive.org/web/20200611203411/https://robustlinks.mementoweb.org/spec/</a>
+    </div>
+    <div class="t100_2"><b>Ongoing explorative and experimental revision:</b><br />
+    &nbsp;&nbsp;&nbsp;<a href="https://robustlinks.org/spec/">https://robustlinks.org/spec/</a>
+    </div>
+    </div>
+  
+    <br />
+    
+  <div class="style3">
+    <div class="t100_2"><b>Authored by:</b><br />
+      <div class="t100_2">
+    &nbsp;&nbsp;&nbsp;Martin Klein - Los Alamos National Laboratory
+  </div>
+      <div class="t100_2">
+    &nbsp;&nbsp;&nbsp;Shawn M. Jones - Los Alamos National Laboratory
+  </div>
+      <div class="t100_2">
+    &nbsp;&nbsp;&nbsp;Harihar Shankar - Los Alamos National Laboratory
+  </div>
+      <div class="t100_2">
+    &nbsp;&nbsp;&nbsp;Richard Wincewicz - University of Edinburgh
+  </div>
+      <div class="t100_2">
+    &nbsp;&nbsp;&nbsp;Michael L. Nelson - Old Dominion University
+  </div>
+      <div class="t100_2">
+    &nbsp;&nbsp;&nbsp;Herbert Van de Sompel - Data Archiving and Networking Services (DANS)
+  </div>
+</div>
+
+  
+    <div class="t100_2"><div class="style3">
+    <a id="referencing"><h2>Abstract</h2></a>
+    Robust Links provide multiple pathways to revisit a link's original content, even
+    a long time after the link was put in place.
+    This document describes approaches to robustify links in HTML pages. All approaches 
+    assume that, when linking to a web resource, a snapshot of the state of that resource 
+    is created, for example, in a web archive or a versioning system. When linking, 
+    the URI of the resource, the URI of the snapshot, and the datetime of linking 
+    are conveyed. 
+    </div></div>
+  
+  
+    <div class="t100_2"><div class="style3">
+    <h2>Table of Contents</h2>
+    </div></div>
+    <div class="t100_2"><div class="style3">
+    1. <a href="#motivation">Why robustify links?</a>
+    </div></div>
+    <div class="t100_2"><div class="style3">
+    2. <a href="#data-attributes">The Robust Links approach</a>
+    </div></div>
+    <div class="t100_2"><div class="style3">
+    3. <a href="#link-original">Robustifying a link when linking to the original resource</a>
+    </div></div>
+    <div class="t100_2"><div class="style3">
+    4. <a href="#link-memento">Robustifying a link when linking to a specific version</a>
+    </div></div>
+    <div class="t100_2"><div class="style3">
+    5. <a href="#acks">Acknowledgements</a>
+    </div></div>
+  
+
+
+
+
+  
+    <div class="t100_2"><div class="style3">
+    <a id="motivation"><h2>1. Why robustify links?</h2></a>
+    Robust Links are intended provide multiple pathways to revisit a link's original content over time.
+    Check out this <a href="http://robustlinks.mementoweb.org/about/">document</a> that describes the 
+    motivation and rationale for robustifying HTML links.  
+    </div></div>
+  
+
+
+
+  
+    <div class="t100_2"><div class="style3">
+    <a id="data-attributes"><h2>2. The Robust Links approach</h2></a>
+    The approach assumes that, when linking to a web resource, a snapshot of the state of that resource 
+    is created, for example, in a web archive or a versioning system. 
+    <a href="http://robustlinks.mementoweb.org/tools/">Several web archives</a> provide services that allow 
+    taking such snapshots, and versioning systems take them automatically. With a snapshot taken, a link can be 
+    robustified by including:
+    <ul>
+    <li>The URI of the original resource;</li>
+    <li>The URI of a snapshot of the original resource;</li>
+    <li>The datetime of linking, of taking the snapshot.</li>
+    </ul>
+    This information, when provided in a machine-actionable manner, allows:
+    <ul>
+    <li>Revisiting the original resource, which meanwhile may have changed, some time after linking;</li>
+    <li>Visiting the snapshot that was taken around the time of linking;</li> 
+    <li>Finding snapshots that are temporally close the one taken, 
+    in case the snapshot itself becomes temporally or permanently inaccessible.</li>
+     </ul>       
+    The Robust Link approach is to convey this information on a link by leveraging 
+        <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes">HTML5's attribute 
+        extensibility mechanism</a>. It introduces the following <code>data-</code> attributes for 
+        the <code>anchor (&lt;a&gt;)</code> element:
+    <ul>
+    <li><code>data-originalurl</code> for the URI of the original resource;</li>
+    <li><code>data-versionurl</code> for the URI of the snapshot;</li>
+    <li><code>data-versiondate</code> for the datetime of linking, of taking the snapshot.</li>
+    </ul>
+        The remainder of this document details how to use these attributes for various cases.
+    </div></div>
+  
+
+
+
+  
+    <div class="t100_2"><div class="style3">
+    <a id="link-original"><h2>3. Robustifying a link when linking to the original resource</h2></a>
+   If the main intent is to link to an original resource but also allow future users of that link  
+   to see the state of the original resource around the time the link was put in place, then Robust Link 
+   information is conveyed as follows:
+    <ul>
+    <li><code>href</code> for the URI of the original resource;</li>
+    <li><code>data-versionurl</code> for the URI of the snapshot of the original resource;</li>
+    <li><code>data-versiondate</code> for the datetime of linking, of taking the snapshot.</li>
+    </ul>
+    For example, assume that we created a Robust Link to <code>http://www.w3.org/</code> on January 21 2015.
+    <ul>
+    <li>In case we created a snapshot of the resource, as recommended, the 
+    <a href="http://www.w3.org/" 
+       data-versionurl="https://archive.today/r7cov" 
+       data-versiondate="2015-01-21">Robust Link to the W3C home page</a> would look like this:
+<pre>&lt;a href="http://www.w3.org/"
+   data-versionurl="https://archive.today/r7cov"
+   data-versiondate="2015-01-21"&gt;Robust Link to the W3C home page&lt;/a&gt;
+</pre>
+</li>
+<li>In case we did not create a snapshot of the resource, the 
+<a href="http://www.w3.org/" 
+   data-versiondate="2015-01-21">Robust Link to the W3C home page</a> would look like this:
+<pre>&lt;a href="http://www.w3.org/"
+   data-versiondate="2015-01-21"&gt;Robust Link to the W3C home page&lt;/a&gt;
+</pre>
+</li>
+</ul>
+    </div></div>
+  
+
+  
+  
+  
+    <div class="t100_2"><div class="style3">
+    <a id="link-memento"><h2>4. Robustifying a link when linking to a specific version</h2></a>
+    If the main intent is to link to a specific state of an original resource, for example a snapshot 
+    of the original resource in a web archive or a version in a version control system, then 
+    Robust Link information is conveyed as follows:
+    <ul>
+    <li><code>href</code> for the URI of the specific version, i.e. the URI of the snapshot of the original resource;</li>
+    <li><code>data-originalurl</code> for the URI of the original resource;</li>
+    <li><code>data-versiondate</code> for the datetime of the specific version.</li>
+    </ul>
+    For example, 
+    <ul>
+    <li>
+    Assume that we created a Robust Link on January 21 2015 that was primarily intended to convey the state of 
+    <code>http://www.w3.org/</code> on that day. In order to do so, we created the snapshot <code>https://archive.today/r7cov</code>. 
+    In this case, the
+        <a href="https://archive.today/r7cov" 
+       data-originalurl="http://www.w3.org/" 
+       data-versiondate="2015-01-21">Robust Link to this specific version of the W3C home page</a> looks like this:
+<pre>&lt;a href="https://archive.today/r7cov"
+   data-originalurl="http://www.w3.org/"
+   data-versiondate="2015-01-21"&gt;Robust Link to this specific version of the W3C home page&lt;/a&gt;
+</pre>
+</li>
+<li>
+   Assume that we created a Robust Link on January 21 2015 that was primarily intended to point to the version of 
+    <code>http://en.wikipedia.org/wiki/Web_archiving</code> that was operational <b>on that day</b>, which is 
+     <code>http://en.wikipedia.org/w/index.php?title=Web_archiving&amp;oldid=637465880</code>. 
+    In this case, the 
+        <a href="http://en.wikipedia.org/w/index.php?title=Web_archiving&amp;oldid=637465880" 
+       data-originalurl="http://en.wikipedia.org/wiki/Web_archiving" 
+       data-versiondate="2015-01-21">Robust Link to this specific version of the Wikipedia page</a> looks like this:
+<pre>&lt;a href="http://en.wikipedia.org/w/index.php?title=Web_archiving&amp;oldid=637465880"
+   data-originalurl="http://en.wikipedia.org/wiki/Web_archiving"
+   data-versiondate="2015-01-21"&gt;Robust Link to this specific version of the Wikipedia page&lt;/a&gt;
+   </pre>
+</li>
+<li>
+   Assume that we created a Robust Link on January 21 2015 that was primarily intended to point to the version of 
+    <code>http://en.wikipedia.org/wiki/Web_archiving</code> that was operational on <b>March 20 2012</b>, which is 
+     <code>http://en.wikipedia.org/w/index.php?title=Web_archiving&amp;oldid=485347845</code>. 
+    In this case my
+        <a href="http://en.wikipedia.org/w/index.php?title=Web_archiving&amp;oldid=485347845" 
+       data-originalurl="http://en.wikipedia.org/wiki/Web_archiving" 
+       data-versiondate="2012-03-20">Robust Link to this specific version of the Wikipedia page</a> looks like this:
+<pre>&lt;a href="http://en.wikipedia.org/w/index.php?title=Web_archiving&amp;oldid=485347845"
+   data-originalurl="http://en.wikipedia.org/wiki/Web_archiving"
+   data-versiondate="2012-03-20"&gt;Robust Link to this specific version of the Wikipedia page&lt;/a&gt;</pre>
+</li>
+</ul>
+    </div></div>
+  
+    <div class="t100_2"><div class="style3">
+    <a id="acks"><h2>5. Acknowledgements</h2></a>
+   The Robust Links approach is an outcome of the 2013-2015 <a href="https://web.archive.org/web/20140517090658/http://hiberlink.org/" data-versiondate="20140517" data-originalurl="http://hiberlink.org">Hiberlink project</a> 
+that was funded by the <a href="https://web.archive.org/web/20130329052959/http://www.mellon.org/" data-versiondate="20130329" data-originalurl="http://www.mellon.org/">Andrew W. Mellon Foundation</a>. 
+The project was a collaboration between The University of Edinburgh (<a href="https://web.archive.org/web/20140208000945/http://edina.ac.uk/" data-versiondate="20140208" data-originalurl="https://edina.ac.uk">Edina</a> 
+and <a href="https://web.archive.org/web/20140422061821/http://www.ed.ac.uk/schools-departments/informatics/" data-versiondate="20140422" data-originalurl="https://informatics.ed.ac.uk">the School of Informatics</a>) 
+and the Los Alamos National Laboratory (<a href="https://web.archive.org/web/20150203092304/http://www.lanl.gov/library/about/research-prototyping.php" data-versiondate="20150203" data-originalurl="http://www.lanl.gov/library/about/research-prototyping.php">Research Library Prototyping Team</a>), with respective Principal Investigators Peter Burnhill and 
+Herbert Van de Sompel. 
+
+<br /><br />
+
+The project researched the extent of reference rot (the combination of link rot and content drift, the latter a term originally coined by the project) 
+for links to web at large resource found in scholarly papers. The research leveraged several large scholarly corpora and the major findings were published in 
+two papers:
+<ul>
+<li>Klein, M., Van de Sompel, H., Sanderson, R., Shankar, H., Balakireva, L., Zhou K., and Tobin, R. (2014) Scholarly Context Not Found: One in Five Articles Suffers from Reference Rot. PLoS ONE, 9(12): e115253. <a href="https://doi.org/10.1371/journal.pone.0115253">https://doi.org/10.1371/journal.pone.0115253</a></li> 
+<li>Jones, S., Van de Sompel, H., Shankar, H., Klein, M., Tobin, R., and Grover, C. (2016) Scholarly Context Adrift: Three out of Four URI References Lead to Changed Content. PLoS ONE, 11(12): e0167475. <a href="https://doi.org/10.1371/journal.pone.0167475">https://doi.org/10.1371/10.1371/journal.pone.0167475</a></li> 
+</ul>
+
+The <a href="https://web.archive.org/web/20151115040906/https://robustlinks.mementoweb.org/spec/" data-versiondate="20151115" data-originalurl="https://robustlinks.mementoweb.org/spec/">original version of the Robust Links specification</a> also included the following authors: Harihar Shankar (Los Alamos National Laboratory), 
+Richard Wincewicz (University of Edinburgh). 
+
+    </div></div>
+
+
+
+    <br />
+
+<div id="menu_bottom" style="background: #eee; height: 60px; bottom: 0; position: relative; width: 980px; margin: 0;">
+  <iframe src="https://mementoweb.org/static/menu_bottom_cc.html" style="border: 0; width: 980px; height: 55px"></iframe>
+</div> 
+  
+  </div>
+
+</body>
+
+</html>
