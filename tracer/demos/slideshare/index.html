@@ -1,0 +1,301 @@
+<!DOCTYPE html> 
+<html lang="en" itemscope itemtype="http://schema.org/WebPage" itemid="http://tracer.mementoweb.org/demos/slideshare/">
+<head>
+  <meta charset="utf-8" />
+  <meta itemprop="dateModified" content="2018-05-22">
+  <meta itemprop="datePublished" content="2018-05-22">
+  <link rel="icon" type="image/png" href="http://mementoweb.org/static/css/images/tracer_20x20.png">
+  <title>Memento Tracer Demo - SlideShare</title>
+<style type="text/css">
+body {
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+}
+.container {
+  background: #ffffff; 
+  width: 980px;
+  margin: 0 auto;
+  }
+.table {
+	BORDER-RIGHT: #999999 1px solid;
+	BORDER-TOP: #999999 1px solid;
+	BORDER-LEFT: #999999 1px solid;
+	BORDER-BOTTOM: #999999 1px solid;
+	border-spacing: 2px;
+}
+  .th10 {
+  width: 10%;
+  background-color: #ffffff;
+  text-align: left;
+  }
+  .th20 {
+  width: 20%;
+  background-color: #ffffff;
+  text-align: left;
+  }
+  .th80 {
+  width: 80%;
+  background-color: #ffffff;
+  text-align: right;
+  }
+.th50 {
+  width: 50%;
+  background-color: #ffffff;
+  color: #666666;
+  text-align: center;
+  }
+  .th40 {
+  width: 40%;
+  background-color: #ffffff;
+  text-align: right;
+  }
+.t50_1 {
+  width: 50%;
+  background-color: #ffffff;
+  text-align: center;
+  }
+.t50_2 {
+  width: 50%;
+  background-color: #eeeeee;
+  text-align: center;
+  }
+.t100_1 {
+  width: 100%;
+  background-color: #ffffff;
+  text-align: center;
+  }
+.t100_2 {
+  width: 100%;
+  background-color: #ffffff;
+  text-align: left;
+  }
+  .t100_3 {
+  width: 100%;
+  background-color: #ffffff;
+  text-align: center;
+  }
+  .t100_4 {
+  width: 100%;
+  background-color: #eeeeee;
+  text-align: center;
+  }
+  .t100_5 {
+  width: 100%;
+  background-color: #ffffff;
+  text-align: right;
+  }
+.style3 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000000;
+}
+.style4 {
+  font-family: Arial, Helvetica, sans-serif; 
+  color: #000099;
+  }
+ img.center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #footer {
+    background: #ddd;
+    height: 60px;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+}
+#footer a {
+    padding-left: 15px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+ <div id="menu_top">
+        <iframe id="menu_top_frame" src="http://mementoweb.org/static/menu_top_mt.html" style="border: 0; width: 980px; height: 102px"></iframe>
+ </div>
+
+	<div class="t100_1">
+		<div class="style3">
+		<h1>Capturing SlideShare Presentations</h1>
+        </div>
+	</div>
+	
+	  		<div id="acknow" style="text-align: center; font-family: Helvetica;/* padding-top: 10px;*/">
+    <p style="font-size: 0.8em; margin: 0;">
+This demo serves no other purpose than to illustrate the technical capabilities of the Memento Tracer Framework for creating high quality captures of 
+web publications. It has been selected 
+because it illustrates the ability of the framework to capture resources that would be very difficult, if not impossible, 
+to capture using regular web crawling approaches.
+</p>
+</div>
+	
+	<br />
+	<br />
+        
+        <div class="t100_2"><div class="style3">
+        <h3>Step 1 - A Curator Records a Trace Using the Memento Tracer Browser Extension</h3>
+        </div>
+        </div>
+
+        <div class="t100_2"><div class="style3">
+          The below screencast shows the process of creating a Trace, using the Memento Tracer browser extension, 
+          on the basis of the SlideShare presentation
+          <code><a href="https://www.slideshare.net/hvdsomp/paul-evan-peters-lecture">https://www.slideshare.net/hvdsomp/paul-evan-peters-lecture</a></code>. 
+          The extension intercepts all interactions (e.g., clicks) of the curator with this SlideShare presentation and 
+          records them as a Trace, serialized in JSON. In this Trace, each interaction is expressed  
+          such that the entity that is subject to interaction is uniquely and abstractly identified. 
+          That is, the interaction is not 
+          tied to this specific repository on which the Trace is recorded. As a result, the recorded Trace will be re-usable in Step 3 to 
+          automatically interact with other, similar repositories, in order to generate quality captures.
+          <br/><br/>
+          <iframe width="660" height="515" style="margin: 0 auto; display: block;" src="https://www.youtube.com/embed/U-LmJLdCTFs?rel=0&vq=hd1080" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>          
+          <br/><br/>
+			Legend for the above screencast:
+          <ul>
+            <li>The curator navigates to the SlideShare presentation <code><a href="https://www.slideshare.net/hvdsomp/paul-evan-peters-lecture">https://www.slideshare.net/hvdsomp/paul-evan-peters-lecture</a></code> 
+            and activates the Memento Tracer browser extension.</li>
+            <li>The curator wants captures of every slide in a SlideShare presentation. 
+            The SlideShare interface provides a way to navigate slides in a presentation by clicking on the next and 
+            previous buttons. The browser extension provides a way to capture these repeated actions so that they can work 
+            on any other SlideShare presentation with an arbitrary number of slides:
+            <ul>
+            	<li>The curator activates the extension's "Automate Repeated Button Clicks" option.</li>
+            	<li> Now, the curator proceeds to choose the exit condition to determine when these repeated clicks must stop. 
+            	In a SlideShare presentation, when the next button is clicked after loading the last slide of a presentation, 
+            	SlideShare automatically loads another presentation. When this new presentation is loaded, 
+            	the URL of the resource changes to that of the URL of the new presentation. Hence, the curator selects 
+            	"Navigated to a New Resource" under the "Repeat Clicks Until" section.</li>
+            	<li>The curator now clicks the next button once and this interaction is recorded accordingly.</li>
+             	<li>The curator deactivates the extension's "Automate Repeated Button Clicks" option.</li>
+          	</ul>
+            <li>The curator copies the recorded interaction, expressed as JSON, from the extension, pastes them to a file, 
+            and saves them as <code>slideshare.json</code>.</li>
+          </ul>
+
+        </div></div>
+
+
+        <div class="t100_2"><div class="style3">
+        <h3>Step 2 - A Curator Uploads the Trace to a Shared Repository</h3>
+        </div>
+        </div>
+
+        <div class="t100_2"><div class="style3">
+        Once a Trace is successfully recorded, the curator uploads it to a shared community repository. 
+        This repository does not yet exist but its design is being investigated. When it goes live, it 
+        will contain the below Trace, resulting from Step 1. 
+        For now, the Trace is being passed on 
+        manually to the operator in charge of Step 3.
+        In this Trace, note <code>portal_url_match</code>, which 
+        has a value the URL pattern (expressed as a regular expression) for which this Trace applies. 
+		</br>
+		<pre><code>
+  {
+    "portal_url_match": "(slideshare.net)\/([^\/]+)\/([^\/]+)",
+    "actions": [
+    {
+      "action_order": "1",
+      "value": "div.j-next-btn.arrow-right",
+      "type": "CSSSelector",
+      "action": "repeated_click",
+      "repeat_until": {
+        "condition": "changes",
+        "type": "resource_url"
+      }
+    }],
+    "resource_url": "https://www.slideshare.net/hvdsomp/paul-evan-peters-lecture",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3417.0 Safari/537.36"
+  }  
+    </code></pre>
+        </div></div>
+        
+        <div class="t100_2"><div class="style3" id="step_3">
+        <h3>Step 3 - An Operator of a Headless Browser Set-Up Uses Traces from the Shared Repository</h3>
+        </div>
+        </div>
+
+        <div class="t100_2"><div class="style3">
+        In order to generate captures, the Memento Tracer framework currently uses a set-up consisting of:
+        <ul>
+        <li><a href="https://www.seleniumhq.org/">Selenium WebDriver</a>, which automates the actions of 
+        a Google Chrome headless browser.</li>
+        <li>The <a href="https://github.com/internetarchive/warcprox">WarcProxy</a> capturing tool   
+        that writes resources navigated by the headless browser to a WARC file.</li>
+        <li><a href="http://stormcrawler.net/">Storm-Crawler</a> to manage the crawling process.</li>
+        </ul>  
+                The current Tracer Framework set-up consists of two instances of the Storm-Crawler running simultaneously. 
+        The primary Storm-Crawler instance performs the sequence of interactions necessary for a successful Trace, 
+        and offloads the capturing of the out-links in a page to the secondary Storm-Crawler instance. 
+        Both the primary and the secondary Storm-Crawlers use the same WarcProxy and Selenium WebDriver for capturing.
+        <br/><br /> 
+        The below screencast shows the major steps involved in the capture process. 
+        <br/><br/>
+          <iframe width="660" height="515" style="margin: 0 auto; display: block;" src="https://www.youtube.com/embed/sGefsFnHhAY?rel=0&vq=hd1080" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <br/><br/>
+			Legend for the above screencast:
+        <ul>
+          <li>The WarcProxy is started and is waiting for incoming requests to load.</li>
+          <li>The Google Chrome web browser is started and is running in the foreground, listening for a signal from the Selenium WebDriver 
+          regarding URLs to load. 
+          As such, all requests made by the headless browser pass via the WarcProxy, which records those requests and their responses 
+          into a WARC file.</li>
+          <li>The Storm-Crawler is started and provided with URL of the SlideShare presentation  
+          <code><a href="https://pt.slideshare.net/elfpavlik/api-standardization-work-in-w3c-groups/">https://pt.slideshare.net/elfpavlik/api-standardization-work-in-w3c-groups/</a></code> that must be crawled. 
+          Note that this is a different SlideShare presentation than the one used to create the Trace in Step 1.</li>
+          <li>Given this URL, Storm-Crawler checks whether it has a Trace for a URL pattern (see <code>portal_url_match</code> above) 
+          that matches the URL at hand. In this case, the crawler will match the URL to the Trace shown in Step 2, 
+          and will start executing its sequence of interactions on <code><a href="https://pt.slideshare.net/elfpavlik/api-standardization-work-in-w3c-groups/">https://pt.slideshare.net/elfpavlik/api-standardization-work-in-w3c-groups/</a></code>. 
+          The many URLs that are being crawled are shown in log messages outputted by the Storm-Crawler.</li>
+          <li>Once the crawler captured all resources, it is stopped. The WarcProxy is also stopped, and the resulting WARC file,  
+          which contains the SlideShare presentation <code><a href="https://pt.slideshare.net/elfpavlik/api-standardization-work-in-w3c-groups/">https://pt.slideshare.net/elfpavlik/api-standardization-work-in-w3c-groups/</a></code>  
+          captured according to the above Trace, is saved.</li>
+        </ul>
+
+
+        </div></div>
+        
+                		<div class="t100_2">
+		<div class="style3">
+		<h3>Result</h3>
+        </div>
+	</div>
+  
+          <div class="t100_2"><div class="style3">
+            The below screencast shows the WARC file that results from Step 3 being 
+            opened in the webrecorder.io <a href="https://github.com/webrecorder/webrecorderplayer-electron/">webrecorderplayer</a>. 
+            All resources that were captured are listed in the opening screen once the WARC has 
+            been loaded. The URL of the captured SlideShare presentation is clicked. Further interactions follow,  
+            which illustrate that - by using the Trace - all resources that the curator wanted to capture for a SlideShare presentation 
+            have indeed been captured. Resources that were not selected by the curator were not captured.
+            <br /><br />
+            The WARC file is available for <a href="http://tracer.mementoweb.org/demos/slideshare/WARCPROX-20180523155942085-00000-h9l6x2c5.warc">download</a>.
+            <br /><br />
+            Compare with the <a href="http://web.archive.org/web/20180523172706/https://pt.slideshare.net/elfpavlik/api-standardization-work-in-w3c-groups/">capture of the same presentation</a> 
+            using the Internet Archive's 
+            <a href="https://web.archive.org/">Save Page Now</a> feature around the same time the above WARC file was created. 
+            
+            
+        </div></div>
+
+          <br/><br/>
+          <iframe width="660" height="515" style="margin: 0 auto; display: block;" src="https://www.youtube.com/embed/lW6xFVlH7SI?rel=0&vq=hd1080" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <br/><br/>
+
+
+	<div id="acknow" style="text-align: center; font-family: Helvetica;/* padding-top: 10px;*/">
+    <p style="font-size: 0.8em; margin: 0;">
+Last update: May 23 2018
+</p>
+</div>
+
+                <br />
+
+  </div>
+  
+
+</body>
+
+</html>
