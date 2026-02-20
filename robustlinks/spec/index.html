@@ -1,5 +1,5 @@
 <!DOCTYPE html>  
-<html lang="en" itemscope itemtype="http://schema.org/WebPage" itemid="https://robustlinks.mementoweb.org/spec/">
+<html lang="en" itemscope itemtype="https://schema.org/WebPage" itemid="https://robustlinks.mementoweb.org/spec/">
 <head>
   <meta charset="utf-8" />
   <meta itemprop="dateModified" content="2020-07-29">
@@ -121,13 +121,13 @@ body {
 
 <div class="style3">
     <div class="t100_2"><b>Archived copy of this version (July 29, 2020):</b><br />
-    &nbsp;&nbsp;&nbsp;<a href="http://web.archive.org/web/20201018132742/https://robustlinks.mementoweb.org/spec/">http://web.archive.org/web/20201018132742/https://robustlinks.mementoweb.org/spec/</a>
+    &nbsp;&nbsp;&nbsp;<a href="https://web.archive.org/web/20201018132742/https://robustlinks.mementoweb.org/spec/">https://web.archive.org/web/20201018132742/https://robustlinks.mementoweb.org/spec/</a>
     </div>
     <div class="t100_2"><b>Latest version:</b><br />
-    &nbsp;&nbsp;&nbsp;<a href="http://robustlinks.mementoweb.org/spec/">http://robustlinks.mementoweb.org/spec/</a>
+    &nbsp;&nbsp;&nbsp;<a href="https://robustlinks.mementoweb.org/spec/">https://robustlinks.mementoweb.org/spec/</a>
     </div>
     <div class="t100_2"><b>Archived copy of prior version (June 11, 2020):</b><br />
-    &nbsp;&nbsp;&nbsp;<a href="http://web.archive.org/web/20200611203411/https://robustlinks.mementoweb.org/spec/">http://web.archive.org/web/20200611203411/https://robustlinks.mementoweb.org/spec/</a>
+    &nbsp;&nbsp;&nbsp;<a href="https://web.archive.org/web/20200611203411/https://robustlinks.mementoweb.org/spec/">https://web.archive.org/web/20200611203411/https://robustlinks.mementoweb.org/spec/</a>
     </div>
     <div class="t100_2"><b>Ongoing explorative and experimental revision:</b><br />
     &nbsp;&nbsp;&nbsp;<a href="https://robustlinks.org/spec/">https://robustlinks.org/spec/</a>
@@ -198,7 +198,7 @@ body {
     <div class="t100_2"><div class="style3">
     <a id="motivation"><h2>1. Why robustify links?</h2></a>
     Robust Links are intended provide multiple pathways to revisit a link's original content over time.
-    Check out this <a href="http://robustlinks.mementoweb.org/about/">document</a> that describes the 
+    Check out this <a href="https://robustlinks.mementoweb.org/about/">document</a> that describes the 
     motivation and rationale for robustifying HTML links.  
     </div></div>
   
@@ -210,7 +210,7 @@ body {
     <a id="data-attributes"><h2>2. The Robust Links approach</h2></a>
     The approach assumes that, when linking to a web resource, a snapshot of the state of that resource 
     is created, for example, in a web archive or a versioning system. 
-    <a href="http://robustlinks.mementoweb.org/tools/">Several web archives</a> provide services that allow 
+    <a href="https://robustlinks.mementoweb.org/tools/">Several web archives</a> provide services that allow 
     taking such snapshots, and versioning systems take them automatically. With a snapshot taken, a link can be 
     robustified by including:
     <ul>
@@ -251,21 +251,21 @@ body {
     <li><code>data-versionurl</code> for the URI of the snapshot of the original resource;</li>
     <li><code>data-versiondate</code> for the datetime of linking, of taking the snapshot.</li>
     </ul>
-    For example, assume that we created a Robust Link to <code>http://www.w3.org/</code> on January 21 2015.
+    For example, assume that we created a Robust Link to <code>https://www.w3.org/</code> on January 21 2015.
     <ul>
     <li>In case we created a snapshot of the resource, as recommended, the 
-    <a href="http://www.w3.org/" 
+    <a href="https://www.w3.org/" 
        data-versionurl="https://archive.today/r7cov" 
        data-versiondate="2015-01-21">Robust Link to the W3C home page</a> would look like this:
-<pre>&lt;a href="http://www.w3.org/"
+<pre>&lt;a href="https://www.w3.org/"
    data-versionurl="https://archive.today/r7cov"
    data-versiondate="2015-01-21"&gt;Robust Link to the W3C home page&lt;/a&gt;
 </pre>
 </li>
 <li>In case we did not create a snapshot of the resource, the 
-<a href="http://www.w3.org/" 
+<a href="https://www.w3.org/" 
    data-versiondate="2015-01-21">Robust Link to the W3C home page</a> would look like this:
-<pre>&lt;a href="http://www.w3.org/"
+<pre>&lt;a href="https://www.w3.org/"
    data-versiondate="2015-01-21"&gt;Robust Link to the W3C home page&lt;/a&gt;
 </pre>
 </li>
@@ -290,39 +290,39 @@ body {
     <ul>
     <li>
     Assume that we created a Robust Link on January 21 2015 that was primarily intended to convey the state of 
-    <code>http://www.w3.org/</code> on that day. In order to do so, we created the snapshot <code>https://archive.today/r7cov</code>. 
+    <code>https://www.w3.org/</code> on that day. In order to do so, we created the snapshot <code>https://archive.today/r7cov</code>. 
     In this case, the
         <a href="https://archive.today/r7cov" 
-       data-originalurl="http://www.w3.org/" 
+       data-originalurl="https://www.w3.org/" 
        data-versiondate="2015-01-21">Robust Link to this specific version of the W3C home page</a> looks like this:
 <pre>&lt;a href="https://archive.today/r7cov"
-   data-originalurl="http://www.w3.org/"
+   data-originalurl="https://www.w3.org/"
    data-versiondate="2015-01-21"&gt;Robust Link to this specific version of the W3C home page&lt;/a&gt;
 </pre>
 </li>
 <li>
    Assume that we created a Robust Link on January 21 2015 that was primarily intended to point to the version of 
-    <code>http://en.wikipedia.org/wiki/Web_archiving</code> that was operational <b>on that day</b>, which is 
-     <code>http://en.wikipedia.org/w/index.php?title=Web_archiving&amp;oldid=637465880</code>. 
+    <code>https://en.wikipedia.org/wiki/Web_archiving</code> that was operational <b>on that day</b>, which is 
+     <code>https://en.wikipedia.org/w/index.php?title=Web_archiving&amp;oldid=637465880</code>. 
     In this case, the 
-        <a href="http://en.wikipedia.org/w/index.php?title=Web_archiving&amp;oldid=637465880" 
-       data-originalurl="http://en.wikipedia.org/wiki/Web_archiving" 
+        <a href="https://en.wikipedia.org/w/index.php?title=Web_archiving&amp;oldid=637465880" 
+       data-originalurl="https://en.wikipedia.org/wiki/Web_archiving" 
        data-versiondate="2015-01-21">Robust Link to this specific version of the Wikipedia page</a> looks like this:
-<pre>&lt;a href="http://en.wikipedia.org/w/index.php?title=Web_archiving&amp;oldid=637465880"
-   data-originalurl="http://en.wikipedia.org/wiki/Web_archiving"
+<pre>&lt;a href="https://en.wikipedia.org/w/index.php?title=Web_archiving&amp;oldid=637465880"
+   data-originalurl="https://en.wikipedia.org/wiki/Web_archiving"
    data-versiondate="2015-01-21"&gt;Robust Link to this specific version of the Wikipedia page&lt;/a&gt;
    </pre>
 </li>
 <li>
    Assume that we created a Robust Link on January 21 2015 that was primarily intended to point to the version of 
-    <code>http://en.wikipedia.org/wiki/Web_archiving</code> that was operational on <b>March 20 2012</b>, which is 
-     <code>http://en.wikipedia.org/w/index.php?title=Web_archiving&amp;oldid=485347845</code>. 
+    <code>https://en.wikipedia.org/wiki/Web_archiving</code> that was operational on <b>March 20 2012</b>, which is 
+     <code>https://en.wikipedia.org/w/index.php?title=Web_archiving&amp;oldid=485347845</code>. 
     In this case my
-        <a href="http://en.wikipedia.org/w/index.php?title=Web_archiving&amp;oldid=485347845" 
-       data-originalurl="http://en.wikipedia.org/wiki/Web_archiving" 
+        <a href="https://en.wikipedia.org/w/index.php?title=Web_archiving&amp;oldid=485347845" 
+       data-originalurl="https://en.wikipedia.org/wiki/Web_archiving" 
        data-versiondate="2012-03-20">Robust Link to this specific version of the Wikipedia page</a> looks like this:
-<pre>&lt;a href="http://en.wikipedia.org/w/index.php?title=Web_archiving&amp;oldid=485347845"
-   data-originalurl="http://en.wikipedia.org/wiki/Web_archiving"
+<pre>&lt;a href="https://en.wikipedia.org/w/index.php?title=Web_archiving&amp;oldid=485347845"
+   data-originalurl="https://en.wikipedia.org/wiki/Web_archiving"
    data-versiondate="2012-03-20"&gt;Robust Link to this specific version of the Wikipedia page&lt;/a&gt;</pre>
 </li>
 </ul>
@@ -330,11 +330,11 @@ body {
   
     <div class="t100_2"><div class="style3">
     <a id="acks"><h2>5. Acknowledgements</h2></a>
-   The Robust Links approach is an outcome of the 2013-2015 <a href="https://web.archive.org/web/20140517090658/http://hiberlink.org/" data-versiondate="20140517" data-originalurl="http://hiberlink.org">Hiberlink project</a> 
-that was funded by the <a href="https://web.archive.org/web/20130329052959/http://www.mellon.org/" data-versiondate="20130329" data-originalurl="http://www.mellon.org/">Andrew W. Mellon Foundation</a>. 
-The project was a collaboration between The University of Edinburgh (<a href="https://web.archive.org/web/20140208000945/http://edina.ac.uk/" data-versiondate="20140208" data-originalurl="https://edina.ac.uk">Edina</a> 
-and <a href="https://web.archive.org/web/20140422061821/http://www.ed.ac.uk/schools-departments/informatics/" data-versiondate="20140422" data-originalurl="https://informatics.ed.ac.uk">the School of Informatics</a>) 
-and the Los Alamos National Laboratory (<a href="https://web.archive.org/web/20150203092304/http://www.lanl.gov/library/about/research-prototyping.php" data-versiondate="20150203" data-originalurl="http://www.lanl.gov/library/about/research-prototyping.php">Research Library Prototyping Team</a>), with respective Principal Investigators Peter Burnhill and 
+   The Robust Links approach is an outcome of the 2013-2015 <a href="https://web.archive.org/web/20140517090658/https://hiberlink.org/" data-versiondate="20140517" data-originalurl="https://hiberlink.org">Hiberlink project</a> 
+that was funded by the <a href="https://web.archive.org/web/20130329052959/https://www.mellon.org/" data-versiondate="20130329" data-originalurl="https://www.mellon.org/">Andrew W. Mellon Foundation</a>. 
+The project was a collaboration between The University of Edinburgh (<a href="https://web.archive.org/web/20140208000945/https://edina.ac.uk/" data-versiondate="20140208" data-originalurl="https://edina.ac.uk">Edina</a> 
+and <a href="https://web.archive.org/web/20140422061821/https://www.ed.ac.uk/schools-departments/informatics/" data-versiondate="20140422" data-originalurl="https://informatics.ed.ac.uk">the School of Informatics</a>) 
+and the Los Alamos National Laboratory (<a href="https://web.archive.org/web/20150203092304/https://www.lanl.gov/library/about/research-prototyping.php" data-versiondate="20150203" data-originalurl="https://www.lanl.gov/library/about/research-prototyping.php">Research Library Prototyping Team</a>), with respective Principal Investigators Peter Burnhill and 
 Herbert Van de Sompel. 
 
 <br /><br />

@@ -182,12 +182,12 @@ margin: 0;
           <ul>
             <li><div class="style3">For months, subtly changing &quot;pictures of the day&quot; were published that depict a member of the Memento team 
             posing next to a flip chart. The changes are in the shirts worn, the timestamps, and the BBC content superimposed on the flip chart.</div></li>
-            <li><div class="style3">At any moment in time, the current picture of the day was served from the URI <code>http://lanlsource.lanl.gov/pics/picoftheday.png</code>. 
+            <li><div class="style3">At any moment in time, the current picture of the day was served from the URI <code>https://lanlsource.lanl.gov/pics/picoftheday.png</code>. 
             </div></li>
-            <li><div class="style3">On a daily basis, these images were archived using a <a href="http://en.wikipedia.org/wiki/Web_archiving#Transactional_archiving">transactional archive approach</a>. 
-            As a result, old versions of these pictures become available at URIs like <code>http://mementoarchive.lanl.gov/ta/20100320180023/http://lanlsource.lanl.gov/pics/picoftheday.png</code>
+            <li><div class="style3">On a daily basis, these images were archived using a <a href="https://en.wikipedia.org/wiki/Web_archiving#Transactional_archiving">transactional archive approach</a>. 
+            As a result, old versions of these pictures become available at URIs like <code>https://mementoarchive.lanl.gov/ta/20100320180023/https://lanlsource.lanl.gov/pics/picoftheday.png</code>
             </div></li>
-            <li><div class="style3">Using the following script that targets the generic URI of a picture of the day (<code>http://lanlsource.lanl.gov/pics/picoftheday.png</code>)
+            <li><div class="style3">Using the following script that targets the generic URI of a picture of the day (<code>https://lanlsource.lanl.gov/pics/picoftheday.png</code>)
             with incrementing datetime values for HTTP content negotiation and &quot;follow your nose&quot; HTTP navigation, all pictures of the day were automatically collected.
             In essence, the URI is asked about its past, and the URI gracefully responds by pointing at a <a href="/guide/quick-intro/">TimeGate</a> that knows about its past,
             and redirects to archived images that match the requested datetime values.
@@ -198,8 +198,8 @@ import os, sys, urllib2
 from datetime import datetime, timedelta
 
 fmtstr = "%a, %d %b %Y %H:%M:%S GMT"
-img = "http://lanlsource.lanl.gov/pics/picoftheday.png"
-timegate = "http://mementoarchive.lanl.gov/store/ta/timegate/"
+img = "https://lanlsource.lanl.gov/pics/picoftheday.png"
+timegate = "https://mementoarchive.lanl.gov/store/ta/timegate/"
 first = datetime.strptime("Mon, 30 Sep 2009 19:00:00", fmtstr[:-4])
 (now, td) = (datetime.now(), timedelta(1))
 (savePath, typ) = ('/path/to/save', 'png')

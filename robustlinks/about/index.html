@@ -1,6 +1,6 @@
 <!DOCTYPE html>  
 <!-- schema.org itemscope, itemtype, and itemid -->
-<html lang="en" itemscope itemtype="http://schema.org/WebPage" itemid="https://robustlinks.mementoweb.org/about/">
+<html lang="en" itemscope itemtype="https://schema.org/WebPage" itemid="https://robustlinks.mementoweb.org/about/">
 <head>
   <meta charset="utf-8" />
   <meta itemprop="dateModified" content="2020-06-29">
@@ -144,30 +144,30 @@ body {
     <ul>
     <li>Create a snapshot of the page in a publicly accessible web archive.
     Several web archives provide on-demand snapshot functionality, 
-    including the <a href="http://web.archive.org/">Internet Archive</a>, 
-    <a href="http://archive.today">archive.today</a>, and 
-    <a href="http://perma.cc">perma.cc</a>.</li>
+    including the <a href="https://web.archive.org/">Internet Archive</a>, 
+    <a href="https://archive.today">archive.today</a>, and 
+    <a href="https://perma.cc">perma.cc</a>.</li>
     <li>Link to the snapshot rather than to the original web page.</li>
     </ul>
     For example, we wrote the first version of this web page on January 21 2015 and wanted to link to 
-    <code>http://www.w3.org/</code>. This page changes rather frequently and in order for future readers 
+    <code>https://www.w3.org/</code>. This page changes rather frequently and in order for future readers 
     to see the same W3C content that we saw when linking, we created a snapshot in the 
-    <a href="http://archive.today/">archive.today</a> web archive. 
+    <a href="https://archive.today/">archive.today</a> web archive. 
     That snapshot is at 
     <a href="https://archive.today/r7cov">https://archive.today/r7cov</a> and, rather than linking to 
-    <code>http://www.w3.org/</code>, we link to <code>https://archive.today/r7cov</code>.
+    <code>https://www.w3.org/</code>, we link to <code>https://archive.today/r7cov</code>.
     <br /><br />
     While the creation of the snapshot is definitely an essential step in the right direction, 
     there are problems with this approach:
     <ul>
     <li>Linking to the snapshot <code>https://archive.today/r7cov</code>, 
-    assumes that the <a href="http://archive.today/">archive.today</a> web archive will exist forever. 
+    assumes that the <a href="https://archive.today/">archive.today</a> web archive will exist forever. 
     Unfortunately, not even web archives are free from technical, longevity, and sustainability issues and so we can not
     assume they will live forever. If the web archive in which we created the snapshot suffers a temporary glitch, moves 
     its content to another web location, or ceases to exist, visiting the snapshot becomes impossible.
     </li>
     <li>When linking to the snapshot <code>https://archive.today/r7cov</code>, 
-    the URI of the W3C's page (<code>http://www.w3.org/</code>) is lost. 
+    the URI of the W3C's page (<code>https://www.w3.org/</code>) is lost. 
     As a result, future readers of this page cannot visit the W3C page 
     to see its evolved state.</li>
     </ul>
@@ -175,7 +175,7 @@ body {
     that links will lead to meaningful content, even long after they were put in place. 
     The following three pieces of information robustify a link in a machine-actionable manner:
     <ul>
-    <li>The URI of the original resource, in our example <code>http://www.w3.org/</code>;</li>
+    <li>The URI of the original resource, in our example <code>https://www.w3.org/</code>;</li>
     <li>The URI of the snapshot, in our example <code>https://archive.today/r7cov</code>;</li>
     <li>The date of linking, in our example <code>January 21 2015</code>.</li>
     </ul>
@@ -184,17 +184,17 @@ body {
      <li>access the live web version of the page, if available, or</li>
      <li>visit the archived snapshot, if the live version is not available or its content has drifted, or</li>
      <li>use the date of linking and the URI of the original resource to find another archived snapshot 
-     in another web archive, if <a href="http://archive.today/">archive.today</a>'s service is interrupted or the snapshot
+     in another web archive, if <a href="https://archive.today/">archive.today</a>'s service is interrupted or the snapshot
      becomes inaccessible.</li>
     </ul>
 
         <br />
         To create a Robust Link, we make use of <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes">
         HTML5's attribute extensibility mechanism</a> and add two new elements to existing links. The HTML for 
-        <a href="http://www.w3.org/" data-versionurl="https://archive.today/r7cov" 
+        <a href="https://www.w3.org/" data-versionurl="https://archive.today/r7cov" 
         data-versiondate="2015-01-21">our W3C home page Robust Link</a> is shown below:
         <br />
-<pre>&lt;a href="http://www.w3.org/"
+<pre>&lt;a href="https://www.w3.org/"
    data-versionurl="https://archive.today/r7cov"
    data-versiondate="2015-01-21"&gt;our W3C home page Robust Link&lt;/a&gt;
 </pre>
