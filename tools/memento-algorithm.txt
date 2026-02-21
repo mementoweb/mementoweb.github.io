@@ -1,0 +1,97 @@
+# Memento Algorithm
+
+A Memento client interacts with web resources by including an `Accept-Datetime` HTTP header that conveys its preferred datetime. 
+The challenge for a Memento client is determining the Resource Type (`https://mementoweb.org/guide/resourcetype/`) 
+of the resource it is currently interacting with (URI-Q): 
+
+- is it an Original Resource (URI-R), 
+- a TimeGate (URI-G), 
+- or a Memento (URI-M)?
+
+## Pseudo code by Patrick Hochstenbach, 20260221
+
+```
+ALGORITHM MementoResourceType
+    INPUT: URI-Q, preferredDateTime, fallbackTimeGate
+
+    BEGIN
+        // The resourceType will contain our final answer
+        resourceType <- null
+        // The preferredTimeGate will contain a TimeGate for a resource
+        preferredTimeGate <- fallbackTimeGate
+
+        // Set some maximum allowed redirects
+        resolved <- FALSE
+        max_redirect <- 5
+        redirect_count <- 0
+
+        WHILE ( redirect_count < max_redirect AND NOT resolved) DO
+            // Perform a HTTP head request
+            response <- HttpHead(URI-Q, HEADERS: { "Accept-Datetime" : preferredDateTime } )
+
+            IF (response.status_code IN {301, 302, 307, 308}) THEN
+                URI-Q <- response.headers["Location"]
+                redirect_count <- redirect_count + 1
+            
+            ELSE IF (response.status code == 200) THEN
+                // We got a correct response 
+                resolved <- TRUE
+
+                // Check if we have a Memento
+                IF response.headers["Memento-Datetime"] THEN
+                    resourceType <- "MEMENTO"
+
+                // Check if we have a TimeGate
+                ELSE IF response.headers["Vary"] == "Accept-Datetime" THEN
+                    resourceType <- "TIMEGATE"
+
+                    ELSE 
+                        // We have the original resource
+                        resourceType <- "ORIGINAL_RESOURCE"
+
+                        // Check if we find a TimeGate for this resource
+                        responseTimeGate <- LinkTargetByRel(response,"timegate")
+
+                        IF responseTimeGate THEN
+                            // Yes, the resource provides a preferred TimeGate
+                            preferredTimeGate <- responseTimeGate
+                        ELSE
+                            // No, we keep our preferredTimeGate as is
+                        END IF
+                    
+                    END IF
+                END IF
+            ELSE
+                RETURN ERROR("Request failed: " + response.status)
+
+            END IF
+        END WHILE
+
+        IF ( redirect_count >= max_redirect) THEN
+            RETURN ERROR("Too many redirects")
+        END IF
+
+        RETURN { type: resourceType, timeGate: preferredTimeGate }
+    END
+
+ALGORITHM LinkTargetByRel
+    INPUT: response, targetRel
+
+    BEGIN
+        // Assume we can parse a Link HTTP header into
+        // a list of entries with rel and uri properties
+        link_headers <- parse(response.headers["Link"])
+
+        IF (link_headers IS NULL) THEN
+            RETURN NULL
+        END IF
+
+        FOR EACH entry IN link_headers DO
+            IF entry["rel"] == targetRel THEN
+                RETURN entry["uri"]
+            END IF
+        END FOR
+
+        RETURN NULL // Nothing found
+    END
+```
