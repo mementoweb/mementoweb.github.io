@@ -22,20 +22,15 @@ select {
 </head>
 <body style="">
 <div style="">
-    <div style="border-bottom: 1px solid #ddd; height: 1px; position: absolute; width: 70%; padding-top: 38px; z-index: -10;margin-left: 280px;"></div>
+    <div style="border-bottom: 1px solid #ddd; height: 1px; position: absolute; width: 50%; padding-top: 38px; z-index: -10;margin-left: 280px;"></div>
     <span id="app_logo">
-                <a href="https://mementoweb.org/tracer/" target="_parent">
-                    <img id="app_logo_img" src="https://mementoweb.org/static/css/images/mementotracer.png" style="width: 80px; height: 80px;"/>
-                </a>
                 <select id="app_select" onchange="window.top.location = this.options[this.selectedIndex].value;">
-                    <option value="https://mementoweb.org/tracer/" selected="sele">Memento Tracer</option>
-                    <option value="https://mementoweb.org/about/">Memento Project</option>
+                    <option value="/about/" selected="selected">Memento Project</option>
                     <option value="https://mementoweb.org/robustlinks/">Robust Links</option>
+                    <option value="https://mementoweb.org/tracer/">Memento Tracer</option>
                 </select>
     </span>
     <span id="app_menu" style="float: right; padding-top: 30px; padding-left: 10px; background: #fff;">
-        <a href="https://mementoweb.org/tracer/about/" target="_parent">About</a>
-        <a href="https://mementoweb.org/tracer/demos/" target="_parent">Demos</a>
     </span>
 </div>
 </body>
